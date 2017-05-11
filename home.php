@@ -44,12 +44,33 @@
                 <img class="centralizarModelo" src="com/paginas/home/modeloHome.png" alt="modeloHome">            
             </article>           
         </section>
+
         
-        <!--Não pode se colocar aspas simples-->
-        <?php include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
+        <?php
+//-->define( 'MYSQL_HOST', 'localhost' );<--
+define('MYSQL_HOST','mysql.hostinger.com.br');
+define( 'MYSQL_USER', 'u114118567_jdr' );
+define( 'MYSQL_PASSWORD', 'banco321' );
+define( 'MYSQL_DB_NAME', 'u114118567_trabd' );
+
+try
+{
+	$PDO = new PDO( 'mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASSWORD );
+	$PDO->exec("set names utf8");
+	echo"Sucesso";
+}
+catch ( PDOException $e )
+{
+	echo 'Erro ao conectar com o MySQL: ' . $e-->getMessage();
+}
+?>
         <footer class="footer">
             <img class="footer" src="com/Figuras/rodape.png" alt="rodape">
         </footer>
 </body>
 
 </html>
+
+        
+        <!--Não pode se colocar aspas simples-->
+                <?php //include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
