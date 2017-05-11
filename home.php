@@ -42,13 +42,14 @@
         <section>
             <article>
                 <img class="centralizarModelo" src="com/paginas/home/modeloHome.png" alt="modeloHome">            
-            </article>
-            
+            </article>           
         </section>
-        <? include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
+        
+        <!--Não pode se colocar aspas simples-->
+        <?php include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
         <footer class="footer">
             <img class="footer" src="com/Figuras/rodape.png" alt="rodape">
         </footer>
-
 </body>
+
 </html>
