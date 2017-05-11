@@ -49,9 +49,9 @@
 <?php
 //-->define( 'MYSQL_HOST', 'localhost' );<--
 define('MYSQL_HOST','mysql.hostinger.com.br');
-define( 'MYSQL_USER', 'u114118567_jdr' );
+define( 'MYSQL_USER', 'jdr' );
 define( 'MYSQL_PASSWORD', 'banco321' );
-define( 'MYSQL_DB_NAME', 'u114118567_trabd' );
+define( 'MYSQL_DB_NAME', 'trabd' );
 
 try
 {
