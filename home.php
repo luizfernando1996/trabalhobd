@@ -46,7 +46,7 @@
         </section>
 
         
-        <?php
+<?php
 //-->define( 'MYSQL_HOST', 'localhost' );<--
 define('MYSQL_HOST','mysql.hostinger.com.br');
 define( 'MYSQL_USER', 'u114118567_jdr' );
@@ -71,6 +71,5 @@ catch ( PDOException $e )
 
 </html>
 
-        
-        <!--Não pode se colocar aspas simples-->
-                <?php //include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
+<!--Não pode se colocar aspas simples-->
+<?php //include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
