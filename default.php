@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
@@ -37,8 +37,8 @@
 		<div>
 			<img src="com/figuras/Topo.png" alt="Home">
 			<nav>
-				<a href="#">Home</a> <a href="com/paginas/cadastrar/cadastrar.html">Cadastrar</a>
-				<a href="com/paginas/consultar/consultar.html">Consultar</a>
+				<a href="#">Home</a> <a href="com/paginas/cadastrar/home/cadastrar.html">Cadastrar</a>
+				<a href="com/paginas/consultar/home/consultar.html">Consultar</a>
 			</nav>
 		</div>
 	</header>
@@ -52,9 +52,11 @@
         
 <?php
 
-include ('com/php/controller/conexaoComBanco/ConectaAoMySQL.php');
-$mysqlcon = new ConectaAoMySQL();
-$mysqlcon->connect();
+// //Deve se utilizar o comando include ele é semelhante ao import
+// include ('com/php/controller/crud/Auxiliar.php');
+// // O nome de constantes não pode ter $
+// $aux= new Auxiliar();
+// $aux->mostrar();
 
 ?>
         <footer class="footer">

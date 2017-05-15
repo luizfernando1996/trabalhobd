@@ -1,33 +1,13 @@
-http://www.uolhost.uol.com.br/faq/v2/hospedagem/como-testar-a-conexao-com-um-banco-de-dados-mysql-e-php.html#rmcl
+// define ( 'MYSQL_HOST', 'mysql.hostinger.com.br' );
+// define ( 'MYSQL_USER', 'u114118567_banco' );
+// define ( 'MYSQL_PASSWORD', 'banco321' );
+// define ( 'MYSQL_DB_NAME', 'u114118567_banc2' );
 
-Como testar a conexão com um banco de dados MySQL e PHP?
-
-Para testar a conexão do seu site com uma base de dados MySQL via código PHP, utilize o procedimento abaixo.
-
-1 - Crie uma base de dados através do Painel de Controle.
-
-2 - Transcreva o código abaixo em um arquivo e transfira-o via FTP para sua hospedagem. No nosso exemplo, nomeamos o arquivo como mysqltest.php
-
-$banco = "nome_do_banco_de_dados";
-$usuario = "nome_de_usuario_criado";
-$senha = "senha_atribuida_para_o_bd";
-$hostname = "servidor_de_banco_de_dados";
-$conn = mysql_connect($hostname,$usuario,$senha); mysql_select_db($banco) or die( "Não foi possível conectar ao banco MySQL");
-if (!$conn) {echo "Não foi possível conectar ao banco MySQL.
-"; exit;}
-else {echo "Parabéns!! A conexão ao banco de dados ocorreu normalmente!.
-";}
-mysql_close(); 
-?>
-
-onde você deve alterar as seguintes variáveis:
-nome_do_banco_de_dados = nome do Banco de dados criado no item 1.
-nome_de_usuario_criado = nome do usuário criado para acesso ao banco de dados no item 1.
-senha_atribuida_para_o_bd = senha informada por você na criação do Banco de dados.
-servidor_de_banco_de_dados = Servidor informado no ato da criação do Banco de dados.
-
-3 - Acesse o script através da Web. Se você publicou o arquivo na pasta Public_html, o endereço
-será algo como http://www.seudominio.com/mysqltest.php
-Nota: substitua seudominio.com por seu verdadeiro domínio.
-
-Se a conexão ao banco de dados ocorrer normalmente, a mensagem "Parabéns!! A conexão ao banco de dados ocorreu normalmente!" aparecerá.
+// try {
+// 	$PDO = new PDO ( 'mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB_NAME, MYSQL_USER, MYSQL_PASSWORD );
+// 	$PDO->exec ( "set names utf8" );
+// 	echo "Acesso realizado no banco";
+// } catch ( PDOException $e ) {
+// 	echo 'Erro ao conectar com o MySQL:
+// ' . $e->getMessage ();
+// }
