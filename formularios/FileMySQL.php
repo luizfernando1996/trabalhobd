@@ -1,4 +1,5 @@
 <?php
+//Não se pode ter muitas pastas porque o caminho fica gigantesco!!Então é isto ai!!Nunca crie muitas pastas
 class ConectaAoMySql {
  	
 	private $MYSQL_HOST = 'mysql.hostinger.com.br';

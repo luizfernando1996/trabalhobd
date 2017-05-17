@@ -69,5 +69,4 @@
 
 </html>
 
-<!--Não pode se colocar aspas simples-->
 <?php //include("com/php/controller/conexaoComBanco/ConectaAoMySQL.php"); ?>
