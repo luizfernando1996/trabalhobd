@@ -22,39 +22,15 @@ $valido = false;
 // isset retorna false se o valor for null ou se a variavel não existir
 if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	
-	$MYSQL_HOST = 'mysql.hostinger.com.br';
-	$MYSQL_USER = 'u114118567_banco';
-	$MYSQL_PASSWORD = 'banco321';
-	$MYSQL_DB_NAME = 'u114118567_banc2';
+	include ('./FileJogCrud.php');
 	
-	$valido = true;
-	try {
-		$connection = new PDO ( 'mysql:host=' . $MYSQL_HOST . ';dbname=' . $MYSQL_DB_NAME, $MYSQL_USER, $MYSQL_PASSWORD );
-		$connection->exec ( "set names utf8" );
-	} catch ( PDOException $e ) {
-		echo utf8_encode ( "Falha: " . $e->getMessage () );
-		exit ();
-	}
-	
-	$sql = "INSERT INTO jogador
-                (Posicao, Nome, DataNasc, Camisa, NomeEquipe)
-                VALUES (?, ?, ?, ?,?)";
-	
-	$stmt = $connection->prepare ( $sql );
-	
-	$stmt->bindParam ( 1, $_POST ["posicao"] );
-	$stmt->bindParam ( 2, $_POST ["txtNomeJogador"] );
-	$stmt->bindParam ( 3, $_POST ["dataNascimento"] );
-	$stmt->bindParam ( 4, $_POST ["numeroCamisa"] );
-	$stmt->bindParam ( 5, $_POST ["nomeEquipe"] );
-	
-	$stmt->execute ();
-	
-	if ($stmt->errorCode () != "00000") {
-		$valido = false;
-		$erro = "Erro código " . $stmt->errorCode () . ": ";
-		$erro .= implode ( ", ", $stmt->errorInfo () );
-	}
+	$Robinho = new JogadorCrude ();
+	$posicao = $_POST ["posicao"];
+	$nome = $_POST ["txtNomeJogador"];
+	$date = $_POST ["dataNascimento"];
+	$numero = $_POST ["numeroCamisa"];
+	$NomeEquipe = $_POST ["nomeEquipe"];
+	$Robinho->inserirBanco ( $posicao, $nome, $date, $numero, $NomeEquipe );
 } else {
 	if (isset ( $erro )) {
 	}
@@ -63,9 +39,10 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 <body>
 
 
-
+	<h1>
+		<pre>     Cadastro de Jogadores</pre>
+	</h1>
 	<form name="tabelaJogador" method="post" action="?validar=true">
-		<label><pre><h1>       Cadastro de Jogadores</h1></pre></label>
 		<!-- Campo Nome -->
 		<div class="retiraQuebraDeLinha">
 			<label>Nome:</label>
@@ -75,7 +52,8 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		</div>
 		<!-- Campo Data Nascimento -->
 		<label>Digite sua data de nascimento:</label> <input type="text"
-			id="calendario" name="dataNascimento"><br>
+			id="calendario" placeholder="Selecione a data ao lado"
+			name="dataNascimento"><br>
 
 		<script>
 $(function() {
@@ -141,8 +119,7 @@ $(function() {
 				?>>Goleiro(a)</option>
 
 
-		</select> <br> 
-		<label><?php echo(utf8_encode('Número da camisa'))?></label>
+		</select> <br> <label><?php echo(utf8_encode('Número da camisa'))?></label>
 		<input type="number" name="numeroCamisa"><br>
 
 		<!-- Campo Nome da Equipe -->
@@ -163,6 +140,7 @@ $(function() {
 
 </body>
 </html>
+
 <!-- Cada bloco de php é um arquivo, logo ele deve ser acessado 
 através do include ou através de um objeto (somente nos casos em que o arquivo a ser acessado está contido 
 no mesmo arquivo onde se declara o objeto). Desta forma, exceto no ultimo caso todos devem vir com a instrução include-->

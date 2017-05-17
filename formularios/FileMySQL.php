@@ -1,5 +1,5 @@
 <?php
-abstract class ConectaAoMySql {
+class ConectaAoMySql {
  	
 	private $MYSQL_HOST = 'mysql.hostinger.com.br';
 	private $MYSQL_USER = 'u114118567_banco';

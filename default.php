@@ -40,7 +40,7 @@
 
 			<nav>
 				<a href="#">Home</a> <a
-					href="com/paginas/cadastrar/home/cadastrar.html">Cadastrar</a> <a
+					href="formularios/homeFormularios.html">Formularios</a> <a
 					href="com/paginas/consultar/home/consultar.html">Consultar</a>
 			</nav>
 
