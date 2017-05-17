@@ -7,7 +7,7 @@ abstract class ConectaAoMySql {
 	private $MYSQL_DB_NAME = 'u114118567_banc2';
 	public $mensagem = null;
 	// Abaixo esta declarado um 'objeto' da classe PDO
-	private $PDO;
+	public $PDO;
 	
 	function __construct(){
 		// O nome de constantes não pode ter $ e o comando define só pode ser usado dentro de escopos
