@@ -3,7 +3,11 @@
 include ("com/php/controller/conexaoComBanco/ConectaAoMySql.php");
 
 class Auxiliar extends ConectaAoMySql{
-	public function mostrar() {
+	
+	function __construct(){
+		
+	}
+	public function createAuxiliar() {
 		echo $mensagem;
 	}
 }

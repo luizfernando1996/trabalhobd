@@ -6,6 +6,7 @@
 	FUTEBOL BRASILEIRO</title>
 
 <style>
+
 .centralizarModelo {
 	position: absolute;
 	/*top:50%;*/
@@ -36,10 +37,13 @@
 	<header>
 		<div>
 			<img src="com/figuras/Topo.png" alt="Home">
+
 			<nav>
-				<a href="#">Home</a> <a href="com/paginas/cadastrar/home/cadastrar.html">Cadastrar</a>
-				<a href="com/paginas/consultar/home/consultar.html">Consultar</a>
+				<a href="#">Home</a> <a
+					href="com/paginas/cadastrar/home/cadastrar.html">Cadastrar</a> <a
+					href="com/paginas/consultar/home/consultar.html">Consultar</a>
 			</nav>
+
 		</div>
 	</header>
 	<section>
@@ -57,7 +61,6 @@
 // // O nome de constantes não pode ter $
 // $aux= new Auxiliar();
 // $aux->mostrar();
-
 ?>
         <footer class="footer">
 		<img class="footer" src="com/figuras/rodape.png" alt="rodape">

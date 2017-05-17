@@ -2,7 +2,7 @@
 //Não consegui não incluir todo o caminho do arquivo
 include ("com/php/controller/conexaoComBanco/ConectaAoMySql.php");
 
-class Tecnico extends ConectaAoMySql{
+class Tecnico{
 	public function mostrar() {
 		echo $mensagem;
 	}
