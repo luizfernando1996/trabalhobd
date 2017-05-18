@@ -1,0 +1,5 @@
+<?php 
+include("../FileMySQL.php")
+
+
+?>

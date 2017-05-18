@@ -23,5 +23,6 @@ class ConectaAoMySql {
 			echo $this->mensagem;
 		}
 	}
+	
 }
 ?>
