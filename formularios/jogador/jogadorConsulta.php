@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Jogadores</title>
+<title>Consultar todos os Jogadores</title>
 
 </head>
 
