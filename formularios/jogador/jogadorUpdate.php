@@ -18,14 +18,12 @@
 <?php
 $erro = null;
 $valido = false;
-// isset retorna false se o valor for null ou se a variavel não existir
 include ('./FileJogCrud.php');
 $Robinho = new JogadorCrude ();
-// resposável por editar os dados carregados do else
 
-if (isset ( $_POST ["primaryKey"] )) {
+// resposável por editar os dados carregados do else
+if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
-	echo $primaryKey [0] . " " . $primaryKey [1] . " " . $primaryKey [2];
 	$campos = array (
 			$_POST ["posicao"],
 			$_POST ["txtNomeJogador"],
@@ -150,7 +148,10 @@ $(function() {
 
 		<!--BOTOES PARA ENVIAR-->
 		<input type="reset" value="Limpar os dados"> <input type="submit"
-			value="Alterar os dados"> <input type="hidden" name=primaryKey
+			value="Alterar os dados"> 
+			
+			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
+			<input type="hidden" name=primaryKey
 			value="<?php
 			if (isset ( $_REQUEST ["posicao"] ) && isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["datanasc"] ))
 				//nome dos campos do método ler jogadores no crude	

@@ -11,7 +11,6 @@
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 
 <style>
-
 </style>
 
 
@@ -52,10 +51,11 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 				placeholder="Digite aqui o seu nome..."><br>
 		</div>
 		<!-- Campo Data Nascimento -->
-		<label>Digite sua data de nascimento:</label> 
-		<input type="text" id="calendario" placeholder="Selecione a data ao lado" name="dataNascimento"><br>
-		
-<!-- Script do calendario abaixo -->
+		<label>Digite sua data de nascimento:</label> <input type="text"
+			id="calendario" placeholder="Selecione a data ao lado"
+			name="dataNascimento"><br>
+
+		<!-- Script do calendario abaixo -->
 		<script>
 $(function() {
 	
@@ -138,7 +138,7 @@ $(function() {
 	</form>
 
 
-<a href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a href="./jogadorConsulta.php">Consultar Jogadores</a>
 </body>
 </html>
 

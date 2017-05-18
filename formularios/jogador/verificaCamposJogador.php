@@ -1,6 +1,7 @@
 <?php
 class verificaCamposJogador {
-	// Ingenuinamente atribui $_POST como parametro o que é muito errado porque $_POST é uma super variavel, é uma instrução do php
+	// Ingenuinamente atribui $_POST como parametro o que é muito errado porque $_POST é uma super variavel,
+	//é uma instrução do php
 	public function verificaPosicao($g) {
 		echo "sa".$g;
 		if (isset ( $g )) {

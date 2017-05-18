@@ -1,7 +1,9 @@
 <?php
 include ("../FileMySQL.php"); // <--Segue control e clique no caminho para ter certeza qe o caminho está correto
+
 class JogadorCrude extends ConectaAoMySql {
 	private $primaryKey;
+	
 	public function inserirBanco($posicao, $nome, $date, $numero, $NomeEquipe) {
 		$sql = "INSERT INTO jogador
                 (Posicao, Nome, DataNasc, Camisa, NomeEquipe)
