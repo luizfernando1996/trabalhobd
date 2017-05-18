@@ -153,7 +153,7 @@ $(function() {
 			value="Alterar os dados"> <input type="hidden" name=primaryKey
 			value="<?php
 			if (isset ( $_REQUEST ["posicao"] ) && isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["datanasc"] ))
-				//nome dos campos do método ler jogadores no crude
+				//nome dos campos do método ler jogadores no crude	
 				echo $_REQUEST ["posicao"] . "*" . $_REQUEST ["nome"] . "*" . $_REQUEST ["datanasc"];
 			else 
 				//nomes dos campos desta tabela
