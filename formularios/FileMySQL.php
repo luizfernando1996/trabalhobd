@@ -17,9 +17,9 @@ class ConectaAoMySql {
 			$this->PDO = new PDO ( 'mysql:host=' . $this->MYSQL_HOST . ';dbname=' . $this->MYSQL_DB_NAME, $this->MYSQL_USER, $this->MYSQL_PASSWORD );
 			$this->PDO->exec ( "set names utf8" );
 			$this->mensagem = "Acesso realizado no banco";
-			echo $this->mensagem.'</br>';
+			//echo $this->mensagem.'</br>';
 		} catch ( PDOException $e ) {
-			$this->mensagem = 'Erro ao conectar com o MySQL: ' . $e->getMessage ();
+			$this->mensagem = 'Erro ao conectar com o Banco: ' . $e->getMessage ();
 			echo $this->mensagem;
 		}
 	}

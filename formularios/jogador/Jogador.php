@@ -137,7 +137,7 @@ $(function() {
 	</form>
 
 
-
+<a href="./jogadorConsulta.php">Consultar Jogadores</a>
 </body>
 </html>
 

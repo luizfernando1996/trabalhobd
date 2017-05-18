@@ -46,7 +46,7 @@ $Robinho->inserirBanco($nome, $estado, $nomeEstadio, $nomeTecnico);
 		<div class="retiraQuebraDeLinha">
 			<label>Nome:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" 	="required" name="txtNomeJogador"
+			<input type="text" 	required="required" name="txtNomeJogador"
 				placeholder="Digite aqui o seu nome..."><br>
 		</div>
 
