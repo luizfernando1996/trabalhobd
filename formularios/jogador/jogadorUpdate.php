@@ -76,7 +76,7 @@ $(function() {
         
     	//Apresenta o icone do calendario
         showOn: "button",
-        buttonImage: "calendario.png",
+        buttonImage: "../utilitarios/mes/calendar.png",
         buttonImageOnly: true,
         showButtonPanel:true,
         
