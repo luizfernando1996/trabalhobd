@@ -36,7 +36,7 @@
 <body class="wrapper">
 	<header>
 		<div>
-			<img src="com/figuras/Topo.png" alt="Home">
+			<img src="./formularios/utilitarios/figuras/Topo.png" alt="Home">
 
 			<nav>
 				<a href="#">Home</a> <a
@@ -48,7 +48,7 @@
 	</header>
 	<section>
 		<article>
-			<img class="centralizarModelo" src="com/paginas/home/modeloHome.png"
+			<img class="centralizarModelo" src="./formularios/utilitarios/figuras/modeloHome.png"
 				alt="modeloHome">
 		</article>
 	</section>
@@ -63,7 +63,7 @@
 // $aux->mostrar();
 ?>
         <footer class="footer">
-		<img class="footer" src="com/figuras/rodape.png" alt="rodape">
+		<img class="footer" src="./formularios/utilitarios/figuras/rodape.png" alt="rodape">
 	</footer>
 </body>
 
