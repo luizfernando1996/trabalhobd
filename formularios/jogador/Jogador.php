@@ -30,6 +30,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$date = $_POST ["dataNascimento"];
 	$numero = $_POST ["numeroCamisa"];
 	$NomeEquipe = $_POST ["nomeEquipe"];
+	
 	$Robinho->inserirBanco ( $posicao, $nome, $date, $numero, $NomeEquipe );
 } else {
 	if (isset ( $erro )) {

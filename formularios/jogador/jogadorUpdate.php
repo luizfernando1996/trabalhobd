@@ -22,10 +22,10 @@ $valido = false;
 include ('./FileJogCrud.php');
 $Robinho = new JogadorCrude ();
 // resposável por editar os dados carregados do else
-if (isset ( $_POST ["validar"] ) && $_POST ["validar"] == false) {
-	$primaryKey = explode ( "*", $_REQUEST ["primaryKey"] );
+
+if (isset ( $_POST ["primaryKey"] )) {
+	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
 	echo $primaryKey [0] . " " . $primaryKey [1] . " " . $primaryKey [2];
-	echo "ewe";
 	$campos = array (
 			$_POST ["posicao"],
 			$_POST ["txtNomeJogador"],
@@ -41,11 +41,6 @@ else {
 			$_REQUEST ["nome"],
 			$_REQUEST ["datanasc"] 
 	);
-	if (isset ( $_POST ["primaryKey"] )) {
-		$priasmaryKey = explode ( "*", $_POST ["primaryKey"] );
-		echo $priasmaryKey[0] . " " . $priasmaryKey[1] . " " . $priasmaryKey[2];
-	}
-	
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
 	$Robinho->consultarJogador ( $primaryKey );
@@ -157,8 +152,12 @@ $(function() {
 		<input type="reset" value="Limpar os dados"> <input type="submit"
 			value="Alterar os dados"> <input type="hidden" name=primaryKey
 			value="<?php
-			
-			echo $_REQUEST ["posicao"] . "*" . $_REQUEST ["nome"] . "*" . $_REQUEST ["datanasc"];
+			if (isset ( $_REQUEST ["posicao"] ) && isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["datanasc"] ))
+				//nome dos campos do método ler jogadores no crude
+				echo $_REQUEST ["posicao"] . "*" . $_REQUEST ["nome"] . "*" . $_REQUEST ["datanasc"];
+			else 
+				//nomes dos campos desta tabela
+				echo $_POST ["posicao"] . "*" . $_POST["txtNomeJogador"] . "*" . $_POST["dataNascimento"];
 			?>">
 	</form>
 
