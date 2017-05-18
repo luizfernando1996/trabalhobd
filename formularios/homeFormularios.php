@@ -78,7 +78,6 @@ width:150px;
 <body class="wrapper">
 	<header>
 		<!-- cabeçalho -->
-		<div>
 			<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
 			<img src="./utilitarios/figuras/Topo.png" alt="topoHome">
 			
@@ -99,14 +98,11 @@ width:150px;
 		<li><a href="./equipe/Equipe.php">Equipe</a></li>                 
 </ul>
 </nav>
-		</div>
 	</header>
 
 
-	<div>
 		<footer class="footer">
 			<img class="footer" src="./utilitarios/figuras/rodape.png" alt="rodape">
 		</footer>
-	</div>
 </body>
 </html>
