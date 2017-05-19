@@ -97,7 +97,8 @@ width:150px;
 <!-- 	       		</ul> -->
 			</li>
 		<li><a href="https://docs.google.com/document/d/1Up8rmrTuysbrhJQ4sY1zEkBtAPtxiWyrNkdkUzsPffo/edit">MiniMundo</a></li>
-		<li><a href="Script/ScriptDoHostinger/scriptHostinger.pdf">Script</a></li>                 
+		<li><a href="Script/ScriptDoHostinger/scriptHostinger.pdf">Script</a></li>        
+		<li><a href="https://cpanel.hostinger.com.br/auth">Acessar o hostinger</a></li>            
 </ul>
 </nav>
 </div>
