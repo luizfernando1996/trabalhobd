@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Atualização de dados do Jogador</Title>
+<Title><?php utf8_encode("Atualização de dados do Jogador");?></Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />

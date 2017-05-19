@@ -60,7 +60,7 @@ class ClasseEquipeCrude extends ConectaAoMySql{
                 &estado=" . $primaryKey [0] .
                 "&nomeEstadio=" . $primaryKey [1] .
                 "&nomeTecnico=" . $primaryKey [2] . "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
+				echo "<td>" . "<a href='./equipeUpdate.php?alterar=true
 				&estado=" . $primaryKey [0] .
 				"&nomeEstadio=" . $primaryKey [1] .
 				"&nomeTecnico=" . $primaryKey [2] .  "'>Alterar</a>", "</td>";
@@ -86,7 +86,35 @@ class ClasseEquipeCrude extends ConectaAoMySql{
 		} else
 			echo "Sucesso : jogador removido com sucesso <br><br>";
 	}
-
+	public function lerEquipe($primaryKey){
+		$sql = "SELECT * FROM equipe WHERE Estado= ? && NomeEstadio = ? && NomeTecnico= ?";
+	
+		$rs = $this->PDO->prepare ( $sql );
+		
+		$rs->bindParam ( 1, $primaryKey[0] );
+		$rs->bindParam ( 2, $primaryKey [1]);
+		$rs->bindParam ( 3, $primaryKey [2] );
+		echo $primaryKey[0]." ".$primaryKey[1]." ".$primaryKey[2];
+		
+		if ($rs->execute ()) {
+			// rs->fetch captura cada linha da tabela, isto é, cada objeto jogador da tabela
+			// e manda para $registro
+			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
+				// txtNomeJogador é o nome no formulario
+				// enquanto $registro->Nome é o nome da coluna no banco
+				$_POST ["txtNomeEquipe"] = $registro->Nome;
+				$_POST ["estadoCampo"] = $registro->Estado;
+				$_POST ["nomeEstadio"] = $registro->NomeEstadio;
+				$_POST ["nomeTecnico"] = $registro->NomeTecnico;
+				echo $registro->Nome." ". $registro->Estado. " " .$registro->NomeEstadio." ".$registro->NomeTecnico;
+			} else
+				$erro = "Registro não encontrado";
+		} else
+			$erro = "Falha na captura do registro";
+	}
+	public function alterarDadosEquipes($campos,$primaryKey){
+		
+	}
 
 }
 

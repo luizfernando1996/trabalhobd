@@ -74,7 +74,7 @@ $Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Minas Gerais") {
 					echo "selected";
 				}
-				?>>Minas Gerais</option>
+				?>><?php echo(utf8_encode("São Paulo")); ?>	</option>
 
 			<!-- Opção 2: -->
 			<option
@@ -116,7 +116,7 @@ $Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 	</form>
 
 	<br>
-	<a id="botao" href="./equipeConsulta">Consultar Equipes</a>
+	<a id="botao" href="./equipeConsulta.php">Consultar Equipes</a>
 			<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
 	</footer><!-- em estilo. é class e # é id -->
