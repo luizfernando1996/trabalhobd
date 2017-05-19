@@ -44,10 +44,9 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 				echo "<td>" . "<a href='?excluir=true
                 &nome=" . $primaryKey [0] .
                "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
-				&nome=" . $primaryKey [1] .
+				echo "<td>" . "<a href='./AuxiliarUpdate.php?alterar=true
+				&nome=" . $primaryKey [0] .
 				"'>Alterar</a>", "</td>";
-				
 				echo "</tr>";
 			}
 		} else {
@@ -80,11 +79,9 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["txtNomeAuxiliar"] = $registro->Nome;
-				$_POST ["txtNomeEquipe"] = $registro->DataNasc;
-				$_POST ["posicao"] = $registro->Posicao;
-				$_POST ["numeroCamisa"] = $registro->Camisa;
-				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["NomeAuxiliar"] = $registro->Nome;
+				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				
 			} else
 				$erro = "Registro não encontrado";
 		} else
