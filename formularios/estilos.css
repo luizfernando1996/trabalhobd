@@ -2,7 +2,7 @@
 	max-width: 1000px;
 	width: 100%;
 		margin-top: 0px;
-	margin-left: 100px;
+	margin-left: 50px;
 }
 #formulario {
 	left: 50px;
@@ -36,7 +36,7 @@
 /*----------------------------------------------COPIADO------------------------*/
 #formularioInteiro {
 padding:3px;
-	margin-left: 115px;
+	margin-left: 25px;
 	margin-top: 0px;
 	width:700px;
 	background: #4f4f4f;
@@ -94,7 +94,7 @@ body{
 font-family: arial, helvetica, sans-serif;
 font-size: 12px;
 
-	margin-left: 410px;
+	margin-left: 250px;
 	margin-top: 0px;
 }
 
