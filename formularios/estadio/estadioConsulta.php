@@ -52,7 +52,7 @@ $mineirao = new EstadioCrude();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
 	$primaryKey=array($_REQUEST["capacidade"],$_REQUEST["cidade"],$_REQUEST["estado"]);
-	$mineirao->deletarJogador($primaryKey);
+	$mineirao->deletarEstadio($primaryKey);
 }
 $mineirao->lerEstadios();
 ?>
