@@ -19,6 +19,7 @@ no formulário */
 	/* retira as bordas duplas nas células da tabela */
 	color: #ff9900; /* a cor laranja para as letras */
 }
+/*<!--Nome muito grande da bug-->*/
 #formularioInter {
 padding:3px;
 	margin-left: 180px;
@@ -39,4 +40,19 @@ no formulário */
 	border-collapse : collapse;
 	/* retira as bordas duplas nas células da tabela */
 	color: #ff9900; /* a cor laranja para as letras */
+}
+
+#tiloDoForm {
+	/*width:715px;*/
+	margin-left: 0px;
+	margin-top: 2000px;
+	background: #000000;
+	/* a cor preta para o fundo do título */
+	padding: 3px;
+	/* um afastamento de 3px */
+	font: bold 30px arial, verdana, helvetica, sans-serif;
+	/* letras em negrito com 15px e familia arial, verd....*/
+	border-bottom: 1px solid #ff9900;
+	/* uma borda inferior solida de 1px na cor laranja */
+	color: #ff9900;
 }

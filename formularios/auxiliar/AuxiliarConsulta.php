@@ -26,12 +26,12 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="../default.php">Home</a></li>
-		<li><a href="formularios/homeFormularios.html">Formularios</a></li>
-	  		<li><a href="../auxiliar/AuxiliarCad.php">Auxiliar</a>
+		<li><a href="../../default.php">Home</a></li>
+		<li><a href="../homeFormularios.php">Formularios</a></li>
+	  		<li><a href="../auxiliar/Auxiliar.php">Auxiliar</a>
 			</li>
-		<li><a href="#">Jogador</a></li>
-		<li><a href="./equipe/Equipe.php">Equipe</a></li>                 
+		<li><a href="../jogador/Jogador.php">Jogador</a></li>
+		<li><a href="../equipe/Equipe.php">Equipe</a></li>                 
 </ul>
 </nav>
 	</header>

@@ -71,7 +71,7 @@ else {
 	<!-- estrutura fundamental por passar a primary key para o if-->
 
 
-	<h1 id="tituloForm">
+	<h1 id="tiloDoForm">
 		<pre>     Editar dados de Jogadores</pre>
 	</h1>
 	<form id="formularioInter"name="tabelaJogador" method="post" action="?validar=true">
