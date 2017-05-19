@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Atualização de dados do Jogador</Title>
+<Title>Atualização de dados do Auxiliar</Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -48,6 +48,7 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["txtNomeAuxiliar"],
 			$_POST ["txtNomeEquipe"]			
 	);
+	
 	$objAux->alterarDadosAuxiliar ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
@@ -66,8 +67,8 @@ else {
 	<!-- estrutura fundamental por passar a primary key para o if-->
 
 
-	<h1 id="tiloDoForm">
-		<pre>Editar dados de Auxiliares</pre>
+	<h1 id="tituloDoForm">
+		Editar dados de Auxiliares
 	</h1>
 	<form id="formularioInter" name="tabelaAuxiliares" method="post" action="?validar=true">
 		<!-- Campo Nome -->
@@ -88,7 +89,7 @@ else {
 			<!-- required="required"->exige o preenchimento -->
 			<input type="text" required="required" name="txtNomeEquipe"
 				placeholder="Digite o nome da equipe..."
-				<?php if(isset($_POST ["nomeEquipe"])){echo "value='".$_POST ["nomeEquipe"]."'";}?>><br>
+				<?php if(isset($_POST ["txtNomeEquipe"])){echo "value='".$_POST ["txtNomeEquipe"]."'";}?>><br>
 		</div>
 		<br>
 
@@ -104,12 +105,12 @@ else {
 				echo $_REQUEST ["nome"];
 			else 
 				//nomes dos campos desta tabela
-				echo $_POST ["primaryKey"];
+				echo $_POST ["txtNomeAuxiliar"];
 			?>">
 	</form>
 
 
-	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./AuxiliarConsulta.php">Consultar Auxiliares</a>
 	
 	<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">

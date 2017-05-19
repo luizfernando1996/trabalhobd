@@ -79,45 +79,35 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["NomeAuxiliar"] = $registro->Nome;
-				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["txtNomeAuxiliar"] = $registro->Nome;
+				$_POST ["txtNomeEquipe"] = $registro->ComissaoTecnicaEquipe;
 				
 			} else
 				$erro = "Registro não encontrado";
 		} else
 			$erro = "Falha na captura do registro";
 	}
-	public function alterarDadosJogador($primaryKey,$campos){
+	public function alterarDadosAuxiliar($primaryKey,$campos){
 		
-		$sql = "UPDATE jogador SET
-		Posicao = ?,
+		$sql = "UPDATE auxiliar SET
 		Nome = ?,
-		DataNasc = ?,
-		Camisa = ?,
-		NomeEquipe = ?
-		WHERE Posicao= ? && Nome = ? && DataNasc= ?" ;
+		ComissaoTecnicaEquipe = ?		
+		WHERE Nome = ?" ;
 		
-		$stmt = $this->PDO->prepare ( $sql );
+		$stmt = $this->PDO->prepare ( $sql );		
 		
-		$stmt->bindParam ( 1, $campos[0] );
-		$stmt->bindParam ( 2, $campos[1] );
-		$stmt->bindParam ( 3, $campos[2] );
-		$stmt->bindParam ( 4, $campos[3] );
-		$stmt->bindParam ( 5, $campos[4] );
-		$stmt->bindParam ( 6, $primaryKey [0] );
-		$stmt->bindParam ( 7, $primaryKey [1] );
-		$stmt->bindParam ( 8, $primaryKey [2] );
-		
+		$stmt->bindParam ( 1, $campos[0] );	
+		$stmt->bindParam ( 2, $campos[1] );	
+		$stmt->bindParam ( 3, $primaryKey);
 		$stmt->execute ();
+		
 		if($stmt->errorCode()!="00000") {
 			$valido = false;
 			$erro = "Erro código " . $stmt->errorCode () . ": ";
 			$erro .= implode ( ", ", $stmt->errorInfo () );
-		}
+		}		
 		else
-		{
 			echo "Alteração realizada com sucesso";
-		}
 	}
 }
 
