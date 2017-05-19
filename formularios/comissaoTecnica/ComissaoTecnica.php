@@ -19,9 +19,8 @@
 		$valido = false;
 		// isset retorna false se o valor for null ou se a variavel não existir
 		if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
-			
-			include ("./ComissaoTecnicaCRUD.php");
-			$objAuxiliar = new AuxiliarCRUDClasse();
+						include ("./ComissaoTecnicaCRUD.php");
+			$objAuxiliar = new ComissaoTecnicaCRUDClasse();
 			$nomeEquipe = $_POST ["txtNomeEquipe"];
 			$nomeTecnico= $_POST ["txtNomeTecnico"];
 			$nomeAuxiliar = $_POST["txtNomeAuxiliar"];
