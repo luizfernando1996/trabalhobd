@@ -1,7 +1,8 @@
 <?php
 //Não consegui não incluir todo o caminho do arquivo
 
-class AuxiliarCRUDClasse{
+include ('../FileMySQL.php');
+class AuxiliarCRUDClasse extends ConectaAoMySql{
 	private $primaryKey;
 	
 	public function inserirBanco($nome, $comissaoTecnicaEquipe ){ 
