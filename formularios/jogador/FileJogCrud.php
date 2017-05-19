@@ -129,6 +129,10 @@ class JogadorCrude extends ConectaAoMySql {
 			$erro = "Erro código " . $stmt->errorCode () . ": ";
 			$erro .= implode ( ", ", $stmt->errorInfo () );
 		}
+		else 
+		{
+			echo "Alteração realizada com sucesso";
+		}
 	}
 }
 
