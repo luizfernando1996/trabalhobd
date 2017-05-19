@@ -3,34 +3,34 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Cadastro de Jogador</Title>
+<Title>Cadastro de Comissao Tecnica</Title>
 
 <link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-
-<style></style>
-<link rel="stylesheet" type="text/css" href="../estilos.css">]
-
-
-</head>
-<?php
-$erro = null;
-$valido = false;
-// isset retorna false se o valor for null ou se a variavel não existir
-if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
-	
-	include ("./AuxiliarCRUD.php");	
-	$objAuxiliar = new AuxiliarCRUDClasse();
-	$nome = $_POST ["txtNomeAuxiliar"];
-	$NomeEquipe= $_POST ["txtNomeEquipe"];	
-	$objAuxiliar->inserirBanco ( $nome, $NomeEquipe );
-} else {
-	if (isset ( $erro )) {
-	}
-}
-?>
+		href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+		
+		<style></style>
+		<link rel="stylesheet" type="text/css" href="../estilos.css">]
+		
+		
+		</head>
+		<?php
+		$erro = null;
+		$valido = false;
+		// isset retorna false se o valor for null ou se a variavel não existir
+		if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
+			
+			include ("./AuxiliarCRUD.php");
+			$objAuxiliar = new AuxiliarCRUDClasse();
+			$nome = $_POST ["txtNomeAuxiliar"];
+			$NomeEquipe= $_POST ["txtNomeEquipe"];
+			$objAuxiliar->inserirBanco ( $nome, $NomeEquipe );
+		} else {
+			if (isset ( $erro )) {
+			}
+		}
+		?>
 <body class="wraper">
 	<header>
 		<!-- cabeçalho -->

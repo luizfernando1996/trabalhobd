@@ -108,7 +108,7 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 		}		
 
 		else
-			echo "Alteração realizada com sucesso";
+			echo utf8_encode("Alteração realizada com sucesso");
 	}
 }
 
