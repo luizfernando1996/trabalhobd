@@ -10,10 +10,8 @@
 <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 
-<style>
-
-</style>
-
+<style></style>
+<link rel="stylesheet" type="text/css" href="../estilos.css">
 
 </head>
 <?php
@@ -25,33 +23,47 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	include ('./EquipeCrud.php');
 	
 	$Robinho = new ClasseEquipeCrude();
-	$nome = $_POST ["txtNomeJogador"];
+	$nomeEquipe= $_POST ["nomeEquipe"];
 	$estado= $_POST ["estado"];
 	$nomeEstadio= $_POST ["nomeEstadio"];
 	$nomeTecnico= $_POST ["nomeTecnico"];
-$Robinho->inserirBanco($nome, $estado, $nomeEstadio, $nomeTecnico);
+$Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 } else {
 	if (isset ( $erro )) {
 	}
 }
 ?>
-<body>
+<body class="wraper">
+	<header>
+		<!-- cabeçalho -->
+			<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
+			<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
+			
+			<nav>
+  <ul class="menu">
+  				<!-- ../ retorna uma pasta anterior-->
 
+		<li><a href="#">Equipe</a></li>
+		<li><a href="./equipeConsulta.php">Consultar Equipes</a></li>
+	  		<li><a href="./equipeUpdate.php">Alterar dados das Equipes</a>
+			</li>
+		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
+</ul>
+</nav>
+	</header>
 
-	<h1>
-		<pre>     Cadastro de Equipes</pre>
-	</h1>
-	<form name="tabelaJogador" method="post" action="?validar=true">
+	<div id="tituloForm">Cadastro de Equipes</div>
+	<form id="formularioInteiro" name="tabelaJogador" method="post"
+		action="?validar=true">
 		<!-- Campo Nome -->
 		<div class="retiraQuebraDeLinha">
-			<label>Nome:</label>
+			<label>Nome da Equipe:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" 	required="required" name="txtNomeJogador"
-				placeholder="Digite aqui o seu nome..."><br>
+			<input id="inputs" type="text" required="required" name="nomeEquipe"
+				placeholder="Digite aqui o nome da equipe..."><br>
+				<br>
 		</div>
-
-
-		<!-- Campo Estado: -->
+<!-- Campo Estado: -->
 		<label><?php echo(utf8_encode('Estado:'))?></label>
 		<!--  -->
 		<select name="estado">
@@ -70,7 +82,7 @@ $Robinho->inserirBanco($nome, $estado, $nomeEstadio, $nomeTecnico);
 				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "São Paulo") {
 					echo "selected";
 				}
-				?>>São Paulo</option>
+				?>><?php echo(utf8_encode("São Paulo")); ?></option>
 
 			<!-- Opção 3: -->
 			<option
@@ -95,12 +107,18 @@ $Robinho->inserirBanco($nome, $estado, $nomeEstadio, $nomeTecnico);
 				placeholder="Digite o nome do estadio.."><br>
 		<br>
 
+	
+<br>
+
 		<!--BOTOES PARA ENVIAR-->
-		<input type="reset" value="Limpar os dados"> <input type="submit"
+		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input id="botaoEnviar" type="submit"
 			value="Enviar os dados">
 	</form>
 
-
-
+	<br>
+	<a id="botao" href="./equipeConsulta">Consultar Equipes</a>
+			<footer class="footer">
+			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
+	</footer><!-- em estilo. é class e # é id -->
 </body>
 </html>

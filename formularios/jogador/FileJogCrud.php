@@ -37,8 +37,8 @@ class JogadorCrude extends ConectaAoMySql {
 				// o operador . é responsavel pela concatenação
 				// nomes das colunas do banco
 				echo "<td>" . $registro->Nome . "</td>";
-				echo "<td>" . $registro->Posicao . "</td>";
 				echo "<td>" . $registro->DataNasc . "</td>";
+				echo "<td>" . $registro->Posicao . "</td>";
 				echo "<td>" . $registro->Camisa . "</td>";
 				echo "<td>" . $registro->NomeEquipe . "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
@@ -131,7 +131,7 @@ class JogadorCrude extends ConectaAoMySql {
 		}
 		else 
 		{
-			echo "Alteração realizada com sucesso";
+			echo utf8_encode("Alteração realizada com sucesso");
 		}
 	}
 }
