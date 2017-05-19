@@ -55,7 +55,7 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 		}
 	}
 	public function deletarAuxiliar($primaryKey) {
-		$sql = ("DELETE FROM auxiliar where Posicao=? && Nome=? &&DataNasc=?");
+		$sql = ("DELETE FROM auxiliar where Nome=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );		
@@ -81,7 +81,7 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
 				$_POST ["txtNomeAuxiliar"] = $registro->Nome;
-				$_POST ["dataNascimento"] = $registro->DataNasc;
+				$_POST ["txtNomeEquipe"] = $registro->DataNasc;
 				$_POST ["posicao"] = $registro->Posicao;
 				$_POST ["numeroCamisa"] = $registro->Camisa;
 				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
