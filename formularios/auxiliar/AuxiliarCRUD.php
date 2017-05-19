@@ -80,7 +80,7 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
 				$_POST ["txtNomeAuxiliar"] = $registro->Nome;
-				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["txtNomeEquipe"] = $registro->ComissaoTecnicaEquipe;
 				
 			} else
 				$erro = "Registro não encontrado";
@@ -91,7 +91,7 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 		
 		$sql = "UPDATE auxiliar SET
 		Nome = ?,
-		ComissaoTecnicaEquipe = ?,		
+		ComissaoTecnicaEquipe = ?		
 		WHERE Nome = ?" ;
 		
 		$stmt = $this->PDO->prepare ( $sql );		

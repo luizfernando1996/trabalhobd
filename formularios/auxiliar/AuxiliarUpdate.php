@@ -48,6 +48,7 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["txtNomeAuxiliar"],
 			$_POST ["txtNomeEquipe"]			
 	);
+	
 	$objAux->alterarDadosAuxiliar ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
@@ -104,7 +105,7 @@ else {
 				echo $_REQUEST ["nome"];
 			else 
 				//nomes dos campos desta tabela
-				echo $_POST ["primaryKey"];
+				echo $_POST ["txtNomeAuxiliar"];
 			?>">
 	</form>
 
