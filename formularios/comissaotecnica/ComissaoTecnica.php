@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Cadastro de Comissao Tecnica</Title>
+<Title>Cadastro de Comissão Tecnica</Title>
 
 <link rel="stylesheet"
 		href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -11,8 +11,7 @@
 		<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 		
 		<style></style>
-		<link rel="stylesheet" type="text/css" href="../estilos.css">]
-		
+		<link rel="stylesheet" type="text/css" href="../estilos.css">		
 		
 		</head>
 		<?php
@@ -21,11 +20,12 @@
 		// isset retorna false se o valor for null ou se a variavel não existir
 		if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 			
-			include ("./AuxiliarCRUD.php");
+			include ("./ComissaoTecnicaCRUD.php");
 			$objAuxiliar = new AuxiliarCRUDClasse();
-			$nome = $_POST ["txtNomeAuxiliar"];
-			$NomeEquipe= $_POST ["txtNomeEquipe"];
-			$objAuxiliar->inserirBanco ( $nome, $NomeEquipe );
+			$nomeEquipe = $_POST ["txtNomeEquipe"];
+			$nomeTecnico= $_POST ["txtNomeTecnico"];
+			$nomeAuxiliar = $_POST["txtNomeAuxiliar"];
+			$objAuxiliar->inserirBanco ( $nomeEquipe, $nomeTecnico,$nomeAuxiliar );
 		} else {
 			if (isset ( $erro )) {
 			}
@@ -41,34 +41,44 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="#">Auxiliar</a></li>
-		<li><a href="./AuxiliarConsulta.php">Consultar o auxiliar</a></li>
-	  		<li><a href="./AuxiliarUpdate.php">Editar dados do auxiliar</a>
+		<li><a href="#">Comissão Tecnica</a></li>
+		<li><a href="./ComissaoTecnicaConsulta.php">Consultar a Comissão Técnica</a></li>
+	  		<li><a href="./ComissaoTecnicaUpdate.php">Editar dados da Comissão Técnica</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
 </nav>
 	</header>
 
-	<div id="tituloForm">Cadastro de Auxiliares</div>
-	<form id="formularioInteiro" name="tabelaAuxiliar" method="post"
+	<div id="tituloForm">Cadastro de Comissão Técnica</div>
+	<form id="formularioInteiro" name="tabelaComissaoTecnica" method="post"
 		action="?validar=true">
-		<!-- Campo Nome -->
+		<!-- Campo NomeEquipe -->
 		<div class="retiraQuebraDeLinha">
-			<label>Nome:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtNomeAuxiliar"
-				placeholder="Digite aqui o seu nome..."><br>
-				<br>
-		</div>
-		<!-- Campo ComissaoTecnicaEquipe -->
-			<div class="retiraQuebraDeLinha">
 			<label>Nome da Equipe:</label>
 			<!-- required="required"->exige o preenchimento -->
 			<input id="inputs" type="text" required="required" name="txtNomeEquipe"
-				placeholder="Digite o nome da equipe.."><br>
+				placeholder="Digite aqui a equipe..."><br>
 				<br>
-		</div>	
+		</div>
+		<!-- Campo NomeTecnico -->
+			<div class="retiraQuebraDeLinha">
+			<label>Nome do Tecnico:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input id="inputs" type="text" required="required" name="txtNomeTecnico"
+				placeholder="Digite o nome do tecnico.."><br>
+				<br>
+		</div>
+		
+		</div>
+		<!-- Campo NomeAuxiliar -->
+			<div class="retiraQuebraDeLinha">
+			<label>Nome do Auxiliar:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input id="inputs" type="text" required="required" name="txtNomeAuxiliar"
+				placeholder="Digite o nome do auxiliar.."><br>
+				<br>
+		</div>		
 
 
 <br>	
@@ -79,7 +89,7 @@
 	</form>
 
 	<br>
-	<a id="botao" href="./AuxiliarConsulta.php">Consultar Auxiliares</a>
+	<a id="botao" href="./ComissaoTecnicaConsulta.php">Consultar Comissões Técnicas</a>
 			<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
 	</footer><!-- em estilo. é class e # é id -->
