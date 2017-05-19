@@ -53,7 +53,8 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 else {
 	$primaryKey = array (
 			
-			$_REQUEST ["nome"]			
+			$_REQUEST ["nome"]
+			
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
