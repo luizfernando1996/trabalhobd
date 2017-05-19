@@ -143,7 +143,7 @@ else {
 				echo $_REQUEST ["estado"] . "*" . $_REQUEST ["nomeEstadio"] . "*" . $_REQUEST ["nomeTecnico"];
 			else 
 				//nomes dos campos desta tabela
-				echo $_POST ["estadoCampo"] . "*" . $_POST["txtNomeJogador"] . "*" . $_POST["dataNascimento"];
+				echo $_POST ["estadoCampo"] . "*" . $_POST["nomeEstadio"] . "*" . $_POST["nomeTecnico"];
 			?>">
 	</form>
 
