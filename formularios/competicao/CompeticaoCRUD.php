@@ -7,6 +7,7 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 	private $primaryKey;
 	
 	public function inserirCompeticao($nome, $abrangencia, $sistemaPontuacao, $serie, $nomeEntidade, $quantidadeDeJogos, $ano ){
+		echo $nome. " ".$abrangencia. " ".$sistemaPontuacao . " " . $serie . " " . $nomeEntidade . " " . $quantidadeDeJogos. " " .$ano;
 		
 		$sql = "INSERT INTO competicao
                 (Nome, Abrangencia, SistemaPontuacao, Serie, NomeEntidade, QuantidadeDeJogos, Ano)
@@ -22,7 +23,6 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 		$stmt->bindParam ( 6, $quantidadeDeJogos);
 		$stmt->bindParam ( 7, $ano);
 		$stmt->execute ();
-		//echo $nome. " metodo inserir".$abrangencia. " ".$sistemaPontuacao . " " . $serie . " " . $nomeEntidade . " " . $quantidadeDeJogos. " " .$ano;
 		
 		if ($stmt->errorCode () != "00000") {
 			$valido = false;
