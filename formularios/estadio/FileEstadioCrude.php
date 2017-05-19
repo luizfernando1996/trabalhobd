@@ -25,11 +25,13 @@ class EstadioCrude extends ConectaAoMySql {
 			$erro .= implode ( ", ", $stmt->errorInfo () );
 		}
 	}
-	public function lerJogadores() {
+	
+	public function lerEstadios() {
 		// PDO é o objeto da classe base
-		$sql = "SELECT * FROM jogador";
+		$sql = "SELECT * FROM estadio";
 		// $rs-->result set
 		$rs = $this->PDO->prepare ( $sql );
+		
 		if ($rs->execute ()) {
 			// ::pegar algum campo estatico da classe PDO
 			while ( $registro = $rs->fetch ( PDO::FETCH_OBJ ) ) {
@@ -37,25 +39,24 @@ class EstadioCrude extends ConectaAoMySql {
 				// o operador . é responsavel pela concatenação
 				// nomes das colunas do banco
 				echo "<td>" . $registro->Nome . "</td>";
-				echo "<td>" . $registro->DataNasc . "</td>";
-				echo "<td>" . $registro->Posicao . "</td>";
-				echo "<td>" . $registro->Camisa . "</td>";
-				echo "<td>" . $registro->NomeEquipe . "</td>";
+				echo "<td>" . $registro->Capacidade. "</td>";
+				echo "<td>" . $registro->Cidade	. "</td>";
+				echo "<td>" . $registro->Estado. "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
-						$registro->Posicao,
-						$registro->Nome,
-						$registro->DataNasc 
+						$registro->Capacidade,
+						$registro->Cidade,
+						$registro->Estado
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &posicao=" . $primaryKey [0] . 
-				"&nome=" . $primaryKey [1] . 
-				"&datanasc=" . $primaryKey [2] . "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
-				&posicao=" . $primaryKey [0] . 
-				"&nome=" . $primaryKey [1] . 
-				"&datanasc=" . $primaryKey [2] .  "'>Alterar</a>", "</td>";
+                &capacidade=" . $primaryKey [0] . 
+				"&cidade=" . $primaryKey [1] . 
+				"&estado=" . $primaryKey [2] . "'>Deletar</a>" . "</td>";
+				echo "<td>" . "<a href='./estadioUpdate.php?alterar=true
+				&capacidade=" . $primaryKey [0] . 
+				"&cidade=" . $primaryKey [1] . 
+				"&estado=" . $primaryKey [2] .  "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";
 			}
@@ -63,8 +64,8 @@ class EstadioCrude extends ConectaAoMySql {
 			echo "Falha na seleção de usuários <br>";
 		}
 	}
-	public function deletarJogador($primaryKey) {
-		$sql = ("DELETE FROM jogador where Posicao=? && Nome=? &&DataNasc=?");
+	public function deletarEstadio($primaryKey) {
+		$sql = ("DELETE FROM estadio WHERE Capacidade=? && Cidade=? &&Estado=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );
@@ -78,8 +79,8 @@ class EstadioCrude extends ConectaAoMySql {
 		} else
 			echo "Sucesso : jogador removido com sucesso <br><br>";
 	}
-	public function consultarJogador($primaryKey) {
-		$sql = "SELECT * FROM jogador WHERE Posicao= ? && Nome = ? && DataNasc= ?";
+	public function consultarEstadio($primaryKey) {
+		$sql = "SELECT * FROM estadio WHERE Capacidade=? && Cidade=? &&Estado=?";
 		$rs = $this->PDO->prepare ( $sql );
 		
 		$rs->bindParam ( 1, $primaryKey [0] );
