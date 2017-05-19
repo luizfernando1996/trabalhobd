@@ -97,7 +97,7 @@ width:150px;
 <!-- 	       		</ul> -->
 			</li>
 		<li><a href="https://docs.google.com/document/d/1Up8rmrTuysbrhJQ4sY1zEkBtAPtxiWyrNkdkUzsPffo/edit">MiniMundo</a></li>
-		<li><a href="#">Contato</a></li>                 
+		<li><a href="Script/ScriptDoHostinger/scriptHostinger.pdf">Script</a></li>                 
 </ul>
 </nav>
 </div>
