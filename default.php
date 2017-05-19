@@ -89,14 +89,14 @@ width:150px;
   <ul class="menu">
 		<li><a href="#">Home</a></li>
 		<li><a href="formularios/homeFormularios.php">Formularios</a></li>
-	  		<li><a href="#">O que fazemos</a>
-	         	<ul>
-	                  <li><a href="#">Web Design</a></li>
-	                  <li><a href="#">SEO</a></li>
-	                  <li><a href="#">Design</a></li>                    
-	       		</ul>
+	  		<li><a href="Modelos/Modelos.php">Modelos</a>
+<!-- 	         	<ul> -->
+<!-- 	                  <li><a href="#">Web Design</a></li> -->
+<!-- 	                  <li><a href="#">SEO</a></li> -->
+<!-- 	                  <li><a href="#">Design</a></li>                     -->
+<!-- 	       		</ul> -->
 			</li>
-		<li><a href="#">Links</a></li>
+		<li><a href="https://docs.google.com/document/d/1Up8rmrTuysbrhJQ4sY1zEkBtAPtxiWyrNkdkUzsPffo/edit">MiniMundo</a></li>
 		<li><a href="#">Contato</a></li>                 
 </ul>
 </nav>
