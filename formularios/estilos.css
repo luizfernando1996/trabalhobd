@@ -1,0 +1,133 @@
+.wrapper {
+	max-width: 1000px;
+	width: 100%;
+		margin-top: 0px;
+	margin-left: 100px;
+}
+#formulario {
+	left: 50px;
+	top: 60px;
+
+	width: 1000px;
+	height: 600px;
+	/*text-align: center;*/
+	text-align: justify;
+	
+}
+.footer {
+	position: absolute top:50%;
+	left: 25%;
+	/*width: 1000px; /*Largura da imagem, não altere se não souber
+                height:180px; Altura da imagem, não altere se não souber**/
+	margin-top: 40px;
+	margin-left: 20px;
+}
+#botao {
+	width: 10px;
+	height: 600px;
+	text-align:center;
+	background: #4f4f4f;
+	font: 27px arial, verdana, helvetica, sans-serif;
+	color: #ff9900; /*cor da letra*/
+	margin-left: 300px;
+	margin-top: 0px;
+	width:700px;
+}
+/*----------------------------------------------COPIADO------------------------*/
+#formularioInteiro {
+padding:3px;
+	margin-left: 115px;
+	margin-top: 0px;
+	width:700px;
+	background: #4f4f4f;
+	/* cor escura para o fundo do formulário */
+	font: 20px arial, verdana, helvetica, sans-serif;
+	/* o tamanho e o tipo da fonte no formulário */
+	border-top: 8px solid #cfcfcf;
+	/* borda superior de 8px solida na cor cinza clara 
+no formulário */
+	border-left: 8px solid #cfcfcf;
+	/* a borda esquerda do formulário */
+	border-right: 8px solid #696969;
+	/* a borda direita do formulário */
+	border-bottom: 8px solid #696969; * a borda inferior do formulário */
+	border-collapse : collapse;
+	/* retira as bordas duplas nas células da tabela */
+	color: #ff9900; /* a cor laranja para as letras */
+}
+
+#tituloForm {
+	width:715px;
+	margin-left: 115px;
+	margin-top: 50px;
+	background: #000000;
+	/* a cor preta para o fundo do título */
+	padding: 3px;
+	/* um afastamento de 3px */
+	font: bold 30px arial, verdana, helvetica, sans-serif;
+	/* letras em negrito com 15px e familia arial, verd....*/
+	border-bottom: 1px solid #ff9900;
+	/* uma borda inferior solida de 1px na cor laranja */
+	color: #ff9900;
+	text-align: center;
+}
+ #botaoEnviar {
+ 	margin-left: 150px;
+	margin-top: 0px;
+background:#000000; 
+/* a cor do fundo do botão */
+
+color:#ffffff; /* a cor das letras Enviar */
+border:2px solid #ffffff;
+/* uma borda de 2px solida branca no botão*/
+}  
+#inputs{
+font: 15px arial, verdana, helvetica, sans-serif;
+size:100px;
+width: 500px;
+height: 23px;
+}
+/*---------------------CSSS DA NAVEGAÇÃO ------------------ */
+/* 	*{margin: 0; padding: 0;} */
+
+body{
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+
+	margin-left: 410px;
+	margin-top: 0px;
+}
+
+.menu{
+list-style:none; 
+border:1px solid #c0c0c0; 
+float:left; 
+	margin-top: 0px;
+}
+.menu li{
+position:relative; 
+float:left; 
+border-right:1px solid #c0c0c0;
+}
+.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+.menu li a:hover{
+background:#333; 
+color:#fff; 
+-moz-box-shadow:0 3px 10px 0 #CCC; 
+-webkit-box-shadow:0 3px 10px 0 #ccc; 
+text-shadow:0px 0px 5px #fff; 
+}
+.menu li  ul{
+position:absolute; 
+top:25px; 
+left:0;
+background-color:#fff; 
+display:none;
+}	
+.menu li:hover ul, .menu li.over ul{display:block;}
+.menu li ul li{
+border:1px solid #c0c0c0; 
+display:block; 
+width:150px;
+}

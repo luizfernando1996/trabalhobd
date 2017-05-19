@@ -4,7 +4,7 @@ class ConectaAoMySql {
  	
 	private $MYSQL_HOST = 'mysql.hostinger.com.br';
 	private $MYSQL_USER = 'u114118567_banco';
-	private $MYSQL_PASSWORD = 'banco321';
+	private $MYSQL_PASSWORD = 'banco123';
 	private $MYSQL_DB_NAME = 'u114118567_banc2';
 	public $mensagem = null;
 	// Abaixo esta declarado um 'objeto' da classe PDO

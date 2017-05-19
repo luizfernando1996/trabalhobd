@@ -87,7 +87,7 @@ width:150px;
 
 		<li><a href="../default.php">Home</a></li>
 		<li><a href="formularios/homeFormularios.html">Formularios</a></li>
-	  		<li><a href="../auxiliar/AuxiliarCad.php">Auxiliar</a>
+	  		<li><a href="./auxiliar/Auxiliar.php">Auxiliar</a>
 	         	<ul>
 	                  <li><a href="#">Web Design</a></li>
 	                  <li><a href="#">SEO</a></li>
