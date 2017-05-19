@@ -22,7 +22,7 @@ $valido = false;
 if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	
 	include ("./CompeticaoCRUD.php");	
-	$objAuxiliar = new CompeticaoCRUDClasse();
+	$brasileirao = new CompeticaoCRUDClasse();
 	$nome = $_POST ["txtNomeEquipe"];
 	$abrangencia = $_POST ["txtAbrangencia"];
 	$sistemaPontuacao = $_POST ["txtSistemaPontuacao"];
@@ -31,7 +31,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$quantidadeDeJogos = $_POST ["txtQuantidadeDeJogos"];
 	$ano = $_POST ["txtAno"];
 	echo $nome. " ".$abrangencia. " ".$sistemaPontuacao . " " . $serie . " " . $nomeEntidade . " " . $quantidadeDeJogos. " " .$ano;
-	$objAuxiliar->inserirBanco ( $nome, $abrangencia,$sistemaPontuacao,$serie,$nomeEntidade,$quantidadeDeJogos,$ano );
+	$brasileirao->inserirCompeticao( $nome, $abrangencia,$sistemaPontuacao,$serie,$nomeEntidade,$quantidadeDeJogos,$ano );
 } else {
 	if (isset ( $erro )) {
 	}
