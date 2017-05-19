@@ -1,7 +1,8 @@
 <?php
 //Não consegui não incluir todo o caminho do arquivo
 
-class AuxiliarCRUDClasse{
+include ('../FileMySQL.php');
+class AuxiliarCRUDClasse extends ConectaAoMySql{
 	private $primaryKey;
 	
 	public function inserirBanco($nome, $comissaoTecnicaEquipe ){ 
@@ -43,10 +44,9 @@ class AuxiliarCRUDClasse{
 				echo "<td>" . "<a href='?excluir=true
                 &nome=" . $primaryKey [0] .
                "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
-				&nome=" . $primaryKey [1] .
+				echo "<td>" . "<a href='./AuxiliarUpdate.php?alterar=true
+				&nome=" . $primaryKey [0] .
 				"'>Alterar</a>", "</td>";
-				
 				echo "</tr>";
 			}
 		} else {
@@ -54,7 +54,7 @@ class AuxiliarCRUDClasse{
 		}
 	}
 	public function deletarAuxiliar($primaryKey) {
-		$sql = ("DELETE FROM auxiliar where Posicao=? && Nome=? &&DataNasc=?");
+		$sql = ("DELETE FROM auxiliar where Nome=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );		
@@ -79,11 +79,9 @@ class AuxiliarCRUDClasse{
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["txtNomeAuxiliar"] = $registro->Nome;
-				$_POST ["dataNascimento"] = $registro->DataNasc;
-				$_POST ["posicao"] = $registro->Posicao;
-				$_POST ["numeroCamisa"] = $registro->Camisa;
-				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["NomeAuxiliar"] = $registro->Nome;
+				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				
 			} else
 				$erro = "Registro não encontrado";
 		} else

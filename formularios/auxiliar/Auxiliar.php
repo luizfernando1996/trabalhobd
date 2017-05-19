@@ -24,10 +24,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$objAuxiliar = new AuxiliarCRUDClasse();
 	$nome = $_POST ["txtNomeAuxiliar"];
 	$NomeEquipe= $_POST ["txtNomeEquipe"];	
-	echo $nome;
-	echo $NomeEquipe;
-	
-	//$objAuxiliar->inserirBanco ( $nome, $NomeEquipe );
+	$objAuxiliar->inserirBanco ( $nome, $NomeEquipe );
 } else {
 	if (isset ( $erro )) {
 	}
