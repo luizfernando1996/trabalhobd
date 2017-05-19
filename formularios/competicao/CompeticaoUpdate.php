@@ -168,12 +168,12 @@ else {
 			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 			<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["abrangencia"] ) && isset ( $_REQUEST ["sistemaPontuacao"] ) && isset ( $_REQUEST ["nomeEntidade"] ) && isset ( $_REQUEST ["quantidadeDeJogos"] ))
+			if (isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["serie"] ) && isset ( $_REQUEST ["ano"] ))
 				//nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["abrangencia"] . "*" . $_REQUEST ["sistemaPontuacao"] . "*" . $_REQUEST ["nomeEntidade"] ."*" . $_REQUEST ["quantidadeDeJogos"];
+				echo $_REQUEST ["nome"] . "*" . $_REQUEST ["serie"] . "*" . $_REQUEST ["ano"];
 				else
 					//nomes dos campos desta tabela
-					echo $_POST ["txtAbrangencia"] . "*" . $_POST["txtSistemaPontuacao"] . "*" . $_POST["txtNomeEntidade"]. "*" . $_POST["txtQuantidadeDeJogos"];
+					echo $_POST ["txtNome"] . "*" . $_POST["txtSerie"] . "*" . $_POST["txtAno"];
 			?>">
 	</form>
 
