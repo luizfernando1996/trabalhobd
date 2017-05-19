@@ -2,18 +2,19 @@
 //Não consegui não incluir todo o caminho do arquivo
 
 include ('../FileMySQL.php');
-class AuxiliarCRUDClasse extends ConectaAoMySql{
+class ComissaoTecnicaCRUDClasse extends ConectaAoMySql{
 	private $primaryKey;
 	
-	public function inserirBanco($nome, $comissaoTecnicaEquipe ){ 
-		$sql = "INSERT INTO auxiliar
-                (Nome, ComissaoTecnicaEquipe)
-                VALUES (?, ?)";
+	public function inserirBanco($nomeEquipe, $nomeTecnico, $nomeAuxiliar ){
+		$sql = "INSERT INTO comissaotecnica
+                (NomeEquipe, NomeTecnico, NomeAuxiliar)
+                VALUES (?, ?, ?)";
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		
-		$stmt->bindParam ( 1, $nome );
-		$stmt->bindParam ( 2, $comissaoTecnicaEquipe );	
+		$stmt->bindParam ( 1, $nomeEquipe );
+		$stmt->bindParam ( 2, $nomeTecnico );
+		$stmt->bindParam ( 3, $nomeAuxiliar);
 		$stmt->execute ();
 		
 		if ($stmt->errorCode () != "00000") {
@@ -22,9 +23,9 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 			$erro .= implode ( ", ", $stmt->errorInfo () );
 		}
 	}
-	public function lerAuxiliar() {
+	public function lerComissaoTecnica() {
 		// PDO é o objeto da classe base
-		$sql = "SELECT * FROM auxiliar";
+		$sql = "SELECT * FROM comissaotecnica";
 		// $rs-->result set
 		$rs = $this->PDO->prepare ( $sql );
 		if ($rs->execute ()) {
@@ -33,19 +34,20 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 				echo "<tr>";
 				// o operador . é responsavel pela concatenação
 				// nomes das colunas do banco
-				echo "<td>" . $registro->Nome . "</td>";
-				echo "<td>" . $registro->ComissaoTecnicaEquipe . "</td>";
+				echo "<td>" . $registro->NomeEquipe . "</td>";
+				echo "<td>" . $registro->NomeTecnico . "</td>";
+				echo "<td>" . $registro->NomeAuxiliar . "</td>";
 				
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
-						$registro->Nome					
+						$registro->NomeEquipe
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &nome=" . $primaryKey [0] .
-               "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./AuxiliarUpdate.php?alterar=true
-				&nome=" . $primaryKey [0] .
+                &nomeEquipe=" . $primaryKey [0] .
+                "'>Deletar</a>" . "</td>";
+				echo "<td>" . "<a href='./ComissaoTecnicaUpdate.php?alterar=true
+				&nomeEquipe=" . $primaryKey [0] .
 				"'>Alterar</a>", "</td>";
 				echo "</tr>";
 			}
@@ -53,21 +55,21 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 			echo "Falha na seleção de usuários <br>";
 		}
 	}
-	public function deletarAuxiliar($primaryKey) {
-		$sql = ("DELETE FROM auxiliar where Nome=?");
+	public function deletarComissaoTecnica($primaryKey) {
+		$sql = ("DELETE FROM comissaotecnica where NomeEquipe=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
-		$stmt->bindParam ( 1, $primaryKey [0] );		
+		$stmt->bindParam ( 1, $primaryKey [0] );
 		$stmt->execute ();
 		
 		if ($stmt->errorCode () != "00000") {
 			echo "Erro código " . $stmt->errorCode () . ":";
 			echo implode ( ",", $stmt->errorInfo () );
 		} else
-			echo "Sucesso : auxiliar removido com sucesso <br><br>";
+			echo utf8_encode("Sucesso : Comissão Tecnica removida com sucesso <br><br>");
 	}
 	public function consultarAuxiliar($primaryKey) {
-		$sql = "SELECT * FROM auxiliar WHERE Nome = ?";
+		$sql = "SELECT * FROM comissaotecnica WHERE NomeEquipe = ?";
 		$rs = $this->PDO->prepare ( $sql );
 		
 		$rs->bindParam ( 1, $primaryKey [0] );
@@ -79,8 +81,9 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["txtNomeAuxiliar"] = $registro->Nome;
-				$_POST ["txtNomeEquipe"] = $registro->ComissaoTecnicaEquipe;
+				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["txtNomeTecnico"] = $registro->NomeTecnico;
+				$_POST ["txtNomeAuxiliar"] = $registro->NomeAuxiliar;
 				
 			} else
 				$erro = "Registro não encontrado";
@@ -89,29 +92,32 @@ class AuxiliarCRUDClasse extends ConectaAoMySql{
 	}
 	public function alterarDadosAuxiliar($primaryKey,$campos){
 		
-		$sql = "UPDATE auxiliar SET
-		Nome = ?,
-		ComissaoTecnicaEquipe = ?		
-		WHERE Nome = ?" ;
+		$sql = "UPDATE comissaotecnica SET
+		NomeEquipe = ?,
+		NomeTecnico = ?,
+		NomeAuxiliar = ?
+		WHERE NomeEquipe = ?" ;
 		
-		$stmt = $this->PDO->prepare ( $sql );		
+		$stmt = $this->PDO->prepare ( $sql );
 		
-		$stmt->bindParam ( 1, $campos[0] );	
-		$stmt->bindParam ( 2, $campos[1] );	
-		$stmt->bindParam ( 3, $primaryKey);
+		$stmt->bindParam ( 1, $campos[0] );
+		$stmt->bindParam ( 2, $campos[1] );
+		$stmt->bindParam ( 3, $campos[2]);
+		$stmt->bindParam ( 4, $primaryKey);
 		$stmt->execute ();
 		
 		if($stmt->errorCode()!="00000") {
 			$valido = false;
 			$erro = "Erro código " . $stmt->errorCode () . ": ";
 			$erro .= implode ( ", ", $stmt->errorInfo () );
-		}		
-
+		}
+		
 		else
 			echo utf8_encode("Alteração realizada com sucesso");
 	}
 }
 
 ?>
+
 
 
