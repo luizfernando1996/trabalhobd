@@ -1,7 +1,7 @@
 <?php
 //Não consegui não incluir todo o caminho do arquivo
 
-class AuxiliarCRUD{
+class AuxiliarCRUDClasse{
 	private $primaryKey;
 	
 	public function inserirBanco($nome, $comissaoTecnicaEquipe ){ 
