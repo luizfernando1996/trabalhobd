@@ -86,7 +86,7 @@ width:150px;
   				<!-- ../ retorna uma pasta anterior-->
 
 		<li><a href="../default.php">Home</a></li>
-		<li><a href="formularios/homeFormularios.html">Formularios</a></li>
+		<li><a href="#">Formularios</a></li>
 	  		<li><a href="./auxiliar/Auxiliar.php">Auxiliar</a>
 	         	
 			</li>
