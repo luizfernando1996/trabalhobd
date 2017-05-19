@@ -20,7 +20,7 @@ $erro = null;
 $valido = false;
 // isset retorna false se o valor for null ou se a variavel não existir
 if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
-	
+	//assa
 	include ("./CompeticaoCRUD.php");	
 	$brasileirao = new CompeticaoCRUDClasse();
 	$nome = $_POST ["txtNomeEquipe"];
