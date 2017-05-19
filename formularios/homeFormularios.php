@@ -85,13 +85,21 @@ width:150px;
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="../default.php">Home</a></li>
-		<li><a href="#">Formularios</a></li>
 	  		<li><a href="./auxiliar/Auxiliar.php">Auxiliar</a>
 	         	
 			</li>
+		<li><a href="./comissaoTecnica/ComissaoTecnica.php">ComissaoTecnica</a></li>  
+		<li><a href="./competicao/Competicao.php">Competicao</a></li>   
+		<li><a href="./competicaoEquipe/CompeticaoEquipe.php">CompeticaoEquipe</a></li>   
+		<li><a href="./equipe/Equipe.php">Equipe</a></li>   
+		<li><a href="./entidade/Entidade.php">Entidade</a></li>   
+		<li><a href="./equipeDeArbitragem/EquipeDeArbitragem.php">EquipeDeArbitragem</a></li> 
+		<li><a href="./estadio/Estadio.php">Estadio</a></li>  
 		<li><a href="./jogador/Jogador.php">Jogador</a></li>
-		<li><a href="./equipe/Equipe.php">Equipe</a></li>                 
+		<li><a href="./partida/Partida.php">Partida</a></li> 
+		<li><a href="./tecnico/Tecnico.php">Tecnico</a></li>  
+		<li><a href="./transferencia/Transferencias.php">Transferencias</a></li>
+		               
 </ul>
 </nav>
 	</header>

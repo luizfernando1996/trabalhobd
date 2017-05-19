@@ -10,11 +10,31 @@
 <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 
-<style>
-</style>
+<style></style>
+<link rel="stylesheet" type="text/css" href="../estilos.css">
+<link rel="stylesheet" type="text/css" href="../consulta.css">
 
 
 </head>
+
+<body class="wraper">
+	<header>
+		<!-- cabeçalho -->
+			<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
+			<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
+			
+			<nav>
+  <ul class="menu">
+  				<!-- ../ retorna uma pasta anterior-->
+
+		<li><a href="./Auxiliar.php">Auxiliar</a></li>
+		<li><a href="./AuxiliarConsulta.php">Consultar o auxiliar</a></li>
+	  		<li><a href="#">Editar dados do auxiliar</a>
+			</li>
+		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>             
+</ul>
+</nav>
+	</header>
 <?php
 $erro = null;
 $valido = false;
@@ -46,10 +66,10 @@ else {
 	<!-- estrutura fundamental por passar a primary key para o if-->
 
 
-	<h1>
+	<h1 id="tiloDoForm">
 		<pre>Editar dados de Auxiliares</pre>
 	</h1>
-	<form name="tabelaAuxiliares" method="post" action="?validar=true">
+	<form id="formularioInter" name="tabelaAuxiliares" method="post" action="?validar=true">
 		<!-- Campo Nome -->
 		<div class="retiraQuebraDeLinha">
 			<label>Nome:</label>
@@ -73,7 +93,7 @@ else {
 		<br>
 
 		<!--BOTOES PARA ENVIAR-->
-		<input type="reset" value="Limpar os dados"> <input type="submit"
+		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input  id="botaoEnviar" type="submit"
 			value="Alterar os dados"> 
 			
 			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
@@ -89,6 +109,10 @@ else {
 	</form>
 
 
-	<a href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	
+	<footer class="footer">
+			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
+	</footer><!-- em estilo. é class e # é id -->
 </body>
 </html>
