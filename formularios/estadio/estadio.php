@@ -57,12 +57,12 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	<form id="formularioInteiro" name="tabelaJogador" method="post"
 		action="?validar=true">
 		<!-- Campo Nome -->
-		<div class="retiraQuebraDeLinha">
-			<label><?php utf8_encode("Nome do estádio:")?></label>
+
+			<div id="retiraQuebraDeLinha">
+			<label><?php echo utf8_encode("Nome do estádio:")?></label>
 			<!-- required="required"->exige o preenchimento -->
 			<input id="inputs" type="text" required="required" name="txtNomeEstadio"
 				placeholder="Digite aqui o nome..."><br>
-				<br>
 		</div>
 <br>
 
@@ -101,7 +101,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("São Paulo") ){
 					echo "selected";
 				}
-				?>><?php utf8_encode("São Paulo")?></option>
+				?>><?php echo utf8_encode("São Paulo")?></option>
 
 			<!-- Opção 3: -->
 			<option

@@ -77,7 +77,7 @@ class EstadioCrude extends ConectaAoMySql {
 			echo "Erro código " . $stmt->errorCode () . ":";
 			echo implode ( ",", $stmt->errorInfo () );
 		} else
-			echo "Sucesso : jogador removido com sucesso <br><br>";
+			echo "Sucesso : estadio removido com sucesso <br><br>";
 	}
 	public function consultarEstadio($primaryKey) {
 		$sql = "SELECT * FROM estadio WHERE Capacidade=? && Cidade=? &&Estado=?";

@@ -26,9 +26,9 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./Jogador.php">Jogador</a></li>
-		<li><a href="#">Consultar Jogadores</a></li>
-	  		<li><a href="./jogadorUpdate.php">Alterar dados dos jogadores</a>
+		<li><a href="./estadio.php">Estadio</a></li>
+		<li><a href="#">Consultar Estadios</a></li>
+	  		<li><a href="./estadioUpdate.php">Alterar dados dos estadios</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
