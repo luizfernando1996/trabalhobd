@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Consultar todos as Comissões Técnicas</Title>
+<Title>Consultar todos as Comissoes Técnicas</Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -26,9 +26,9 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./ComissaoTecnica.php">Comissão Técnica</a></li>
-		<li><a href="#">Consultar a Comissão Técnica</a></li>
-	  		<li><a href="./ComissaoTecnicaUpdate.php">Editar dados da Comissão Tecnica</a>
+		<li><a href="./ComissaoTecnica.php">Comissao Tecnica</a></li>
+		<li><a href="#">Consultar a Comissao Tecnica</a></li>
+	  		<li><a href="./ComissaoTecnicaUpdate.php">Editar dados da Comissao Tecnica</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>             
 </ul>

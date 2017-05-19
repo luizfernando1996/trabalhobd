@@ -56,7 +56,7 @@ class ComissaoTecnicaCRUDClasse extends ConectaAoMySql{
 		}
 	}
 	public function deletarComissaoTecnica($primaryKey) {
-		$sql = ("DELETE FROM comissaotecnica where Nome=?");
+		$sql = ("DELETE FROM comissaotecnica where NomeEquipe=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );
@@ -66,7 +66,7 @@ class ComissaoTecnicaCRUDClasse extends ConectaAoMySql{
 			echo "Erro código " . $stmt->errorCode () . ":";
 			echo implode ( ",", $stmt->errorInfo () );
 		} else
-			echo "Sucesso : Comissão Tecnica removida com sucesso <br><br>";
+			echo utf8_encode("Sucesso : Comissão Tecnica removida com sucesso <br><br>");
 	}
 	public function consultarAuxiliar($primaryKey) {
 		$sql = "SELECT * FROM comissaotecnica WHERE NomeEquipe = ?";

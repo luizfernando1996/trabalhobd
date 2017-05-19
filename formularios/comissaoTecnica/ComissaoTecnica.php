@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Cadastro de Comissão Tecnica</Title>
+<Title>Cadastro de Comissao Tecnica</Title>
 
 <link rel="stylesheet"
 		href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -40,16 +40,16 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="#">Comissão Tecnica</a></li>
-		<li><a href="./ComissaoTecnicaConsulta.php">Consultar a Comissão Técnica</a></li>
-	  		<li><a href="./ComissaoTecnicaUpdate.php">Editar dados da Comissão Técnica</a>
+		<li><a href="#">Comissao Tecnica</a></li>
+		<li><a href="./ComissaoTecnicaConsulta.php">Consultar a Comissao Tecnica</a></li>
+	  		<li><a href="./ComissaoTecnicaUpdate.php">Editar dados da Comissao Tecnica</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
 </nav>
 	</header>
 
-	<div id="tituloForm">Cadastro de Comissão Técnica</div>
+	<div id="tituloForm">Cadastro de Comissao Tecnica</div>
 	<form id="formularioInteiro" name="tabelaComissaoTecnica" method="post"
 		action="?validar=true">
 		<!-- Campo NomeEquipe -->
@@ -88,7 +88,7 @@
 	</form>
 
 	<br>
-	<a id="botao" href="./ComissaoTecnicaConsulta.php">Consultar Comissões Técnicas</a>
+	<a id="botao" href="./ComissaoTecnicaConsulta.php">Consultar Comissoes Tecnicas</a>
 			<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
 	</footer><!-- em estilo. é class e # é id -->

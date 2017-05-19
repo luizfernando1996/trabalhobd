@@ -70,7 +70,7 @@
 
 
 	<h1 id="tituloDoForm">
-		Editar dados de Comissão Tecnica
+		Editar dados de Comissao Tecnica
 	</h1>
 	<form id="formularioInter" name="tabelaComissaoTecnica" method="post" action="?validar=true">
 		<!-- Campo Nome da Equipe -->
@@ -124,7 +124,7 @@
 	</form>
 
 
-	<a id="botao" href="./ComissaoTecnicaConsulta.php">Consultar Comissões Tecnicas</a>
+	<a id="botao" href="./ComissaoTecnicaConsulta.php">Consultar Comissoes Tecnicas</a>
 	
 	<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
