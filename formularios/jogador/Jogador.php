@@ -49,11 +49,6 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		<li><a href="../default.php">Home</a></li>
 		<li><a href="formularios/homeFormularios.html">Formularios</a></li>
 	  		<li><a href="../auxiliar/AuxiliarCad.php">Auxiliar</a>
-	         	<ul>
-	                  <li><a href="#">Web Design</a></li>
-	                  <li><a href="#">SEO</a></li>
-	                  <li><a href="#">Design</a></li>                    
-	       		</ul>
 			</li>
 		<li><a href="#">Jogador</a></li>
 		<li><a href="./equipe/Equipe.php">Equipe</a></li>                 
