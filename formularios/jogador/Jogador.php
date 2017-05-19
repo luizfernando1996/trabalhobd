@@ -45,9 +45,9 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="../default.php">Home</a></li>
-		<li><a href="formularios/homeFormularios.html">Formularios</a></li>
-	  		<li><a href="../auxiliar/AuxiliarCad.php">Auxiliar</a>
+		<li><a href="../../default.php">Home</a></li>
+		<li><a href="../homeFormularios.php">Formularios</a></li>
+	  		<li><a href="../auxiliar/Auxiliar.php">Auxiliar</a>
 			</li>
 		<li><a href="#">Jogador</a></li>
 		<li><a href="./equipe/Equipe.php">Equipe</a></li>                 
