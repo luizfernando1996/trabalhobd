@@ -43,9 +43,9 @@ no formulário */
 }
 
 #tiloDoForm {
-	/*width:715px;*/
-	margin-left: 0px;
-	margin-top: 2000px;
+	width:715px;
+	margin-left: 180px;
+	margin-top: 50px;
 	background: #000000;
 	/* a cor preta para o fundo do título */
 	padding: 3px;
@@ -55,4 +55,5 @@ no formulário */
 	border-bottom: 1px solid #ff9900;
 	/* uma borda inferior solida de 1px na cor laranja */
 	color: #ff9900;
+	text-align: center;
 }

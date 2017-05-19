@@ -27,12 +27,11 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="../default.php">Home</a></li>
-		<li><a href="formularios/homeFormularios.html">Formularios</a></li>
-	  		<li><a href="../auxiliar/AuxiliarCad.php">Auxiliar</a>
+		<li><a href="./Jogador.php">Jogador</a></li>
+		<li><a href="./jogadorConsulta.php">Consultar Jogadores</a></li>
+	  		<li><a href="#">Alterar dados dos jogadores</a>
 			</li>
-		<li><a href="#">Jogador</a></li>
-		<li><a href="./equipe/Equipe.php">Equipe</a></li>                 
+		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
 </nav>
 	</header>
