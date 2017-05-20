@@ -39,31 +39,35 @@
 <?php
 $erro = null;
 $valido = false;
-include ('./FileJogCrud.php');
-$Robinho = new JogadorCrude ();
+include ('./CompeticaoEquipeCrud.php');
+$brasileiraoCruzeiro = new CompeticaoEquipeClasseCrude();
 
 // resposável por editar os dados carregados do else
 if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
 	
 	$campos = array (
-			$_POST ["posicao"],
-			$_POST ["txtNomeJogador"],
-			$_POST ["dataNascimento"],
-			$_POST ["numeroCamisa"],
-			$_POST ["nomeEquipe"] 
+			$_POST ["txtPosicao"],
+			$_POST ["nomeEquipe"],
+			$_POST ["nomeCompeticao"],
+			$_POST ["pontuacao"],
+			$_POST ["golsFavor"] ,
+			$_POST ["golsContra"] 
 	);
-	
-	$Robinho->alterarDadosJogador ( $primaryKey, $campos );
+	for($j=0;$j<6;$j++){
+		echo $campos[j]+" ";
+	}
+	echo "<br>";
+	$brasileiraoCruzeiro->alterarCompeticaoEquipe( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["camisa"],
-			$_REQUEST ["nomeEquipe"] 
+			$_REQUEST ["NomeEquipe"],
+			$_REQUEST ["NomeDaCompeticao"] 
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
-	$Robinho->consultarJogador ( $primaryKey );
+	$brasileiraoCruzeiro->consultarCompeticaoEquipe($primaryKey );
 }
 ?>
 
@@ -75,7 +79,7 @@ else {
 
 
 	<h1 id="tiloDoForm">
-		<pre>     <?php utf8_encode("Editar dados de Competição Equipe")?></pre>
+		<pre>     <?php echo utf8_encode("Editar dados de Competição Equipe")?></pre>
 	</h1>
 	<form id="formularioInter" name="tabelaJogador" method="post"
 		action="?validar=true">
@@ -85,7 +89,7 @@ else {
 			<label>Posicao:</label>
 			<!-- required="required"->exige o preenchimento -->
 			<input type="text" required="required" name="txtPosicao"
-				placeholder="Digite aqui a posição..."
+				placeholder=<?php echo utf8_encode("Digite aqui a posição...")?>
 				<?php if(isset($_POST ["txtPosicao"])){echo "value='".$_POST ["txtPosicao"]."'";}?>><br>
 		</div>
 
@@ -100,14 +104,12 @@ else {
 			<label><?php echo utf8_encode("Nome da competição:")?></label>
 			<!-- required="required"->exige o preenchimento -->
 			<input type="text" required="required" name="nomeCompeticao"
-				placeholder="Digite o nome da competição..."
 				<?php if(isset($_POST ["nomeCompeticao"])){echo "value='".$_POST ["nomeCompeticao"]."'";}?>><br>
 				
 				
 				<label><?php echo utf8_encode("Pontuação:")?></label>
 			<!-- required="required"->exige o preenchimento -->
 			<input type="text" required="required" name="pontuacao"
-				placeholder="Digite o nome da competição..."
 				<?php if(isset($_POST ["pontuacao"])){echo "value='".$_POST ["pontuacao"]."'";}?>><br>
 		</div>
 		
@@ -130,16 +132,16 @@ else {
 			value="<?php
 			if (isset ( $_REQUEST ["camisa"] ) && isset ( $_REQUEST ["nomeEquipe"] ))
 				// nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["camisa"] . "*" . $_REQUEST ["nomeEquipe"];
+				echo $_REQUEST ["NomeEquipe"] . "*" . $_REQUEST ["NomeDaCompeticao"];
 			else
 				// nomes dos campos desta tabela
-				echo $_POST ["numeroCamisa"] . "*" . $_POST ["nomeEquipe"] ;
+				echo $_POST ["nomeEquipe"] . "*" . $_POST ["nomeCompeticao"] ;
 			?>">
 				
 	</form>
 
 
-	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./CompeticaoConsulta.php">Consultar Jogadores</a>
 	<footer class="footer">
 		<img class="footer" src="../utilitarios/figuras/rodape.png"
 			alt="rodape">
