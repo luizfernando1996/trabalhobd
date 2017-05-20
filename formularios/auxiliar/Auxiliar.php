@@ -11,7 +11,7 @@
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 
 <style></style>
-<link rel="stylesheet" type="text/css" href="../estilos.css">]
+<link rel="stylesheet" type="text/css" href="../estilos.css">
 
 
 </head>

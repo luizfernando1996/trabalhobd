@@ -1,4 +1,8 @@
 1-Capacidade é um inteiro de 11 na tabela estadio. Isto é um problema
 pq um inteiro de 11 é igual a 99bilhões de pessoas.
 2-A tabela competições tem que ter duas chaves primarias(Nome e serie) porque o 
-campeonato brasileiro ele tem serie A e serie B.
+campeonato brasileiro ele tem serie A e serie B
+
+3-O campo estado não está sendo carregado no formulario equipe!!!.
+4-Update em transferencia pensar em como realizar.
+5-Checkbox implementar

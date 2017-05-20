@@ -79,7 +79,7 @@ else {
 				placeholder="Digite aqui o  nome do tecnico..."
 				<?php if(isset($_POST ["txtNome"])){echo "value='".$_POST ["txtNome"]."'";}?>><br>
 
-		
+		</div>
 
 		<!-- Campo Nome da Equipe -->
 		<div id="retiraQuebraDeLinha">

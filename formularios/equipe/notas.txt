@@ -1,1 +1,1 @@
-EDITAR AINDA NÃO FOI IMPLEMENTADO
+O campo estado não está sendo carregado no formulario equipe!!
