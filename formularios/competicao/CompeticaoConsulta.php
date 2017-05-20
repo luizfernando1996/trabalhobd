@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Consultar todos as Competicoes</Title>
+<Title><?php echo utf8_encode("Consultar todos as Competicoes")?></Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />

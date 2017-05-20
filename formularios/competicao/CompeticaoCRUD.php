@@ -113,7 +113,7 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 		} else
 			$erro = "Falha na captura do registro";
 	}
-	public function alterarDadosAuxiliar($primaryKey,$campos){
+	public function alterarDadosCompeticao($primaryKey,$campos){
 		
 		$sql = "UPDATE competicao SET
 		Nome = ?,
