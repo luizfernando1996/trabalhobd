@@ -23,14 +23,14 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	//assa
 	include ("./CompeticaoCRUD.php");	
 	$brasileirao = new CompeticaoCRUDClasse();
-	$nome = $_POST ["txtNomeEquipe"];
+	$nome = $_POST ["txtNome"];
 	$abrangencia = $_POST ["txtAbrangencia"];
 	$sistemaPontuacao = $_POST ["txtSistemaPontuacao"];
 	$serie = $_POST ["txtSerie"];
 	$nomeEntidade = $_POST ["txtNomeEntidade"];
 	$quantidadeDeJogos = $_POST ["txtQuantidadeDeJogos"];
 	$ano = $_POST ["txtAno"];
-	echo $nome. " ".$abrangencia. " ".$sistemaPontuacao . " " . $serie . " " . $nomeEntidade . " " . $quantidadeDeJogos. " " .$ano;
+	//echo $sistemaPontuacao ." ". $serie;
 	$brasileirao->inserirCompeticao( $nome, $abrangencia,$sistemaPontuacao,$serie,$nomeEntidade,$quantidadeDeJogos,$ano );
 } else {
 	if (isset ( $erro )) {

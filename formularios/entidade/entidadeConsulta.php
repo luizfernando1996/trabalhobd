@@ -50,7 +50,7 @@ include ('./EntidadeCrud.php');
 $CBF = new EntidadeClasseCrude();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["TerritorioDeAbrangencia"],$_REQUEST["Tipo"]);
+	$primaryKey=array($_REQUEST["nome"]);
 	$CBF->deletarEntidade($primaryKey);
 }
 $CBF->lerEntidades();

@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title><?php utf8_encode("Atualização de dados das Equipes");?></Title>
+<Title><?php utf8_encode("Atualização de dados das Entidades");?></Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -55,9 +55,7 @@ if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for nul
 else {
 	
 	$primaryKey = array (
-			$_REQUEST ["txtNomeEntidade"],
-			$_REQUEST ["territorio"],
-			$_REQUEST ["tipoEntidade"] 
+			$_REQUEST ["nome"]
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
@@ -90,7 +88,7 @@ else {
 		</div>
 
 
-		<!-- Campo Estado: -->
+		<!-- Campo territorio: -->
 		<label><?php echo(utf8_encode('Territorio de Abragencia da Entidade:'))?></label>
 		<!--  -->
 		<select name="territorio">
@@ -109,12 +107,12 @@ else {
 				if (isset ( $_POST ["territorio"] ) && $_POST ["territorio"] == "Estadual") {
 					echo "selected";
 				}
-				?>><?php utf8_encode("Estadual");?>(a)</option>
+				?>><?php echo utf8_encode("Estadual");?></option>
 
 			<!-- Opção 3: -->
 			<option
 				<?php
-				if (isset ( $_POST ['territorio'] ) && $_POST ['territorio'] == "Municipal") {
+				if (isset ( $_POST ["territorio"] ) && $_POST ["territorio"] == "Municipal") {
 					echo "selected";
 				}
 				?>>Municipal</option>
@@ -132,12 +130,12 @@ else {
 		<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 		<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["TerritorioDeAbrangencia"] ) && isset ( $_REQUEST ["Tipo"] ))
+			if (isset ( $_REQUEST ["nome"] ))
 				// nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["TerritorioDeAbrangencia"] . "*" . $_REQUEST ["Tipo"];
+				echo $_REQUEST ["nome"] ;
 			else
 				// nomes dos campos desta tabela
-				echo $_POST ["territorio"] . "*" . $_POST ["tipoEntidade"];
+				echo $_POST ["txtNomeEntidade"];
 			?>">
 			
 		<!--BOTOES PARA ENVIAR-->

@@ -108,7 +108,7 @@ body {
 				<li><a href="./estadio/estadio.php">Estadio</a></li>
 				<li><a href="#">Restante das tabelas</a>
 					<ul>
-						<li><a href="./jogador/Jogador.php">Jogador</a></li>
+						<li><a href="./jogador/JogadorCadastrar.php">Jogador</a></li>
 						<li><a href="./partida/Partida.php">Partida</a></li>
 						<li><a href="./tecnico/Tecnico.php">Tecnico</a></li>
 						<li><a href="./transferencia/Transferencias.php">Transferencias</a></li>
