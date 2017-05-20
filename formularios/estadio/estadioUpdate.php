@@ -27,9 +27,9 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./Jogador.php">Jogador</a></li>
-		<li><a href="./jogadorConsulta.php">Consultar Jogadores</a></li>
-	  		<li><a href="#">Alterar dados dos jogadores</a>
+		<li><a href="./estadio.php">Estadio</a></li>
+		<li><a href="./estadioConsulta.php">Consultar Estadios</a></li>
+	  		<li><a href="#">Alterar dados dos estadios</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
@@ -39,30 +39,28 @@
 <?php
 $erro = null;
 $valido = false;
-include ('./FileJogCrud.php');
-$Robinho = new JogadorCrude ();
+include ('./FileEstadioCrude.php');
+$mineirao = new EstadioCrude();
 
 // resposável por editar os dados carregados do else
 if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null ou se a variavel não existir
-	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
+	$primaryKey =$_POST ["primaryKey"] ;
 	$campos = array (
-			$_POST ["posicao"],
-			$_POST ["txtNomeJogador"],
-			$_POST ["dataNascimento"],
-			$_POST ["numeroCamisa"],
-			$_POST ["nomeEquipe"] 
+			$_POST ["nomeEstadio"],
+			$_POST ["capacidade"],
+			$_POST ["cidade"],
+			$_POST ["estado"],
 	);
-	$Robinho->alterarDadosJogador ( $primaryKey, $campos );
+	$mineirao->alterarDadosEstadio( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["posicao"],
 			$_REQUEST ["nome"],
-			$_REQUEST ["datanasc"] 
+			
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
-	$Robinho->consultarJogador ( $primaryKey );
+	$mineirao->consultarEstadio( $primaryKey );
 }
 ?>
 <body>
@@ -71,100 +69,67 @@ else {
 
 
 	<h1 id="tiloDoForm">
-		<pre>     Editar dados de Jogadores</pre>
+		<pre>     Editar dados dos Estadios</pre>
 	</h1>
 	<form id="formularioInter"name="tabelaJogador" method="post" action="?validar=true">
 		<!-- Campo Nome -->
 		<div class="retiraQuebraDeLinha">
-			<label>Nome:</label>
+			<label>Nome do Estadio:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="txtNomeJogador"
+			<input type="text" required="required" name="nomeEstadio"
 				placeholder="Digite aqui o seu nome..."
-				<?php if(isset($_POST ["txtNomeJogador"])){echo "value='".$_POST ["txtNomeJogador"]."'";}?>><br>
+				<?php if(isset($_POST ["nomeEstadio"])){echo "value='".$_POST ["nomeEstadio"]."'";}?>><br>
+		</div>		
+		<!-- Campacidade-->
+		<div class="retiraQuebraDeLinha">
+			<label>Capacidade:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text" required="required" name="capacidade"
+				placeholder="Digite aqui o seu nome..."
+				<?php if(isset($_POST ["capacidade"])){echo "value='".$_POST ["capacidade"]."'";}?>><br>
 		</div>
-		<!-- Campo Data Nascimento -->
-		<label>Digite sua data de nascimento:</label> <input type="text"
-			id="calendario" placeholder="Selecione a data ao lado"
-			name="dataNascimento"
-			<?php if(isset($_POST ["dataNascimento"])){echo "value='".$_POST ["dataNascimento"]."'";}?>><br>
 
-		<!-- Script do calendario abaixo -->
-		<script>
-$(function() {
-	
-	//Apresenta o calendario
-    $( "#calendario" ).datepicker({
-        
-    	//Apresenta o icone do calendario
-        showOn: "button",
-        buttonImage: "../utilitarios/mes/calendar.png",
-        buttonImageOnly: true,
-        showButtonPanel:true,
-        
-        //Permite que o usuario selecione o mes e o ano
-        changeMonth: true,
-        changeYear: true,
-        
-        //Formata a data
-        dateFormat: 'yy-mm-dd',
-        
-       //Traduzindo o calendario
-       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-       
-       //Apresenta os 31 dias do mes mais alguns dias do proximo més
-       showOtherMonths: true,
-       selectOtherMonths: true
-    });    
-});
-</script>
+		<!-- Cidade-->
+		<div id="retiraQuebraDeLinha">
+			<label>Cidade:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input id="inputs" type="text" required="required" name="cidade"
+				placeholder="Digite a cidade do estadio..." 
+				<?php if(isset($_POST ["cidade"])){echo "value='".$_POST ["cidade"]."'";}?>><br><br>
+		</div>
 
-
-		<!-- Campo Posicao: -->
-		<label><?php echo(utf8_encode('Posição:'))?></label>
+		<!-- Estado: -->
+		<label><?php echo(utf8_encode('Estado:'))?></label>
 		<!--  -->
-		<select name="posicao">
+		<select id="inputs" name="estado">
 
 			<!-- Opção 1: -->
 			<option
 				<?php
-				if (isset ( $_POST ["posicao"] ) && $_POST ["posicao"] == "Atacante") {
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Minas Gerais") {
 					echo "selected";
 				}
-				?>>Atacante</option>
+				?>>Minas Gerais</option>
 
 			<!-- Opção 2: -->
 			<option
 				<?php
-				if (isset ( $_POST ["posicao"] ) && $_POST ["posicao"] == "Zagueiro(a)") {
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("São Paulo") ){
 					echo "selected";
 				}
-				?>>Zagueiro(a)</option>
+				?>><?php echo utf8_encode("São Paulo")?></option>
 
 			<!-- Opção 3: -->
 			<option
 				<?php
-				if (isset ( $_POST ['posicao'] ) && $_POST ['posicao'] == "Goleiro(a)") {
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Bahia") {
 					echo "selected";
 				}
-				?>>Goleiro(a)</option>
+				?>>Bahia(a)</option>
 
 
-		</select> <br> <label><?php echo(utf8_encode('Número da camisa'))?></label>
-		<input type="number" name="numeroCamisa"
-			<?php if(isset($_POST ["numeroCamisa"])){echo "value='".$_POST ["numeroCamisa"]."'";}?>><br>
+		</select> <br> 
 
-		<!-- Campo Nome da Equipe -->
-		<div id="retiraQuebraDeLinha">
-			<label>Nome da equipe:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="nomeEquipe"
-				placeholder="Digite o nome da equipe..."
-				<?php if(isset($_POST ["nomeEquipe"])){echo "value='".$_POST ["nomeEquipe"]."'";}?>><br>
-		</div>
 		<br>
 
 		<!--BOTOES PARA ENVIAR-->
@@ -174,12 +139,12 @@ $(function() {
 			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 			<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["posicao"] ) && isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["datanasc"] ))
+			if (isset ( $_REQUEST ["nome"] ))
 				//nome dos campos do método ler jogadores no crude	
-				echo $_REQUEST ["posicao"] . "*" . $_REQUEST ["nome"] . "*" . $_REQUEST ["datanasc"];
+				echo $_REQUEST ["nome"];
 			else 
 				//nomes dos campos desta tabela
-				echo $_POST ["posicao"] . "*" . $_POST["txtNomeJogador"] . "*" . $_POST["dataNascimento"];
+				echo $_POST ["nomeEstadio"] ;
 			?>">
 	</form>
 

@@ -20,20 +20,19 @@
 <body class="wraper">
 	<header>
 		<!-- cabeçalho -->
-			<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
-			<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
-			
-			<nav>
-  <ul class="menu">
-  				<!-- ../ retorna uma pasta anterior-->
+		<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
+		<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
 
-		<li><a href="./Jogador.php">Jogador</a></li>
-		<li><a href="./jogadorConsulta.php">Consultar Jogadores</a></li>
-	  		<li><a href="#">Alterar dados dos jogadores</a>
-			</li>
-		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
-</ul>
-</nav>
+		<nav>
+			<ul class="menu">
+				<!-- ../ retorna uma pasta anterior-->
+
+				<li><a href="./JogadorCadastrar.php">Cadastrar Jogador</a></li>
+				<li><a href="./jogadorConsulta.php">Consultar Jogadores</a></li>
+				<li><a href="#">Alterar dados dos jogadores</a></li>
+				<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
+			</ul>
+		</nav>
 	</header>
 
 <?php
@@ -43,8 +42,9 @@ include ('./FileJogCrud.php');
 $Robinho = new JogadorCrude ();
 
 // resposável por editar os dados carregados do else
-if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null ou se a variavel não existir
+if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
+	
 	$campos = array (
 			$_POST ["posicao"],
 			$_POST ["txtNomeJogador"],
@@ -52,19 +52,22 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["numeroCamisa"],
 			$_POST ["nomeEquipe"] 
 	);
+	
 	$Robinho->alterarDadosJogador ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["posicao"],
-			$_REQUEST ["nome"],
-			$_REQUEST ["datanasc"] 
+			$_REQUEST ["camisa"],
+			$_REQUEST ["nomeEquipe"] 
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
 	$Robinho->consultarJogador ( $primaryKey );
 }
 ?>
+
+
+
 <body>
 
 	<!-- estrutura fundamental por passar a primary key para o if-->
@@ -73,7 +76,8 @@ else {
 	<h1 id="tiloDoForm">
 		<pre>     Editar dados de Jogadores</pre>
 	</h1>
-	<form id="formularioInter"name="tabelaJogador" method="post" action="?validar=true">
+	<form id="formularioInter" name="tabelaJogador" method="post"
+		action="?validar=true">
 		<!-- Campo Nome -->
 		<div class="retiraQuebraDeLinha">
 			<label>Nome:</label>
@@ -168,25 +172,27 @@ $(function() {
 		<br>
 
 		<!--BOTOES PARA ENVIAR-->
-		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input id="botaoEnviar" type="submit"
-			value="Alterar os dados"> 
-			
-			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
-			<input type="hidden" name=primaryKey
+		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input
+			id="botaoEnviar" type="submit" value="Alterar os dados">
+
+		<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
+		<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["posicao"] ) && isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["datanasc"] ))
-				//nome dos campos do método ler jogadores no crude	
-				echo $_REQUEST ["posicao"] . "*" . $_REQUEST ["nome"] . "*" . $_REQUEST ["datanasc"];
-			else 
-				//nomes dos campos desta tabela
-				echo $_POST ["posicao"] . "*" . $_POST["txtNomeJogador"] . "*" . $_POST["dataNascimento"];
+			if (isset ( $_REQUEST ["camisa"] ) && isset ( $_REQUEST ["nomeEquipe"] ))
+				// nome dos campos do método ler jogadores no crude
+				echo $_REQUEST ["camisa"] . "*" . $_REQUEST ["nomeEquipe"];
+			else
+				// nomes dos campos desta tabela
+				echo $_POST ["numeroCamisa"] . "*" . $_POST ["nomeEquipe"] ;
 			?>">
 	</form>
 
 
 	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
 	<footer class="footer">
-			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
-	</footer><!-- em estilo. é class e # é id -->
+		<img class="footer" src="../utilitarios/figuras/rodape.png"
+			alt="rodape">
+	</footer>
+	<!-- em estilo. é class e # é id -->
 </body>
 </html>

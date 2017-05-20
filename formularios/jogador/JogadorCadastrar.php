@@ -34,7 +34,6 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	if (isset ( $erro )) {
 	}
 }
-///
 ?>
 <body class="wraper">
 	<header>
@@ -46,7 +45,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="#">Jogador</a></li>
+		<li><a href="#">Cadastrar Jogador</a></li>
 		<li><a href="./jogadorConsulta.php">Consultar Jogadores</a></li>
 	  		<li><a href="./jogadorUpdate.php">Alterar dados dos jogadores</a>
 			</li>

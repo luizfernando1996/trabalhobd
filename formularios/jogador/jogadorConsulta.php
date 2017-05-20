@@ -26,7 +26,7 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./Jogador.php">Jogador</a></li>
+		<li><a href="./JogadorCadastrar.php">Cadastrar Jogador</a></li>
 		<li><a href="#">Consultar Jogadores</a></li>
 	  		<li><a href="./jogadorUpdate.php">Alterar dados dos jogadores</a>
 			</li>
@@ -52,7 +52,7 @@ include ('./FileJogCrud.php');
 $ler = new JogadorCrude ();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["posicao"],$_REQUEST["nome"],$_REQUEST["datanasc"]);
+	$primaryKey=array($_REQUEST["camisa"],$_REQUEST["nomeEquipe"]);
 	$ler->deletarJogador($primaryKey);
 }
 $ler->lerJogadores ();
