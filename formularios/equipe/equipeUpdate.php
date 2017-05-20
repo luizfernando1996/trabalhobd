@@ -63,12 +63,6 @@ else {
 	$Cruzeiro->lerEquipe( $primaryKey );
 }
 ?>
-
-
-
-
-
-
 <body>
 
 	<!-- estrutura fundamental por passar a primary key para o if-->
