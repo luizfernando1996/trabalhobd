@@ -48,7 +48,7 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 				
 				echo "<td>" . "<a href='?excluir=true
                 &NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
+				echo "<td>" . "<a href='./competicaoUpdate.php?alterar=true
 				&NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";

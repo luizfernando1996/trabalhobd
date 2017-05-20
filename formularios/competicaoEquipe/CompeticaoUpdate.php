@@ -79,50 +79,15 @@ else {
 	</h1>
 	<form id="formularioInter" name="tabelaJogador" method="post"
 		action="?validar=true">
-		<!-- Campo Nome -->
+		
+		<!-- Campo Posicao -->
 		<div class="retiraQuebraDeLinha">
-			<label>Nome:</label>
+			<label>Posicao:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="txtNomeJogador"
-				placeholder="Digite aqui o seu nome..."
-				<?php if(isset($_POST ["txtNomeJogador"])){echo "value='".$_POST ["txtNomeJogador"]."'";}?>><br>
+			<input type="text" required="required" name="txtPosicao"
+				placeholder="Digite aqui a posição..."
+				<?php if(isset($_POST ["txtPosicao"])){echo "value='".$_POST ["txtPosicao"]."'";}?>><br>
 		</div>
-
-
-
-		<!-- Campo Posicao: -->
-		<label><?php echo(utf8_encode('Posição:'))?></label>
-		<!--  -->
-		<select name="posicao">
-
-			<!-- Opção 1: -->
-			<option
-				<?php
-				if (isset ( $_POST ["posicao"] ) && $_POST ["posicao"] == "Atacante") {
-					echo "selected";
-				}
-				?>>Atacante</option>
-
-			<!-- Opção 2: -->
-			<option
-				<?php
-				if (isset ( $_POST ["posicao"] ) && $_POST ["posicao"] == "Zagueiro(a)") {
-					echo "selected";
-				}
-				?>>Zagueiro(a)</option>
-
-			<!-- Opção 3: -->
-			<option
-				<?php
-				if (isset ( $_POST ['posicao'] ) && $_POST ['posicao'] == "Goleiro(a)") {
-					echo "selected";
-				}
-				?>>Goleiro(a)</option>
-
-
-		</select> <br> <label><?php echo(utf8_encode('Número da camisa'))?></label>
-		<input type="number" name="numeroCamisa"
-			<?php if(isset($_POST ["numeroCamisa"])){echo "value='".$_POST ["numeroCamisa"]."'";}?>><br>
 
 		<!-- Campo Nome da Equipe -->
 		<div id="retiraQuebraDeLinha">
@@ -131,9 +96,31 @@ else {
 			<input type="text" required="required" name="nomeEquipe"
 				placeholder="Digite o nome da equipe..."
 				<?php if(isset($_POST ["nomeEquipe"])){echo "value='".$_POST ["nomeEquipe"]."'";}?>><br>
+				
+			<label><?php echo utf8_encode("Nome da competição:")?></label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text" required="required" name="nomeCompeticao"
+				placeholder="Digite o nome da competição..."
+				<?php if(isset($_POST ["nomeCompeticao"])){echo "value='".$_POST ["nomeCompeticao"]."'";}?>><br>
+				
+				
+				<label><?php echo utf8_encode("Pontuação:")?></label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text" required="required" name="pontuacao"
+				placeholder="Digite o nome da competição..."
+				<?php if(isset($_POST ["pontuacao"])){echo "value='".$_POST ["pontuacao"]."'";}?>><br>
 		</div>
-		<br>
-
+		
+		
+		</select> <br> <label><?php echo(utf8_encode('Gols a favor'))?></label>
+		<input type="number" name="golsFavor"
+			<?php if(isset($_POST ["golsFavor"])){echo "value='".$_POST ["golsFavor"]."'";}?>><br>
+			
+		
+		</select> <br> <label><?php echo(utf8_encode('Gols contra'))?></label>
+		<input type="number" name="golsContra"
+			<?php if(isset($_POST ["golsContra"])){echo "value='".$_POST ["golsContra"]."'";}?>><br>
+				
 		<!--BOTOES PARA ENVIAR-->
 		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input
 			id="botaoEnviar" type="submit" value="Alterar os dados">
@@ -148,6 +135,7 @@ else {
 				// nomes dos campos desta tabela
 				echo $_POST ["numeroCamisa"] . "*" . $_POST ["nomeEquipe"] ;
 			?>">
+				
 	</form>
 
 
