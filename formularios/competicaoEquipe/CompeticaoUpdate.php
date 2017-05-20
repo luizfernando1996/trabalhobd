@@ -75,7 +75,7 @@ else {
 
 
 	<h1 id="tiloDoForm">
-		<pre>     Editar dados de Jogadores</pre>
+		<pre>     <?php utf8_encode("Editar dados de Competição Equipe")?></pre>
 	</h1>
 	<form id="formularioInter" name="tabelaJogador" method="post"
 		action="?validar=true">
@@ -87,45 +87,7 @@ else {
 				placeholder="Digite aqui o seu nome..."
 				<?php if(isset($_POST ["txtNomeJogador"])){echo "value='".$_POST ["txtNomeJogador"]."'";}?>><br>
 		</div>
-		<!-- Campo Data Nascimento -->
-		<label>Digite sua data de nascimento:</label> <input type="text"
-			id="calendario" placeholder="Selecione a data ao lado"
-			name="dataNascimento"
-			<?php if(isset($_POST ["dataNascimento"])){echo "value='".$_POST ["dataNascimento"]."'";}?>><br>
 
-		<!-- Script do calendario abaixo -->
-		<script>
-$(function() {
-	
-	//Apresenta o calendario
-    $( "#calendario" ).datepicker({
-        
-    	//Apresenta o icone do calendario
-        showOn: "button",
-        buttonImage: "../utilitarios/mes/calendar.png",
-        buttonImageOnly: true,
-        showButtonPanel:true,
-        
-        //Permite que o usuario selecione o mes e o ano
-        changeMonth: true,
-        changeYear: true,
-        
-        //Formata a data
-        dateFormat: 'yy-mm-dd',
-        
-       //Traduzindo o calendario
-       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-       
-       //Apresenta os 31 dias do mes mais alguns dias do proximo més
-       showOtherMonths: true,
-       selectOtherMonths: true
-    });    
-});
-</script>
 
 
 		<!-- Campo Posicao: -->

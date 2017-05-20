@@ -101,7 +101,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	</form>
 
 	<br>
-	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./CompeticaoConsulta.php">Consultar CompeticaoEquipe</a>
 	<footer class="footer">
 		<img class="footer" src="../utilitarios/figuras/rodape.png"
 			alt="rodape">
