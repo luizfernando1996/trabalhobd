@@ -74,7 +74,7 @@ $Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Minas Gerais") {
 					echo "selected";
 				}
-				?>><?php echo(utf8_encode("São Paulo")); ?>	</option>
+				?>><?php echo(utf8_encode("Minas Gerais")); ?>	</option>
 
 			<!-- Opção 2: -->
 			<option

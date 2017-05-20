@@ -51,7 +51,7 @@ include ('./EquipeCrud.php');
 $ler = new ClasseEquipeCrude();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["estado"],$_REQUEST["nomeEstadio"],$_REQUEST["nomeTecnico"]);
+	$primaryKey=array($_REQUEST["nome"]);
 	$ler->deletarEquipe($primaryKey);
 }
 $ler->lerEquipes();

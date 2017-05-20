@@ -51,14 +51,12 @@ if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for nul
 			$_POST ["nomeEstadio"],
 			$_POST ["nomeTecnico"] 
 	);
-	$Cruzeiro->alterarDadosJogador ( $primaryKey, $campos );
+	$Cruzeiro->alterarDadosEquipes($primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	
 	$primaryKey = array (
-			$_REQUEST ["estado"],
-			$_REQUEST ["nomeEstadio"],
-			$_REQUEST ["nomeTecnico"] 
+			$_REQUEST ["nome"]
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
@@ -102,7 +100,7 @@ else {
 				if (isset ( $_POST ["estadoCampo"] ) && $_POST ["estadoCampo"] == "Minas Gerais") {
 					echo "selected";
 				}
-				?>>Atacante</option>
+				?>>Minas Gerais</option>
 
 			<!-- Opção 2: -->
 			<option
@@ -110,12 +108,12 @@ else {
 				if (isset ( $_POST ["estadoCampo"] ) && $_POST ["estadoCampo"] == "São Paulo") {
 					echo "selected";
 				}
-				?>><?php utf8_encode("São Paulo");?>(a)</option>
+				?>><?php echo utf8_encode("São Paulo");?></option>
 
 			<!-- Opção 3: -->
 			<option
 				<?php
-				if (isset ( $_POST ['estadoCampo'] ) && $_POST ['estadoCampo'] == "Goias") {
+				if (isset ( $_POST ["estadoCampo"] ) && $_POST ["estadoCampo"] == "Goias") {
 					echo "selected";
 				}
 				?>>Goias</option>
@@ -145,12 +143,12 @@ else {
 		<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 		<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["estado"] ) && isset ( $_REQUEST ["nomeEstadio"] ) && isset ( $_REQUEST ["nomeTecnico"] ))
+			if (isset ( $_REQUEST ["nome"] ) )
 				// nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["estado"] . "*" . $_REQUEST ["nomeEstadio"] . "*" . $_REQUEST ["nomeTecnico"];
+				echo $_REQUEST ["nome"] ;
 			else
 				// nomes dos campos desta tabela
-				echo $_POST ["estadoCampo"] . "*" . $_POST ["nomeEstadio"] . "*" . $_POST ["nomeTecnico"];
+				echo $_POST ["txtNomeEquipe"];
 			?>">
 	</form>
 
