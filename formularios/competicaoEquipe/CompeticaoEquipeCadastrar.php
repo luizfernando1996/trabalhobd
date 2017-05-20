@@ -54,7 +54,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		</nav>
 	</header>
 
-	<div id="tituloForm">Cadastro de Competições de Equipes</div>
+	<div id="tituloForm"><?php echo utf8_encode("Cadastro de Competições de Equipes")?></div>
 	<form id="formularioInteiro" name="tabelaJogador" method="post"
 		action="?validar=true">
 
