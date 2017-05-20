@@ -101,7 +101,7 @@ body {
 				<li><a href="./auxiliar/Auxiliar.php">Auxiliar</a></li>
 				<li><a href="./comissaoTecnica/ComissaoTecnica.php">ComissaoTecnica</a></li>
 				<li><a href="./competicao/Competicao.php">Competicao</a></li>
-				<li><a href="./competicaoEquipe/CompeticaoEquipe.php">CompeticaoEquipe</a></li>
+				<li><a href="./competicaoEquipe/CompeticaoEquipeCadastrar.php">CompeticaoEquipe</a></li>
 				<li><a href="./equipe/Equipe.php">Equipe</a></li>
 				<li><a href="./entidade/Entidade.php">Entidade</a></li>
 				<li><a href="./equipeDeArbitragem/EquipeDeArbitragem.php">EquipeDeArbitragem</a></li>
@@ -111,7 +111,7 @@ body {
 						<li><a href="./jogador/JogadorCadastrar.php">Jogador</a></li>
 						<li><a href="./partida/Partida.php">Partida</a></li>
 						<li><a href="./tecnico/Tecnico.php">Tecnico</a></li>
-						<li><a href="./transferencia/Transferencias.php">Transferencias</a></li>
+						<li><a href="./transferencia/TransferenciaCadastrar.php">Transferencias</a></li>
 					</ul>
 			
 			</ul>
