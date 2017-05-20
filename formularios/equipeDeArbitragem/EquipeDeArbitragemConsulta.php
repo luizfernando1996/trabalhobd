@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title><?php echo utf8_encode("Consultar todos as Competicoes")?></Title>
+<Title>Consultar todos as Equipes de Arbitragem</Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -26,9 +26,9 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./Competicao.php">Competicao</a></li>
-		<li><a href="#">Consultar a competicao</a></li>
-	  		<li><a href="./CompeticaoUpdate.php">Editar dados da competicao</a>
+		<li><a href="./EquipeDeArbitragem.php">Equipe De Arbitragem</a></li>
+		<li><a href="#">Consultar a Equipe de Arbitragem</a></li>
+	  		<li><a href="./EquipeDeArbitragemUpdate.php">Editar dados da Equipe De Abitragem</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>             
 </ul>
@@ -37,25 +37,25 @@
 	<table id="formularioInteiro3" border=1>
 		<!-- Tr é a tag para linha no html -->
 		<tr>		
-			<th>Nome</th>
-			<th>Abrangencia</th>
-			<th>SistemaPontuacao</th>
-			<th>Serie</th>
-			<th>NomeEntidade</th>
-			<th>QuantidadeDeJogos</th>
-			<th>Ano</th>
+			<th>ID</th>
+			<th>Bandeirinha 1</th>
+			<th>Bandeirinha 2</th>
+			<th>Arbitro</th>
+			<th>Quarto Arbitro</th>
+			<th>Entidade</th>
+			<th>Delegado</th>			
 			<th>Deletar</th>			
 			<th>Editar</th>		
 		</tr>
 <?php
-include ('./CompeticaoCRUD.php');
-$ler = new CompeticaoCRUDClasse ();
+include ('./EquipeDeArbitragemCRUD.php');
+$ler = new EquipeDeArbitragemCRUDClasse ();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["nome"],$_REQUEST["serie"],$_REQUEST["ano"]);
-	$ler->deletarCompeticao($primaryKey);
+	$primaryKey=array($_REQUEST["id"]);
+	$ler->deletarEquipeDeArbitragem($primaryKey);
 }
-$ler->lerAuxiliar();
+$ler->lerEquipeDeArbitragem();
 ?>
 </table>
 <footer class="footer">

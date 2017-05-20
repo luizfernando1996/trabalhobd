@@ -69,7 +69,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		</div>
 		<!-- Campo Abrangencia -->
 			<div class="retiraQuebraDeLinha">
-			<label>Abrangencia:</label>
+			<label><?php utf8_encode("Abrangência:")?></label>
 			<!-- required="required"->exige o preenchimento -->
 			<input id="inputs" type="text" required="required" name="txtAbrangencia"
 				placeholder="Digite a abrangencia da competicao.."><br>

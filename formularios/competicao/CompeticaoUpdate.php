@@ -54,7 +54,7 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["txtAno"]
 	);
 	
-	$objAux->alterarDadosAuxiliar ( $primaryKey, $campos );
+	$objAux->alterarDadosCompeticao ( $primaryKey, $campos );
 	
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
@@ -74,7 +74,7 @@ else {
 
 
 	<h1 id="tituloDoForm">
-		Editar dados de Auxiliares
+		<?php echo utf8_encode("<br>Editar dados de Competições")?>
 	</h1>
 	<form id="formularioInter" name="tabelaCompeticao" method="post" action="?validar=true">
 	

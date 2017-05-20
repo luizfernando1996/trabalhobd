@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Cadastro de Jogador</Title>
+<Title>Cadastro de Auxiliar:</Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
