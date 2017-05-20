@@ -112,12 +112,12 @@ else {
 		</div>
 		
 		
-		</select> <br> <label><?php echo(utf8_encode('Gols a favor'))?></label>
+		<br> <label><?php echo(utf8_encode('Gols a favor'))?></label>
 		<input type="number" name="golsFavor"
 			<?php if(isset($_POST ["golsFavor"])){echo "value='".$_POST ["golsFavor"]."'";}?>><br>
 			
 		
-		</select> <br> <label><?php echo(utf8_encode('Gols contra'))?></label>
+		<br> <label><?php echo(utf8_encode('Gols contra'))?></label>
 		<input type="number" name="golsContra"
 			<?php if(isset($_POST ["golsContra"])){echo "value='".$_POST ["golsContra"]."'";}?>><br>
 				
