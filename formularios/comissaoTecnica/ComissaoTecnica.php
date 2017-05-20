@@ -69,7 +69,6 @@
 				<br>
 		</div>
 		
-		</div>
 		<!-- Campo NomeAuxiliar -->
 			<div class="retiraQuebraDeLinha">
 			<label>Nome do Auxiliar:</label>

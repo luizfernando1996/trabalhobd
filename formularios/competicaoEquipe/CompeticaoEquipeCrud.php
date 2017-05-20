@@ -1,20 +1,20 @@
 <?php
 include ("../FileMySQL.php"); // <--Segue control e clique no caminho para ter certeza qe o caminho está correto
-class JogadorCrude extends ConectaAoMySql {
+class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 	private $primaryKey;
-	public function inserirBanco($posicao, $nome, $date, $numero, $NomeEquipe) {
-		$sql = "INSERT INTO jogador
-                (Posicao, Nome, DataNasc, Camisa, NomeEquipe)
-                VALUES (?, ?, ?, ?,?)";
+	public function inserirCompeticaoEquipe($posicao, $NomeEquipe, $NomeDaCompeticao, $Pontuacao, $GolsFavor, $golsContra) {
+		$sql = "INSERT INTO competicaoequipe
+                (Posicao, NomeEquipe, NomeDaCompeticao, Pontuacao, GolsFavor,GolsContra)
+                VALUES (?, ?, ?, ?,?,?)";
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		
 		$stmt->bindParam ( 1, $posicao );
-		$stmt->bindParam ( 2, $nome );
-		$stmt->bindParam ( 3, $date );
-		$stmt->bindParam ( 4, $numero );
-		$stmt->bindParam ( 5, $NomeEquipe );
-		
+		$stmt->bindParam ( 2, $NomeEquipe );
+		$stmt->bindParam ( 3, $NomeDaCompeticao );
+		$stmt->bindParam ( 4, $Pontuacao );
+		$stmt->bindParam ( 5, $GolsFavor );
+		$stmt->bindParam ( 6, $golsContra );
 		$stmt->execute ();
 		
 		if ($stmt->errorCode () != "00000") {
@@ -23,9 +23,9 @@ class JogadorCrude extends ConectaAoMySql {
 			$erro .= implode ( ", ", $stmt->errorInfo () );
 		}
 	}
-	public function lerJogadores() {
+	public function lerCompeticaoEquipe() {
 		// PDO é o objeto da classe base
-		$sql = "SELECT * FROM jogador";
+		$sql = "SELECT * FROM competicaoequipe";
 		// $rs-->result set
 		$rs = $this->PDO->prepare ( $sql );
 		if ($rs->execute ()) {
@@ -34,21 +34,22 @@ class JogadorCrude extends ConectaAoMySql {
 				echo "<tr>";
 				// o operador . é responsavel pela concatenação
 				// nomes das colunas do banco
-				echo "<td>" . $registro->Nome . "</td>";
-				echo "<td>" . $registro->DataNasc . "</td>";
 				echo "<td>" . $registro->Posicao . "</td>";
-				echo "<td>" . $registro->Camisa . "</td>";
 				echo "<td>" . $registro->NomeEquipe . "</td>";
+				echo "<td>" . $registro->NomeDaCompeticao . "</td>";
+				echo "<td>" . $registro->Pontuacao . "</td>";
+				echo "<td>" . $registro->GolsFavor . "</td>";
+				echo "<td>" . $registro->GolsContra . "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
-						$registro->Camisa,
-						$registro->NomeEquipe 
+						$registro->NomeEquipe,
+						$registro->NomeDaCompeticao 
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &camisa=" . $primaryKey [0] . "&nomeEquipe=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
+                &NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
 				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
-				&camisa=" . $primaryKey [0] . "&nomeEquipe=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
+				&NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";
 			}
@@ -56,8 +57,8 @@ class JogadorCrude extends ConectaAoMySql {
 			echo "Falha na seleção de usuários <br>";
 		}
 	}
-	public function deletarJogador($primaryKey) {
-		$sql = ("DELETE FROM jogador where Camisa=? && NomeEquipe=?");
+	public function deletarCompeticaoEquipe($primaryKey) {
+		$sql = ("DELETE FROM competicaoequipe where NomeEquipe=? && NomeDaCompeticao=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );
@@ -68,10 +69,10 @@ class JogadorCrude extends ConectaAoMySql {
 			echo "Erro código " . $stmt->errorCode () . ":";
 			echo implode ( ",", $stmt->errorInfo () );
 		} else
-			echo "Sucesso : jogador removido com sucesso <br><br>";
+			echo "Sucesso : equipe da competição removida com sucesso <br><br>";
 	}
-	public function consultarJogador($primaryKey) {
-		$sql = "SELECT * FROM jogador WHERE Camisa= ? && NomeEquipe = ?";
+	public function consultarCompeticaoEquipe($primaryKey) {
+		$sql = "SELECT * FROM competicaoequipe WHERE NomeEquipe	= ? && NomeDaCompeticao	= ?";
 		$rs = $this->PDO->prepare ( $sql );
 		
 		$rs->bindParam ( 1, $primaryKey [0] );
@@ -83,24 +84,26 @@ class JogadorCrude extends ConectaAoMySql {
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["txtNomeJogador"] = $registro->Nome;
-				$_POST ["dataNascimento"] = $registro->DataNasc;
-				$_POST ["posicao"] = $registro->Posicao;
-				$_POST ["numeroCamisa"] = $registro->Camisa;
-				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["posicaoCampeonato"] = $registro->Posicao;
+				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["nomeCompeticao"] = $registro->NomeDaCompeticao;
+				$_POST ["pontuacao"] = $registro->Pontuacao;
+				$_POST [""] = $registro->	GolsFavor;
+				$_POST [""] = $registro->	GolsContra;
 			} else
 				$erro = "Registro não encontrado";
 		} else
 			$erro = "Falha na captura do registro";
 	}
-	public function alterarDadosJogador($primaryKey, $campos) {
-		$sql = "UPDATE jogador SET 
+	public function alterarCompeticaoEquipe($primaryKey, $campos) {
+		$sql = "UPDATE competicaoequipe SET 
 		Posicao = ?, 
-		Nome = ?, 
-		DataNasc = ?, 
-		Camisa = ?, 
-		NomeEquipe = ? 
-		WHERE Camisa= ? && NomeEquipe = ?";
+		NomeEquipe = ?, 
+		NomeDaCompeticao = ?, 
+		Pontuacao = ?, 
+		GolsFavor = ?,
+  		GolsContra = ?
+		WHERE NomeEquipe= ? && NomeDaCompeticao = ?";
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		
@@ -109,8 +112,10 @@ class JogadorCrude extends ConectaAoMySql {
 		$stmt->bindParam ( 3, $campos [2] );
 		$stmt->bindParam ( 4, $campos [3] );
 		$stmt->bindParam ( 5, $campos [4] );
-		$stmt->bindParam ( 6, $primaryKey [0] );
-		$stmt->bindParam ( 7, $primaryKey [1] );
+		$stmt->bindParam ( 6, $campos [5] );
+		
+		$stmt->bindParam ( 7, $primaryKey [0] );
+		$stmt->bindParam ( 8, $primaryKey [1] );
 		
 		$stmt->execute ();
 		if ($stmt->errorCode () != "00000") {

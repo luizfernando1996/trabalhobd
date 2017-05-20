@@ -1,19 +1,17 @@
 <?php
 include ("../FileMySQL.php"); // <--Segue control e clique no caminho para ter certeza qe o caminho está correto
-class JogadorCrude extends ConectaAoMySql {
+class Transferencia_Crude extends ConectaAoMySql {
 	private $primaryKey;
-	public function inserirBanco($posicao, $nome, $date, $numero, $NomeEquipe) {
-		$sql = "INSERT INTO jogador
-                (Posicao, Nome, DataNasc, Camisa, NomeEquipe)
-                VALUES (?, ?, ?, ?,?)";
+	public function inserirTransferencia($camisa, $nomeEquipeAtual, $nomeEquipeFutura ) {
+		$sql = "INSERT INTO transferencias
+                (Camisa, NomeEquipe, EquipeTransfereJogadorcol)
+                VALUES (?, ?, ?)";
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		
-		$stmt->bindParam ( 1, $posicao );
-		$stmt->bindParam ( 2, $nome );
-		$stmt->bindParam ( 3, $date );
-		$stmt->bindParam ( 4, $numero );
-		$stmt->bindParam ( 5, $NomeEquipe );
+		$stmt->bindParam ( 1, $camisa);
+		$stmt->bindParam ( 2, $nomeEquipeAtual);
+		$stmt->bindParam ( 3, $nomeEquipeFutura);
 		
 		$stmt->execute ();
 		
@@ -23,9 +21,9 @@ class JogadorCrude extends ConectaAoMySql {
 			$erro .= implode ( ", ", $stmt->errorInfo () );
 		}
 	}
-	public function lerJogadores() {
+	public function lerTransferencias() {
 		// PDO é o objeto da classe base
-		$sql = "SELECT * FROM jogador";
+		$sql = "SELECT * FROM transferencias";
 		// $rs-->result set
 		$rs = $this->PDO->prepare ( $sql );
 		if ($rs->execute ()) {
@@ -34,21 +32,19 @@ class JogadorCrude extends ConectaAoMySql {
 				echo "<tr>";
 				// o operador . é responsavel pela concatenação
 				// nomes das colunas do banco
-				echo "<td>" . $registro->Nome . "</td>";
-				echo "<td>" . $registro->DataNasc . "</td>";
-				echo "<td>" . $registro->Posicao . "</td>";
-				echo "<td>" . $registro->Camisa . "</td>";
-				echo "<td>" . $registro->NomeEquipe . "</td>";
+				echo "<td>" . $registro->Camisa. "</td>";
+				echo "<td>" . $registro->NomeEquipe. "</td>";
+				echo "<td>" . $registro->EquipeTransfereJogadorcol. "</td>";
+				echo "<td>" . $registro->ID. "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
-						$registro->Camisa,
-						$registro->NomeEquipe 
+						$registro->ID
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &camisa=" . $primaryKey [0] . "&nomeEquipe=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
+                &id=" . $primaryKey [0]  ."'>Deletar</a>" . "</td>";
 				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
-				&camisa=" . $primaryKey [0] . "&nomeEquipe=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
+				&id=" . $primaryKey [0] . "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";
 			}
@@ -56,26 +52,24 @@ class JogadorCrude extends ConectaAoMySql {
 			echo "Falha na seleção de usuários <br>";
 		}
 	}
-	public function deletarJogador($primaryKey) {
-		$sql = ("DELETE FROM jogador where Camisa=? && NomeEquipe=?");
+	public function deletarTransferencia($primaryKey) {
+		$sql = ("DELETE FROM transferencias WHERE ID=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );
-		$stmt->bindParam ( 2, $primaryKey [1] );
 		$stmt->execute ();
 		
 		if ($stmt->errorCode () != "00000") {
 			echo "Erro código " . $stmt->errorCode () . ":";
 			echo implode ( ",", $stmt->errorInfo () );
 		} else
-			echo "Sucesso : jogador removido com sucesso <br><br>";
+			echo "Sucesso : transferencia removida com sucesso <br><br>";
 	}
 	public function consultarJogador($primaryKey) {
-		$sql = "SELECT * FROM jogador WHERE Camisa= ? && NomeEquipe = ?";
+		$sql = "SELECT * FROM transferencias WHERE ID= ? ";
 		$rs = $this->PDO->prepare ( $sql );
 		
 		$rs->bindParam ( 1, $primaryKey [0] );
-		$rs->bindParam ( 2, $primaryKey [1] );
 		
 		if ($rs->execute ()) {
 			// rs->fetch captura cada linha da tabela, isto é, cada objeto jogador da tabela
@@ -83,34 +77,28 @@ class JogadorCrude extends ConectaAoMySql {
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["txtNomeJogador"] = $registro->Nome;
-				$_POST ["dataNascimento"] = $registro->DataNasc;
-				$_POST ["posicao"] = $registro->Posicao;
 				$_POST ["numeroCamisa"] = $registro->Camisa;
-				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["NomeEquipeAntiga"] = $registro->NomeEquipe;
+				$_POST ["nomeEquipeFutura"] = $registro->EquipeTransfereJogadorcol;
 			} else
 				$erro = "Registro não encontrado";
 		} else
 			$erro = "Falha na captura do registro";
 	}
 	public function alterarDadosJogador($primaryKey, $campos) {
-		$sql = "UPDATE jogador SET 
-		Posicao = ?, 
-		Nome = ?, 
-		DataNasc = ?, 
+		$sql = "UPDATE transferencias SET 
 		Camisa = ?, 
-		NomeEquipe = ? 
-		WHERE Camisa= ? && NomeEquipe = ?";
+		NomeEquipe = ?, 
+		EquipeTransfereJogadorcol = ?, 
+		WHERE ID = ? ";
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		
 		$stmt->bindParam ( 1, $campos [0] );
 		$stmt->bindParam ( 2, $campos [1] );
 		$stmt->bindParam ( 3, $campos [2] );
-		$stmt->bindParam ( 4, $campos [3] );
-		$stmt->bindParam ( 5, $campos [4] );
-		$stmt->bindParam ( 6, $primaryKey [0] );
-		$stmt->bindParam ( 7, $primaryKey [1] );
+		
+		$stmt->bindParam ( 4, $primaryKey [0] );
 		
 		$stmt->execute ();
 		if ($stmt->errorCode () != "00000") {

@@ -23,16 +23,17 @@
 		<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
 		<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
 
-		<nav>
-			<ul class="menu">
-				<!-- ../ retorna uma pasta anterior-->
+			<nav>
+  <ul class="menu">
+  				<!-- ../ retorna uma pasta anterior-->
 
-				<li><a href="./JogadorCadastrar.php">Cadastrar Jogador</a></li>
-				<li><a href="./jogadorConsulta.php">Consultar Jogadores</a></li>
-				<li><a href="#">Alterar dados dos jogadores</a></li>
-				<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
-			</ul>
-		</nav>
+		<li><a href="./CompeticaoEquipeCadastrar.php">Cadastrar CompeticaoEquipe</a></li>
+		<li><a href="./CompeticaoConsulta.php">Consultar CompeticaoEquipe</a></li>
+	  		<li><a href="#">Alterar dados da CompeticaoEquipe</a>
+			</li>
+		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
+</ul>
+</nav>
 	</header>
 
 <?php

@@ -26,9 +26,9 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./JogadorCadastrar.php">Cadastrar Jogador</a></li>
-		<li><a href="#">Consultar Jogadores</a></li>
-	  		<li><a href="./jogadorUpdate.php">Alterar dados dos jogadores</a>
+		<li><a href="./TransferenciaCadastrar">Cadastrar Transferencia</a></li>
+		<li><a href="#">Consultar Transferencia</a></li>
+	  		<li><a href="./TransferenciaUpdate.php">Alterar dados da transferencia</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
@@ -37,25 +37,24 @@
 	<table id="formularioInteiro3" border=1>
 		<!-- Tr é a tag para linha no html -->
 		<tr>
-			<th>Nome</th>
+			<th>Numero da Camisa</th>
 			<!-- Th define o titulo da coluna -->
-			<th>Data de Nascimento</th>
+			<th>Nome da antiga equipe do jogador</th>
 			<th><?php echo utf8_encode("Posição");?></th>
-			<th>Numero da camisa</th>
-			<th>Nome da equipe</th>
+			<th>Nome da equipe atual do jogador</th>
 			<th>Deletar</th>			
 			<th>Editar</th>
 		
 		</tr>
 <?php
-include ('./FileJogCrud.php');
-$ler = new JogadorCrude ();
+include ('./TransferenciaCrud.php');
+$ler = new Transferencia_Crude();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["camisa"],$_REQUEST["nomeEquipe"]);
-	$ler->deletarJogador($primaryKey);
+	$primaryKey=array($_REQUEST["id"]);
+	$ler->deletarTransferencia($primaryKey);
 }
-$ler->lerJogadores ();
+$ler->lerTransferencias();
 ?>
 </table>
 <footer class="footer">

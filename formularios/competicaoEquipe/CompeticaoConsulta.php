@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Consultar todos os Jogadores</Title>
+<Title>Consultar todas as Competições</Title>
 
 <link rel="stylesheet"
 	href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
@@ -26,9 +26,9 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./JogadorCadastrar.php">Cadastrar Jogador</a></li>
-		<li><a href="#">Consultar Jogadores</a></li>
-	  		<li><a href="./jogadorUpdate.php">Alterar dados dos jogadores</a>
+		<li><a href="./CompeticaoEquipeCadastrar.php">Cadastrar CompeticaoEquipe</a></li>
+		<li><a href="#">Consultar CompeticaoEquipe</a></li>
+	  		<li><a href="./CompeticaoUpdate.php">Alterar dados da CompeticaoEquipe</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
 </ul>
@@ -37,25 +37,26 @@
 	<table id="formularioInteiro3" border=1>
 		<!-- Tr é a tag para linha no html -->
 		<tr>
-			<th>Nome</th>
+			<th><?php echo utf8_encode("Posição")?></th>
 			<!-- Th define o titulo da coluna -->
-			<th>Data de Nascimento</th>
-			<th><?php echo utf8_encode("Posição");?></th>
-			<th>Numero da camisa</th>
-			<th>Nome da equipe</th>
+			<th>Nome da Equipe</th>
+			<th><?php echo utf8_encode("Nome da Competição");?></th>
+			<th><?php echo utf8_encode("Pontuação")?></th>
+			<th>Gols Favor</th>
+			<th>Gols Contra</th>
 			<th>Deletar</th>			
 			<th>Editar</th>
 		
 		</tr>
 <?php
-include ('./FileJogCrud.php');
-$ler = new JogadorCrude ();
+include ('./CompeticaoEquipeCrud.php');
+$ler = new CompeticaoEquipeClasseCrude();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["camisa"],$_REQUEST["nomeEquipe"]);
-	$ler->deletarJogador($primaryKey);
+	$primaryKey=array($_REQUEST["NomeEquipe"],$_REQUEST["NomeDaCompeticao"]);
+	$ler->deletarCompeticaoEquipe($primaryKey);
 }
-$ler->lerJogadores ();
+$ler->lerCompeticaoEquipe();
 ?>
 </table>
 <footer class="footer">
