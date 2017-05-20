@@ -5,9 +5,9 @@ include ('../FileMySQL.php');
 class EquipeDeArbitragemCRUDClasse extends ConectaAoMySql{
 	private $primaryKey;
 	
-	public function inserirBanco($nomeBnadeirinha1, $nomeBandeirinha2, $nomeArbitro, $nomeQuartoArbitro, $nomeEntidade, $delegado){ 
-		$sql = "INSERT INTO auxiliar
-                (NomeBanderinha1, NomeBandeirinha2, NomeArbitro, NomeQuartoArbitro, NomeEntidade, Delegado)
+	public function inserirBanco($nomeBandeirinha1, $nomeBandeirinha2, $nomeArbitro, $nomeQuartoArbitro, $nomeEntidade, $delegado){ 
+		$sql = "INSERT INTO equipedearbitragem
+                (NomeBandeirinha1, NomeBandeirinha2, NomeArbitro, NomeQuartoArbitro, NomeEntidade, Delegado)
                 VALUES (?, ?, ? , ?, ?, ? )";
 		
 		$stmt = $this->PDO->prepare ( $sql );
@@ -37,6 +37,7 @@ class EquipeDeArbitragemCRUDClasse extends ConectaAoMySql{
 				echo "<tr>";
 				// o operador . é responsavel pela concatenação
 				// nomes das colunas do banco
+				echo "<td>" . $registro->Id . "</td>";
 				echo "<td>" . $registro->NomeBandeirinha1 . "</td>";
 				echo "<td>" . $registro->NomeBandeirinha2 . "</td>";
 				echo "<td>" . $registro->NomeArbitro . "</td>";
@@ -51,10 +52,10 @@ class EquipeDeArbitragemCRUDClasse extends ConectaAoMySql{
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &nome=" . $primaryKey [0] .
+                &id=" . $primaryKey [0] .
                "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./EquipeDeArbiragemUpdate.php?alterar=true
-				&nome=" . $primaryKey [0] .
+				echo "<td>" . "<a href='./EquipeDeArbitragemUpdate.php?alterar=true
+				&id=" . $primaryKey [0] .
 				"'>Alterar</a>", "</td>";
 				echo "</tr>";
 			}
@@ -62,8 +63,8 @@ class EquipeDeArbitragemCRUDClasse extends ConectaAoMySql{
 			echo "Falha na seleção de usuários <br>";
 		}
 	}
-	public function deletarAuxiliar($primaryKey) {
-		$sql = ("DELETE FROM auxiliar where Id = ? ");
+	public function deletarEquipeDeArbitragem($primaryKey) {
+		$sql = ("DELETE FROM equipedearbitragem where Id = ? ");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );		
@@ -75,7 +76,7 @@ class EquipeDeArbitragemCRUDClasse extends ConectaAoMySql{
 		} else
 			echo "Sucesso : equipe de arbitragem removida com sucesso <br><br>";
 	}
-	public function consultarAuxiliar($primaryKey) {
+	public function consultarEquipeDeArbitragem($primaryKey) {
 		$sql = "SELECT * FROM equipedearbitragem WHERE Id = ?";
 		$rs = $this->PDO->prepare ( $sql );
 		
@@ -93,20 +94,22 @@ class EquipeDeArbitragemCRUDClasse extends ConectaAoMySql{
 				$_POST ["txtNomeArbitro"] 		= $registro->NomeArbitro;
 				$_POST ["txtNomeQuartoArbrito"] = $registro->NomeQuartoArbitro;
 				$_POST ["txtNomeEntidade"] = $registro->NomeEntidade;
-				$_POST ["txtDelegad"] = $registro->Delegado;
+				$_POST ["txtDelegado"] = $registro->Delegado;
 				
 			} else
 				$erro = "Registro não encontrado";
 		} else
 			$erro = "Falha na captura do registro";
 	}
-	public function alterarDadosAuxiliar($primaryKey,$campos){
+	public function alterarDadosEquipeDeArbitragem($primaryKey,$campos){
 		
-		$sql = "UPDATE equipeDeArbitragem SET
+		$sql = "UPDATE equipedearbitragem SET
 		NomeBandeirinha1 = ?,
 		NomeBandeirinha2 = ?,
 		NomeArbitro = ?,
-		NomeQuarto = 0 	
+		NomeQuartoArbitro = ?,
+		NomeEntidade = ?,
+		Delegado = ? 	
 		WHERE Id = ?" ;
 		
 		$stmt = $this->PDO->prepare ( $sql );		
