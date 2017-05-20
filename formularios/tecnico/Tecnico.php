@@ -24,8 +24,8 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	include ("./TecnicoCRUD.php");	
 	$objAuxiliar = new TecnicoCRUDClasse();
 	$nome = $_POST ["txtNome"];
-	$NomeEquipe= $_POST ["txtEquipe"];	
-	$objAuxiliar->inserirBanco ( $nome, $Equipe );
+	$equipe= $_POST ["txtEquipe"];	
+	$objAuxiliar->inserirBanco ( $nome, $equipe );
 } else {
 	if (isset ( $erro )) {
 	}
@@ -80,7 +80,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	</form>
 
 	<br>
-	<a id="botao" href="./AuxiliarConsulta.php">Consultar Tecnicos</a>
+	<a id="botao" href="./TecnicoConsulta.php">Consultar Tecnicos</a>
 			<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
 	</footer><!-- em estilo. é class e # é id -->
