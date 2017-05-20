@@ -22,7 +22,7 @@ class TecnicoCRUDClasse extends ConectaAoMySql{
 			$erro .= implode ( ", ", $stmt->errorInfo () );
 		}
 	}
-	public function lerAuxiliar() {
+	public function lerTecnico() {
 		// PDO é o objeto da classe base
 		$sql = "SELECT * FROM tecnico";
 		// $rs-->result set

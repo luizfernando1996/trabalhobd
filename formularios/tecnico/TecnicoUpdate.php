@@ -39,15 +39,15 @@
 <?php
 $erro = null;
 $valido = false;
-include ('./TecnicoCrud.php');
+include ('./TecnicoCRUD.php');
 $objTec = new TecnicoCRUDClasse();
 
 // resposável por editar os dados carregados do else
 if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
 	$campos = array (
-			$_POST ["nome"],			
-			$_POST ["equipe"] 
+			$_POST ["txtNome"],			
+			$_POST ["txtEquipe"] 
 	);
 	$objTec->alterarDadosTecnico ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
