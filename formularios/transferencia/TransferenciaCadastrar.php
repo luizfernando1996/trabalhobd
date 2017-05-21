@@ -57,7 +57,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		action="?validar=true">
 
 		<!-- Campo Numero camisa -->
-		<label>Camisa:</label> <br> <label><?php echo(utf8_encode('Número da camisa'))?></label>
+		<label><?php echo(utf8_encode('Número da camisa'))?></label>
 		<input id="inputs" type="number" name="camisa"
 			placeholder="Informe o numero da camisa..."><br>
 		
@@ -66,7 +66,6 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 			<label>Digite o nome da equipe</label>
 			<!-- required="required"->exige o preenchimento -->
 			<input id="inputs" type="text" required="required" name="nomeEquipeAtual"><br>
-			<br>
 		</div>
 
 		<br>

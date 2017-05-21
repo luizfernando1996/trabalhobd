@@ -26,7 +26,7 @@
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./TransferenciaCadastrar">Cadastrar Transferencia</a></li>
+		<li><a href="./TransferenciaCadastrar.php">Cadastrar Transferencia</a></li>
 		<li><a href="#">Consultar Transferencia</a></li>
 	  		<li><a href="./TransferenciaUpdate.php">Alterar dados da transferencia</a>
 			</li>
@@ -40,7 +40,6 @@
 			<th>Numero da Camisa</th>
 			<!-- Th define o titulo da coluna -->
 			<th>Nome da antiga equipe do jogador</th>
-			<th><?php echo utf8_encode("Posição");?></th>
 			<th>Nome da equipe atual do jogador</th>
 			<th>Deletar</th>			
 			<th>Editar</th>

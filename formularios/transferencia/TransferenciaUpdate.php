@@ -23,52 +23,45 @@
 		<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
 		<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
 
-			<nav>
-  <ul class="menu">
-  				<!-- ../ retorna uma pasta anterior-->
+		<nav>
+			<ul class="menu">
+				<!-- ../ retorna uma pasta anterior-->
 
-		<li><a href="./TransferenciaCadastrar">Cadastrar Transferencia</a></li>
-		<li><a href="./TransferenciaConsulta.php">Consultar Transferencia</a></li>
-	  		<li><a href="#">Alterar dados da transferencia</a>
-			</li>
-		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
-</ul>
-</nav>
+				<li><a href="./TransferenciaCadastrar.php">Cadastrar Transferencia</a></li>
+				<li><a href="./TransferenciaConsulta.php">Consultar Transferencia</a></li>
+				<li><a href="#">Alterar dados da transferencia</a></li>
+				<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
+			</ul>
+		</nav>
 	</header>
 
 <?php
 $erro = null;
 $valido = false;
-include ('./FileJogCrud.php');
-$Robinho = new JogadorCrude ();
+include ('./TransferenciaCrud.php');
+$PeleMilanBarcelona = new Transferencia_Crude ();
 
 // resposável por editar os dados carregados do else
 if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
 	
 	$campos = array (
-			$_POST ["posicao"],
-			$_POST ["txtNomeJogador"],
-			$_POST ["dataNascimento"],
 			$_POST ["numeroCamisa"],
-			$_POST ["nomeEquipe"] 
+			$_POST ["NomeEquipeAntiga"],
+			$_POST ["nomeEquipeFutura"] 
 	);
-	
-	$Robinho->alterarDadosJogador ( $primaryKey, $campos );
+	echo $campos [0] . " " . $campos [1] . " " . $campos [2] . " " . $primaryKey [0];
+	$PeleMilanBarcelona->alterarDadosTransferencia ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["camisa"],
-			$_REQUEST ["nomeEquipe"] 
+			$_REQUEST ["id"] 
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
-	$Robinho->consultarJogador ( $primaryKey );
+	$PeleMilanBarcelona->consultarTransferencia ( $primaryKey );
 }
 ?>
-
-
-
 <body>
 
 	<!-- estrutura fundamental por passar a primary key para o if-->
@@ -79,12 +72,12 @@ else {
 	</h1>
 	<form id="formularioInter" name="tabelaJogador" method="post"
 		action="?validar=true">
-		
+
 		<!-- Campo Numero da Camisa -->
-		 <label><?php echo(utf8_encode('Número da camisa'))?></label>
-		<input type="number" name="numeroCamisa"
+		<label><?php echo(utf8_encode('Número da camisa'))?></label> <input
+			type="number" name="numeroCamisa"
 			<?php if(isset($_POST ["numeroCamisa"])){echo "value='".$_POST ["numeroCamisa"]."'";}?>><br>
-		
+
 		<div class="retiraQuebraDeLinha">
 			<label>Nome da Equipe:</label>
 			<!-- required="required"->exige o preenchimento -->
@@ -92,8 +85,8 @@ else {
 				placeholder="Digite aqui o nome da equipe..."
 				<?php if(isset($_POST ["NomeEquipeAntiga"])){echo "value='".$_POST ["NomeEquipeAntiga"]."'";}?>><br>
 		</div>
-		
-				<div class="retiraQuebraDeLinha">
+
+		<div class="retiraQuebraDeLinha">
 			<label>Nome da Equipe Futura:</label>
 			<!-- required="required"->exige o preenchimento -->
 			<input type="text" required="required" name="nomeEquipeFutura"
@@ -109,17 +102,13 @@ else {
 		<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 		<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["ID"] ))
 				// nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["ID"];
-			else
-				// nomes dos campos desta tabela
-				echo $_POST ["numeroCamisa"] . "*" . $_POST ["nomeEquipe"] ;
+				echo $_REQUEST ["id"];
 			?>">
 	</form>
 
 
-	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./TransferenciaConsulta.php">Consultar Transferencias</a>
 	<footer class="footer">
 		<img class="footer" src="../utilitarios/figuras/rodape.png"
 			alt="rodape">

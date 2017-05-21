@@ -47,7 +47,7 @@ if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for nul
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
 	$campos = array (
 			$_POST ["txtNomeEquipe"],
-			$_POST ["estadoCampo"],
+			$_POST ["campoEstado"],
 			$_POST ["nomeEstadio"],
 			$_POST ["nomeTecnico"] 
 	);
@@ -86,12 +86,12 @@ else {
 		<!-- Campo Estado: -->
 		<label><?php echo(utf8_encode('Estado:'))?></label>
 		<!--  -->
-		<select name="estadoCampo">
+		<select name="campoEstado">
 
 			<!-- Opção 1: -->
 			<option
 				<?php
-				if (isset ( $_POST ["estadoCampo"] ) && $_POST ["estadoCampo"] == "Minas Gerais") {
+				if (isset ( $_POST ["campoEstado"] ) && $_POST ["campoEstado"] == "Minas Gerais") {
 					echo "selected";
 				}
 				?>>Minas Gerais</option>
@@ -99,7 +99,7 @@ else {
 			<!-- Opção 2: -->
 			<option
 				<?php
-				if (isset ( $_POST ["estadoCampo"] ) && $_POST ["estadoCampo"] == "São Paulo") {
+				if (isset ( $_POST ["campoEstado"] ) && $_POST ["campoEstado"] == "São Paulo") {
 					echo "selected";
 				}
 				?>><?php echo utf8_encode("São Paulo");?></option>
@@ -107,7 +107,7 @@ else {
 			<!-- Opção 3: -->
 			<option
 				<?php
-				if (isset ( $_POST ["estadoCampo"] ) && $_POST ["estadoCampo"] == "Goias") {
+				if (isset ( $_POST ["campoEstado"] ) && $_POST ["campoEstado"] == "Goias") {
 					echo "selected";
 				}
 				?>>Goias</option>
