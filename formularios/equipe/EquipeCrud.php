@@ -92,7 +92,7 @@ class ClasseEquipeCrude extends ConectaAoMySql{
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
 				$_POST ["txtNomeEquipe"] = $registro->Nome;
-				$_POST ["estadoCampo"] = $registro->Estado;
+				$_POST["campoEstado"] = $registro->Estado;
 				$_POST ["nomeEstadio"] = $registro->NomeEstadio;
 				$_POST ["nomeTecnico"] = $registro->NomeTecnico;
 			} else

@@ -27,9 +27,12 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$NomeEquipe = $_POST ["txtNomeEquipe"];
 	$nomeCompeticao = $_POST ["nomeCompeticao"];
 	$pontuacao = $_POST ["pontuacao"];
+	$golsFavor = $_POST["golsFavor"];
+	$golsContra = $_POST["golsContra"];
 	
 	$brasileiraoCruzeiro->inserirCompeticaoEquipe ( $posicaoCampeonato, $NomeEquipe, 
-			$nomeCompeticao, $pontuacao );
+			$nomeCompeticao, $pontuacao, $golsFavor,$golsContra);
+	
 } else {
 	if (isset ( $erro )) {
 	}
@@ -76,7 +79,8 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 				name="txtNomeEquipe" placeholder="Digite aqui o nome da equipe..."><br>
 			<br>
 		</div>
-
+		
+		
 		<br>
 		<!-- Campo Nome da Competicao -->
 		<div id="retiraQuebraDeLinha">
@@ -93,15 +97,20 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 			<input id="inputs" type="text" required="required" name="pontuacao"
 				placeholder=<?php echo utf8_encode("Digite a pontuação")?>><br>
 		</div>
-		<br>
 
+		<br> <label><?php echo(utf8_encode("Gols a Favor:"))?></label>
+		<input id="inputs" type="number" name="golsFavor"><br>
+		
+		<br> <label><?php echo(utf8_encode("Gols Contra:"))?></label>
+		<input id="inputs" type="number" name="golsContra"><br>
+		
 		<!--BOTOES PARA ENVIAR-->
 		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input
 			id="botaoEnviar" type="submit" value="Enviar os dados">
 	</form>
 
 	<br>
-	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./CompeticaoConsulta.php">Consultar CompeticaoEquipe</a>
 	<footer class="footer">
 		<img class="footer" src="../utilitarios/figuras/rodape.png"
 			alt="rodape">

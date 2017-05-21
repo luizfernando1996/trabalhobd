@@ -48,7 +48,7 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 				
 				echo "<td>" . "<a href='?excluir=true
                 &NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
+				echo "<td>" . "<a href='./CompeticaoUpdate.php?alterar=true
 				&NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";
@@ -77,19 +77,18 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 		
 		$rs->bindParam ( 1, $primaryKey [0] );
 		$rs->bindParam ( 2, $primaryKey [1] );
-		
 		if ($rs->execute ()) {
 			// rs->fetch captura cada linha da tabela, isto é, cada objeto jogador da tabela
 			// e manda para $registro
 			if ($registro = $rs->fetch ( PDO::FETCH_OBJ )) {
 				// txtNomeJogador é o nome no formulario
 				// enquanto $registro->Nome é o nome da coluna no banco
-				$_POST ["posicaoCampeonato"] = $registro->Posicao;
-				$_POST ["txtNomeEquipe"] = $registro->NomeEquipe;
+				$_POST ["txtPosicao"] = $registro->Posicao;
+				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
 				$_POST ["nomeCompeticao"] = $registro->NomeDaCompeticao;
 				$_POST ["pontuacao"] = $registro->Pontuacao;
-				$_POST [""] = $registro->	GolsFavor;
-				$_POST [""] = $registro->	GolsContra;
+				$_POST ["golsFavor"] = $registro->GolsFavor;
+				$_POST ["golsContra"] = $registro->GolsContra;
 			} else
 				$erro = "Registro não encontrado";
 		} else
@@ -113,7 +112,9 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 		$stmt->bindParam ( 4, $campos [3] );
 		$stmt->bindParam ( 5, $campos [4] );
 		$stmt->bindParam ( 6, $campos [5] );
-		
+		for($j=0;$j<6;$j++){
+			echo $campos[j]+" ";
+		}
 		$stmt->bindParam ( 7, $primaryKey [0] );
 		$stmt->bindParam ( 8, $primaryKey [1] );
 		

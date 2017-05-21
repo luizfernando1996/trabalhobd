@@ -111,7 +111,7 @@ body {
 						<li><a href="./jogador/JogadorCadastrar.php">Jogador</a></li>
 						<li><a href="./partida/Partida.php">Partida</a></li>
 						<li><a href="./tecnico/Tecnico.php">Tecnico</a></li>
-						<li><a href="./transferencia/TransferenciaCadastrar.php">Transferencias</a></li>
+						<li><a href="./transferencia/TransferenciaCadastrar.php">Transferencia</a></li>
 					</ul>
 			
 			</ul>

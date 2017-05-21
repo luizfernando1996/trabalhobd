@@ -35,16 +35,13 @@ class Transferencia_Crude extends ConectaAoMySql {
 				echo "<td>" . $registro->Camisa. "</td>";
 				echo "<td>" . $registro->NomeEquipe. "</td>";
 				echo "<td>" . $registro->EquipeTransfereJogadorcol. "</td>";
-				echo "<td>" . $registro->ID. "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
 						$registro->ID
 				);
 				
-				echo "<td>" . "<a href='?excluir=true
-                &id=" . $primaryKey [0]  ."'>Deletar</a>" . "</td>";
-				echo "<td>" . "<a href='./jogadorUpdate.php?alterar=true
-				&id=" . $primaryKey [0] . "'>Alterar</a>", "</td>";
+				echo "<td>" . "<a href='?excluir=true&id=" . $primaryKey [0]  ."'>Deletar</a>" . "</td>";
+				echo "<td>" . "<a href='./TransferenciaUpdate.php?alterar=true&id=" . $primaryKey [0] . "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";
 			}
@@ -65,7 +62,7 @@ class Transferencia_Crude extends ConectaAoMySql {
 		} else
 			echo "Sucesso : transferencia removida com sucesso <br><br>";
 	}
-	public function consultarJogador($primaryKey) {
+	public function consultarTransferencia($primaryKey) {
 		$sql = "SELECT * FROM transferencias WHERE ID= ? ";
 		$rs = $this->PDO->prepare ( $sql );
 		
@@ -85,11 +82,11 @@ class Transferencia_Crude extends ConectaAoMySql {
 		} else
 			$erro = "Falha na captura do registro";
 	}
-	public function alterarDadosJogador($primaryKey, $campos) {
+	public function alterarDadosTransferencia($primaryKey, $campos) {
 		$sql = "UPDATE transferencias SET 
 		Camisa = ?, 
 		NomeEquipe = ?, 
-		EquipeTransfereJogadorcol = ?, 
+		EquipeTransfereJogadorcol = ? 
 		WHERE ID = ? ";
 		
 		$stmt = $this->PDO->prepare ( $sql );

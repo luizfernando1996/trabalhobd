@@ -74,7 +74,7 @@ $Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Minas Gerais") {
 					echo "selected";
 				}
-				?>><?php echo(utf8_encode("Minas Gerais")); ?>	</option>
+				?>>Minas Gerais</option>
 
 			<!-- Opção 2: -->
 			<option
@@ -87,10 +87,10 @@ $Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 			<!-- Opção 3: -->
 			<option
 				<?php
-				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Goias") {
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Goias") {
 					echo "selected";
 				}
-				?>>Goias(a)</option>
+				?>>Goias</option>
 
 
 		</select> <br> <!-- br quebra linha -->

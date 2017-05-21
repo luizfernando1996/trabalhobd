@@ -39,31 +39,35 @@
 <?php
 $erro = null;
 $valido = false;
-include ('./FileJogCrud.php');
-$Robinho = new JogadorCrude ();
+include ('./CompeticaoEquipeCrud.php');
+$brasileiraoCruzeiro = new CompeticaoEquipeClasseCrude();
 
 // resposável por editar os dados carregados do else
 if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = explode ( "*", $_POST ["primaryKey"] );
 	
 	$campos = array (
-			$_POST ["posicao"],
-			$_POST ["txtNomeJogador"],
-			$_POST ["dataNascimento"],
-			$_POST ["numeroCamisa"],
-			$_POST ["nomeEquipe"] 
+			$_POST ["txtPosicao"],
+			$_POST ["nomeEquipe"],
+			$_POST ["nomeCompeticao"],
+			$_POST ["pontuacao"],
+			$_POST ["golsFavor"] ,
+			$_POST ["golsContra"] 
 	);
-	
-	$Robinho->alterarDadosJogador ( $primaryKey, $campos );
+	for($j=0;$j<6;$j++){
+		echo $campos[j]+" ";
+	}
+	echo "<br>";
+	$brasileiraoCruzeiro->alterarCompeticaoEquipe( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["camisa"],
-			$_REQUEST ["nomeEquipe"] 
+			$_REQUEST ["NomeEquipe"],
+			$_REQUEST ["NomeDaCompeticao"] 
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
-	$Robinho->consultarJogador ( $primaryKey );
+	$brasileiraoCruzeiro->consultarCompeticaoEquipe($primaryKey );
 }
 ?>
 
@@ -75,92 +79,19 @@ else {
 
 
 	<h1 id="tiloDoForm">
-		<pre>     Editar dados de Jogadores</pre>
+		<pre>     <?php echo utf8_encode("Editar dados de Competição Equipe")?></pre>
 	</h1>
 	<form id="formularioInter" name="tabelaJogador" method="post"
 		action="?validar=true">
-		<!-- Campo Nome -->
+		
+		<!-- Campo Posicao -->
 		<div class="retiraQuebraDeLinha">
-			<label>Nome:</label>
+			<label>Posicao:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="txtNomeJogador"
-				placeholder="Digite aqui o seu nome..."
-				<?php if(isset($_POST ["txtNomeJogador"])){echo "value='".$_POST ["txtNomeJogador"]."'";}?>><br>
+			<input type="text" required="required" name="txtPosicao"
+				placeholder=<?php echo utf8_encode("Digite aqui a posição...")?>
+				<?php if(isset($_POST ["txtPosicao"])){echo "value='".$_POST ["txtPosicao"]."'";}?>><br>
 		</div>
-		<!-- Campo Data Nascimento -->
-		<label>Digite sua data de nascimento:</label> <input type="text"
-			id="calendario" placeholder="Selecione a data ao lado"
-			name="dataNascimento"
-			<?php if(isset($_POST ["dataNascimento"])){echo "value='".$_POST ["dataNascimento"]."'";}?>><br>
-
-		<!-- Script do calendario abaixo -->
-		<script>
-$(function() {
-	
-	//Apresenta o calendario
-    $( "#calendario" ).datepicker({
-        
-    	//Apresenta o icone do calendario
-        showOn: "button",
-        buttonImage: "../utilitarios/mes/calendar.png",
-        buttonImageOnly: true,
-        showButtonPanel:true,
-        
-        //Permite que o usuario selecione o mes e o ano
-        changeMonth: true,
-        changeYear: true,
-        
-        //Formata a data
-        dateFormat: 'yy-mm-dd',
-        
-       //Traduzindo o calendario
-       dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-       dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-       dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-       monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-       
-       //Apresenta os 31 dias do mes mais alguns dias do proximo més
-       showOtherMonths: true,
-       selectOtherMonths: true
-    });    
-});
-</script>
-
-
-		<!-- Campo Posicao: -->
-		<label><?php echo(utf8_encode('Posição:'))?></label>
-		<!--  -->
-		<select name="posicao">
-
-			<!-- Opção 1: -->
-			<option
-				<?php
-				if (isset ( $_POST ["posicao"] ) && $_POST ["posicao"] == "Atacante") {
-					echo "selected";
-				}
-				?>>Atacante</option>
-
-			<!-- Opção 2: -->
-			<option
-				<?php
-				if (isset ( $_POST ["posicao"] ) && $_POST ["posicao"] == "Zagueiro(a)") {
-					echo "selected";
-				}
-				?>>Zagueiro(a)</option>
-
-			<!-- Opção 3: -->
-			<option
-				<?php
-				if (isset ( $_POST ['posicao'] ) && $_POST ['posicao'] == "Goleiro(a)") {
-					echo "selected";
-				}
-				?>>Goleiro(a)</option>
-
-
-		</select> <br> <label><?php echo(utf8_encode('Número da camisa'))?></label>
-		<input type="number" name="numeroCamisa"
-			<?php if(isset($_POST ["numeroCamisa"])){echo "value='".$_POST ["numeroCamisa"]."'";}?>><br>
 
 		<!-- Campo Nome da Equipe -->
 		<div id="retiraQuebraDeLinha">
@@ -169,9 +100,29 @@ $(function() {
 			<input type="text" required="required" name="nomeEquipe"
 				placeholder="Digite o nome da equipe..."
 				<?php if(isset($_POST ["nomeEquipe"])){echo "value='".$_POST ["nomeEquipe"]."'";}?>><br>
+				
+			<label><?php echo utf8_encode("Nome da competição:")?></label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text" required="required" name="nomeCompeticao"
+				<?php if(isset($_POST ["nomeCompeticao"])){echo "value='".$_POST ["nomeCompeticao"]."'";}?>><br>
+				
+				
+				<label><?php echo utf8_encode("Pontuação:")?></label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text" required="required" name="pontuacao"
+				<?php if(isset($_POST ["pontuacao"])){echo "value='".$_POST ["pontuacao"]."'";}?>><br>
 		</div>
-		<br>
-
+		
+		
+		<br> <label><?php echo(utf8_encode('Gols a favor'))?></label>
+		<input type="number" name="golsFavor"
+			<?php if(isset($_POST ["golsFavor"])){echo "value='".$_POST ["golsFavor"]."'";}?>><br>
+			
+		
+		<br> <label><?php echo(utf8_encode('Gols contra'))?></label>
+		<input type="number" name="golsContra"
+			<?php if(isset($_POST ["golsContra"])){echo "value='".$_POST ["golsContra"]."'";}?>><br>
+				
 		<!--BOTOES PARA ENVIAR-->
 		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input
 			id="botaoEnviar" type="submit" value="Alterar os dados">
@@ -181,15 +132,16 @@ $(function() {
 			value="<?php
 			if (isset ( $_REQUEST ["camisa"] ) && isset ( $_REQUEST ["nomeEquipe"] ))
 				// nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["camisa"] . "*" . $_REQUEST ["nomeEquipe"];
+				echo $_REQUEST ["NomeEquipe"] . "*" . $_REQUEST ["NomeDaCompeticao"];
 			else
 				// nomes dos campos desta tabela
-				echo $_POST ["numeroCamisa"] . "*" . $_POST ["nomeEquipe"] ;
+				echo $_POST ["nomeEquipe"] . "*" . $_POST ["nomeCompeticao"] ;
 			?>">
+				
 	</form>
 
 
-	<a id="botao" href="./jogadorConsulta.php">Consultar Jogadores</a>
+	<a id="botao" href="./CompeticaoConsulta.php">Consultar Jogadores</a>
 	<footer class="footer">
 		<img class="footer" src="../utilitarios/figuras/rodape.png"
 			alt="rodape">
