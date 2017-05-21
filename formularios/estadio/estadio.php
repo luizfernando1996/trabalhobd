@@ -90,26 +90,222 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 			<!-- Opção 1: -->
 			<option
 				<?php
-				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Minas Gerais") {
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == "Acre") {
 					echo "selected";
 				}
-				?>>Minas Gerais</option>
+				?>>Acre</option>
 
 			<!-- Opção 2: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Alagoas") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Alagoas")?></option>
+
+			<!-- Opção 3: -->
+			<option
+				<?php
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Amapa") {
+					echo "selected";
+				}
+				?>>Amapa</option>
+				
+				<!-- Opção 4: -->
+			<option
+				<?php
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Amazonas") {
+					echo "selected";
+				}
+				?>>Amazonas</option>
+				
+				<!-- Opção 5: -->
+			<option
+				<?php
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Bahia") {
+					echo "selected";
+				}
+				?>>Bahia</option>
+				
+				<!-- Opção 6: -->
+			<option
+				<?php
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Ceara") {
+					echo "selected";
+				}
+				?>>Ceara</option>
+				
+				<!-- Opção 7: -->
+			<option
+				<?php
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Distrito Federal") {
+					echo "selected";
+				}
+				?>>Distrito Federal</option>
+				
+				
+				<!-- Opção 8: -->
+			<option
+				<?php
+				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Espirito Santo") {
+					echo "selected";
+				}
+				?>>Espirito Santo</option>
+				
+			<!-- Opção 9: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Goiás") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Goiás")?></option>
+			
+				
+				<!-- Opção 10: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Maranhão") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Maranhão")?></option>
+				
+				<!-- Opção 11: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Mato Grosso") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Mato Grosso")?></option>
+				
+				<!-- Opção 12: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Mato Grosso do Sul") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Mato Grosso do Sul")?></option>
+				
+				<!-- Opção 13: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Minas Gerais") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Minas Gerais")?></option>
+				
+				<!-- Opção 14: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Pará") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Pará")?></option>
+				
+				<!-- Opção 15: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Paraíba") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Paraíba")?></option>
+				
+				
+				<!-- Opção 16: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Paraná") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Paraná")?></option>
+				
+				<!-- Opção 17: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Pernambuco") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Pernambuco")?></option>
+				
+				<!-- Opção 18: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Piauí") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Piauí")?></option>
+				
+				
+				<!-- Opção 19: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Rio de Janeiro") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Rio de Janeiro")?></option>
+				
+				<!-- Opção 20: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Rio Grande do Norte") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Rio Grande do Norte")?></option>
+				
+				<!-- Opção 21: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Rio Grande do Sul") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Rio Grande do Sul")?></option>
+				
+				<!-- Opção 22: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Rondônia") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Rondônia")?></option>
+				
+				<!-- Opção 23: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Roraima") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Roraima")?></option>
+				
+				<!-- Opção 24: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Santa Catarina") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Santa Catarina")?></option>
+				
+				<!-- Opção 25: -->
 			<option
 				<?php
 				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("São Paulo") ){
 					echo "selected";
 				}
 				?>><?php echo utf8_encode("São Paulo")?></option>
-
-			<!-- Opção 3: -->
+				
+				<!-- Opção 26: -->
 			<option
 				<?php
-				if (isset ( $_POST ['estado'] ) && $_POST ['estado'] == "Bahia") {
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Sergipe") ){
 					echo "selected";
 				}
-				?>>Bahia(a)</option>
+				?>><?php echo utf8_encode("Sergipe")?></option>
+				
+				<!-- Opção 27: -->
+			<option
+				<?php
+				if (isset ( $_POST ["estado"] ) && $_POST ["estado"] == utf8_encode("Tocantins") ){
+					echo "selected";
+				}
+				?>><?php echo utf8_encode("Tocantins")?></option>
 
 		</select> 
 		<br>
