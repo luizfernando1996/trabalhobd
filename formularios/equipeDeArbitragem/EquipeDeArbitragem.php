@@ -105,9 +105,8 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		
 		<!-- Campo Delegado-->
 			<div class="retiraQuebraDeLinha">
-			<label>Delegado:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtDelegado"
+			<label>Delegado:</label>			
+			<input id="inputs" type="text"  name="txtDelegado"
 				placeholder="Digite o nome do delegado.."><br>
 				<br>
 		</div>
