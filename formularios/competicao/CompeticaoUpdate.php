@@ -59,9 +59,7 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["posicao"],
-			$_REQUEST ["serie"],
-			$_REQUEST ["ano"]			
+			$_REQUEST ["id"],
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
@@ -168,12 +166,12 @@ else {
 			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 			<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["nome"] ) && isset ( $_REQUEST ["serie"] ) && isset ( $_REQUEST ["ano"] ))
+			if (isset ( $_REQUEST ["id"] ))
 				//nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["nome"] . "*" . $_REQUEST ["serie"] . "*" . $_REQUEST ["ano"];
+				echo $_REQUEST ["id"];
 				else
 					//nomes dos campos desta tabela
-					echo $_POST ["txtNome"] . "*" . $_POST["txtSerie"] . "*" . $_POST["txtAno"];
+					echo $_POST ["id"];
 			?>">
 	</form>
 

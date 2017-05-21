@@ -44,6 +44,7 @@
 			<th>NomeEntidade</th>
 			<th>QuantidadeDeJogos</th>
 			<th>Ano</th>
+			<th>Id</th>
 			<th>Deletar</th>			
 			<th>Editar</th>		
 		</tr>
@@ -52,7 +53,7 @@ include ('./CompeticaoCRUD.php');
 $ler = new CompeticaoCRUDClasse ();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["nome"],$_REQUEST["serie"],$_REQUEST["ano"]);
+	$primaryKey=array($_REQUEST["id"]);
 	$ler->deletarCompeticao($primaryKey);
 }
 $ler->lerAuxiliar();

@@ -40,7 +40,7 @@
 			<th><?php echo utf8_encode("Posição")?></th>
 			<!-- Th define o titulo da coluna -->
 			<th>Nome da Equipe</th>
-			<th><?php echo utf8_encode("Nome da Competição");?></th>
+			<th><?php echo utf8_encode("ID da Competição");?></th>
 			<th><?php echo utf8_encode("Pontuação")?></th>
 			<th>Gols Favor</th>
 			<th>Gols Contra</th>
@@ -53,7 +53,7 @@ include ('./CompeticaoEquipeCrud.php');
 $ler = new CompeticaoEquipeClasseCrude();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["NomeEquipe"],$_REQUEST["NomeDaCompeticao"]);
+	$primaryKey=array($_REQUEST["NomeEquipe"],$_REQUEST["IdDaCompeticao"]);
 	$ler->deletarCompeticaoEquipe($primaryKey);
 }
 $ler->lerCompeticaoEquipe();

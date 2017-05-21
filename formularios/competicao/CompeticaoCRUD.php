@@ -1,13 +1,12 @@
 
 <?php
-//Não consegui não incluir todo o caminho do arquivo
-
+// Não consegui não incluir todo o caminho do arquivo
 include ('../FileMySQL.php');
-class CompeticaoCRUDClasse extends ConectaAoMySql{
+class CompeticaoCRUDClasse extends ConectaAoMySql {
 	private $primaryKey;
-	
-	public function inserirCompeticao($nome, $abrangencia, $sistemaPontuacao, $serie, $nomeEntidade, $quantidadeDeJogos, $ano ){
-		echo $nome. " ".$abrangencia. " ".$sistemaPontuacao . " " . $serie . " " . $nomeEntidade . " " . $quantidadeDeJogos. " " .$ano;
+
+	public function inserirCompeticao($nome, $abrangencia, $sistemaPontuacao, $serie, $nomeEntidade, $quantidadeDeJogos, $ano) {
+		echo $nome . " " . $abrangencia . " " . $sistemaPontuacao . " " . $serie . " " . $nomeEntidade . " " . $quantidadeDeJogos . " " . $ano;
 		
 		$sql = "INSERT INTO competicao
                 (Nome, Abrangencia, SistemaPontuacao, Serie, NomeEntidade, QuantidadeDeJogos, Ano)
@@ -17,11 +16,11 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 		
 		$stmt->bindParam ( 1, $nome );
 		$stmt->bindParam ( 2, $abrangencia );
-		$stmt->bindParam ( 3, $sistemaPontuacao);
-		$stmt->bindParam ( 4, $serie);
-		$stmt->bindParam ( 5, $nomeEntidade);
-		$stmt->bindParam ( 6, $quantidadeDeJogos);
-		$stmt->bindParam ( 7, $ano);
+		$stmt->bindParam ( 3, $sistemaPontuacao );
+		$stmt->bindParam ( 4, $serie );
+		$stmt->bindParam ( 5, $nomeEntidade );
+		$stmt->bindParam ( 6, $quantidadeDeJogos );
+		$stmt->bindParam ( 7, $ano );
 		$stmt->execute ();
 		
 		if ($stmt->errorCode () != "00000") {
@@ -31,7 +30,7 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 		}
 	}
 	public function lerAuxiliar() {
-		// PDO é o objeto da classe base
+			// PDO é o objeto da classe base
 		$sql = "SELECT * FROM competicao";
 		// $rs-->result set
 		$rs = $this->PDO->prepare ( $sql );
@@ -48,22 +47,17 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 				echo "<td>" . $registro->NomeEntidade . "</td>";
 				echo "<td>" . $registro->QuantidadeDeJogos . "</td>";
 				echo "<td>" . $registro->Ano . "</td>";
+				echo "<td>" . $registro->ID . "</td>";
 				
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
-						$registro->Nome,
-						$registro->Serie,
-						$registro->Ano
+						$registro->ID 
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &nome=" . $primaryKey [0] .
-                "&serie=" . $primaryKey [1] .
-                "&ano=" . $primaryKey [2] . "'>Deletar</a>" . "</td>";
+                &id=" . $primaryKey [0] . "'>Deletar</a>" . "</td>";
 				echo "<td>" . "<a href='./CompeticaoUpdate.php?alterar=true
-				&nome=" . $primaryKey [0] .
-				"&serie=" . $primaryKey [1] .
-				"&ano=" . $primaryKey [2] .  "'>Alterar</a>", "</td>";
+				&id=" . $primaryKey [0] . "'>Alterar</a>". "</td>";
 				
 				echo "</tr>";
 			}
@@ -72,27 +66,23 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 		}
 	}
 	public function deletarCompeticao($primaryKey) {
-		$sql = ("DELETE FROM competicao where Nome=? && Serie = ? && Ano = ?");
+		$sql = ("DELETE FROM competicao where ID=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );
-		$stmt->bindParam ( 2, $primaryKey [1] );
-		$stmt->bindParam ( 3, $primaryKey [2] );
 		$stmt->execute ();
 		
 		if ($stmt->errorCode () != "00000") {
 			echo "Erro código " . $stmt->errorCode () . ":";
 			echo implode ( ",", $stmt->errorInfo () );
 		} else
-			echo "Sucesso : competicao removida com sucesso <br><br>";
+			echo "Sucesso  competicao removida com sucesso <br><br>";
 	}
-	public function consultarCompeticao ($primaryKey) {
-		$sql = "SELECT * FROM competicao WHERE Nome = ? && Serie = ? && Ano = ?";
+	public function consultarCompeticao($primaryKey) {
+		$sql = "SELECT * FROM competicao WHERE ID = ?";
 		$rs = $this->PDO->prepare ( $sql );
 		
-		$rs->bindParam ( 1, $primaryKey [0]);
-		$rs->bindParam ( 2, $primaryKey [1]);
-		$rs->bindParam ( 3, $primaryKey [2]);
+		$rs->bindParam ( 1, $primaryKey [0] );
 		
 		if ($rs->execute ()) {
 			// rs->fetch captura cada linha da tabela, isto é, cada objeto jogador da tabela
@@ -107,14 +97,12 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 				$_POST ["txtNomeEntidade"] = $registro->NomeEntidade;
 				$_POST ["txtQuantidadeDeJogos"] = $registro->QuantidadeDeJogos;
 				$_POST ["txtAno"] = $registro->Ano;
-				
 			} else
 				$erro = "Registro não encontrado";
 		} else
 			$erro = "Falha na captura do registro";
 	}
-	public function alterarDadosCompeticao($primaryKey,$campos){
-		
+	public function alterarDadosCompeticao($primaryKey, $campos) {
 		$sql = "UPDATE competicao SET
 		Nome = ?,
 		Abrangencia = ?,
@@ -123,30 +111,28 @@ class CompeticaoCRUDClasse extends ConectaAoMySql{
 		NomeEntidade = ?,
 		QuantidadeDeJogos = ?,
 		Ano = ?
-		WHERE Nome = ? && Serie = ? && Ano = ?";
-		
+		WHERE ID = ?";
+
 		$stmt = $this->PDO->prepare ( $sql );
 		
-		$stmt->bindParam ( 1, $campos[0] );
-		$stmt->bindParam ( 2, $campos[1] );
-		$stmt->bindParam ( 3, $campos[2] );
-		$stmt->bindParam ( 4, $campos[3] );
-		$stmt->bindParam ( 5, $campos[4] );
-		$stmt->bindParam ( 6, $campos[5] );
-		$stmt->bindParam ( 7, $campos[6] );
-		$stmt->bindParam ( 8, $primaryKey[0]);
-		$stmt->bindParam ( 9, $primaryKey[1]);
-		$stmt->bindParam ( 10, $primaryKey[2]);
+		$stmt->bindParam ( 1, $campos [0] );
+		$stmt->bindParam ( 2, $campos [1] );
+		$stmt->bindParam ( 3, $campos [2] );
+		$stmt->bindParam ( 4, $campos [3] );
+		$stmt->bindParam ( 5, $campos [4] );
+		$stmt->bindParam ( 6, $campos [5] );
+		$stmt->bindParam ( 7, $campos [6] );
+		$stmt->bindParam ( 8, $primaryKey [0] );
+		
 		$stmt->execute ();
 		
-		if($stmt->errorCode()!="00000") {
+		if ($stmt->errorCode () != "00000") {
 			$valido = false;
 			$erro = "Erro código " . $stmt->errorCode () . ": ";
 			$erro .= implode ( ", ", $stmt->errorInfo () );
-		}
-		
+		} 
 		else
-			echo utf8_encode("Alteração realizada com sucesso");
+			echo utf8_encode ( "Alteração realizada com sucesso" );
 	}
 }
 

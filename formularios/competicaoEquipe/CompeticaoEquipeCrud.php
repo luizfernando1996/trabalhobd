@@ -4,7 +4,7 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 	private $primaryKey;
 	public function inserirCompeticaoEquipe($posicao, $NomeEquipe, $NomeDaCompeticao, $Pontuacao, $GolsFavor, $golsContra) {
 		$sql = "INSERT INTO competicaoequipe
-                (Posicao, NomeEquipe, NomeDaCompeticao, Pontuacao, GolsFavor,GolsContra)
+                (Posicao, NomeEquipe, IdDaCompeticao, Pontuacao, GolsFavor,GolsContra)
                 VALUES (?, ?, ?, ?,?,?)";
 		
 		$stmt = $this->PDO->prepare ( $sql );
@@ -36,20 +36,20 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 				// nomes das colunas do banco
 				echo "<td>" . $registro->Posicao . "</td>";
 				echo "<td>" . $registro->NomeEquipe . "</td>";
-				echo "<td>" . $registro->NomeDaCompeticao . "</td>";
+				echo "<td>" . $registro->IdDaCompeticao. "</td>";
 				echo "<td>" . $registro->Pontuacao . "</td>";
 				echo "<td>" . $registro->GolsFavor . "</td>";
 				echo "<td>" . $registro->GolsContra . "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				$primaryKey = array (
 						$registro->NomeEquipe,
-						$registro->NomeDaCompeticao 
+						$registro->IdDaCompeticao
 				);
 				
 				echo "<td>" . "<a href='?excluir=true
-                &NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
+                &NomeEquipe=" . $primaryKey [0] . "&IdDaCompeticao=" . $primaryKey [1] . "'>Deletar</a>" . "</td>";
 				echo "<td>" . "<a href='./CompeticaoUpdate.php?alterar=true
-				&NomeEquipe=" . $primaryKey [0] . "&NomeDaCompeticao=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
+				&NomeEquipe=" . $primaryKey [0] . "&IdDaCompeticao=" . $primaryKey [1] . "'>Alterar</a>", "</td>";
 				
 				echo "</tr>";
 			}
@@ -58,7 +58,7 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 		}
 	}
 	public function deletarCompeticaoEquipe($primaryKey) {
-		$sql = ("DELETE FROM competicaoequipe where NomeEquipe=? && NomeDaCompeticao=?");
+		$sql = ("DELETE FROM competicaoequipe where NomeEquipe=? && IdDaCompeticao=?");
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		$stmt->bindParam ( 1, $primaryKey [0] );
@@ -72,7 +72,7 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 			echo "Sucesso : equipe da competição removida com sucesso <br><br>";
 	}
 	public function consultarCompeticaoEquipe($primaryKey) {
-		$sql = "SELECT * FROM competicaoequipe WHERE NomeEquipe	= ? && NomeDaCompeticao	= ?";
+		$sql = "SELECT * FROM competicaoequipe WHERE NomeEquipe	= ? && IdDaCompeticao= ?";
 		$rs = $this->PDO->prepare ( $sql );
 		
 		$rs->bindParam ( 1, $primaryKey [0] );
@@ -85,7 +85,7 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 				// enquanto $registro->Nome é o nome da coluna no banco
 				$_POST ["txtPosicao"] = $registro->Posicao;
 				$_POST ["nomeEquipe"] = $registro->NomeEquipe;
-				$_POST ["nomeCompeticao"] = $registro->NomeDaCompeticao;
+				$_POST ["idcompeticao"] = $registro->IdDaCompeticao;
 				$_POST ["pontuacao"] = $registro->Pontuacao;
 				$_POST ["golsFavor"] = $registro->GolsFavor;
 				$_POST ["golsContra"] = $registro->GolsContra;
@@ -112,9 +112,6 @@ class CompeticaoEquipeClasseCrude extends ConectaAoMySql {
 		$stmt->bindParam ( 4, $campos [3] );
 		$stmt->bindParam ( 5, $campos [4] );
 		$stmt->bindParam ( 6, $campos [5] );
-		for($j=0;$j<6;$j++){
-			echo $campos[j]+" ";
-		}
 		$stmt->bindParam ( 7, $primaryKey [0] );
 		$stmt->bindParam ( 8, $primaryKey [1] );
 		

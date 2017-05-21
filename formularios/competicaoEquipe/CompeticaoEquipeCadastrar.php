@@ -84,7 +84,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		<br>
 		<!-- Campo Nome da Competicao -->
 		<div id="retiraQuebraDeLinha">
-			<label>Nome da competicao:</label>
+			<label><?php echo utf8_encode("ID da competição:");?></label>
 			<!-- required="required"->exige o preenchimento -->
 			<input id="inputs" type="text" required="required"
 				name="nomeCompeticao" placeholder="Digite o nome da competicao..."><br>

@@ -69,6 +69,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 		action="?validar=true">
 		
 		
+		
 		<!-- Campo IDEquipeDeArbitragem -->
 		<div class="retiraQuebraDeLinha">
 			<label>ID Equipe de Arbitragem:</label>
@@ -207,41 +208,15 @@ $(function() {
 		<br>
 		<br>
 		
-		<!-- Campo Nome da Competição -->
+		<!-- Campo ID da Competição -->
 		<br>
 			<div class="retiraQuebraDeLinha">
-			<label><?php echo utf8_encode("Competição:")?>:</label>
+			<label><?php echo utf8_encode(" ID Competição:")?>:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtNomeCompeticao"
-				placeholder="Digite o nome da competicao.."><br>
+			<input id="inputs" type="text" required="required" name="txtIdCompeticao"
+				placeholder="Digite o id da competicao.."><br>
 				<br>
 		</div>
-		
-		
-			<!-- Campo Ano da Competição -->
-		<br>
-			<div class="retiraQuebraDeLinha">
-			<label><?php echo utf8_encode(" Ano da Competição:")?>:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtAnoCompeticao"
-				placeholder="Digite o ano da Competicao.."><br>
-				<br>
-		</div>
-		
-		
-		<!-- Campo Serie da Competição -->
-		<br>
-			<div class="retiraQuebraDeLinha">
-			<label><?php echo utf8_encode(" Serie da Competição:")?>:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtSerieCompeticao"
-				placeholder="Digite a serie da Competicao.."><br>
-				<br>
-		</div>
-		
-		
-		
-		
 		
 		<!-- Campo Equipe Mandante -->
 			<div class="retiraQuebraDeLinha">
@@ -251,8 +226,6 @@ $(function() {
 				placeholder="Digite o nome da equipe mandante.."><br>
 				<br>
 		</div>
-		
-		
 		
 		<!-- Campo Equipe Visitante -->
 			<div class="retiraQuebraDeLinha">

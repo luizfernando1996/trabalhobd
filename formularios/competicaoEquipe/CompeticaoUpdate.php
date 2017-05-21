@@ -49,21 +49,17 @@ if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for nul
 	$campos = array (
 			$_POST ["txtPosicao"],
 			$_POST ["nomeEquipe"],
-			$_POST ["nomeCompeticao"],
+			$_POST ["idcompeticao"],
 			$_POST ["pontuacao"],
 			$_POST ["golsFavor"] ,
 			$_POST ["golsContra"] 
 	);
-	for($j=0;$j<6;$j++){
-		echo $campos[j]+" ";
-	}
-	echo "<br>";
 	$brasileiraoCruzeiro->alterarCompeticaoEquipe( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
 			$_REQUEST ["NomeEquipe"],
-			$_REQUEST ["NomeDaCompeticao"] 
+			$_REQUEST ["IdDaCompeticao"] 
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
@@ -101,10 +97,10 @@ else {
 				placeholder="Digite o nome da equipe..."
 				<?php if(isset($_POST ["nomeEquipe"])){echo "value='".$_POST ["nomeEquipe"]."'";}?>><br>
 				
-			<label><?php echo utf8_encode("Nome da competição:")?></label>
+			<label><?php echo utf8_encode("ID da competição:")?></label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="nomeCompeticao"
-				<?php if(isset($_POST ["nomeCompeticao"])){echo "value='".$_POST ["nomeCompeticao"]."'";}?>><br>
+			<input type="text" required="required" name="idcompeticao"
+				<?php if(isset($_POST ["idcompeticao"])){echo "value='".$_POST ["idcompeticao"]."'";}?>><br>
 				
 				
 				<label><?php echo utf8_encode("Pontuação:")?></label>
@@ -132,10 +128,10 @@ else {
 			value="<?php
 			if (isset ( $_REQUEST ["camisa"] ) && isset ( $_REQUEST ["nomeEquipe"] ))
 				// nome dos campos do método ler jogadores no crude
-				echo $_REQUEST ["NomeEquipe"] . "*" . $_REQUEST ["NomeDaCompeticao"];
+				echo $_REQUEST ["NomeEquipe"] . "*" . $_REQUEST ["idcompeticao"];
 			else
 				// nomes dos campos desta tabela
-				echo $_POST ["nomeEquipe"] . "*" . $_POST ["nomeCompeticao"] ;
+				echo $_POST ["nomeEquipe"] . "*" . $_POST ["idcompeticao"] ;
 			?>">
 				
 	</form>
