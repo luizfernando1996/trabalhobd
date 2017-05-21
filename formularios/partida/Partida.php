@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<Title>Cadastro de Partida:</Title>
+<Title>Cadastro de Partidas:</Title>
 
 
 <link rel="stylesheet"
