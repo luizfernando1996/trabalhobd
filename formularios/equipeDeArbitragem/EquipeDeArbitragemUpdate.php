@@ -135,7 +135,7 @@ else {
 		<div id="retiraQuebraDeLinha">
 			<label>Delegado:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="txtDelegado"
+			<input type="text"  name="txtDelegado"
 				placeholder="Digite o nome do delegado..."
 				<?php if(isset($_POST ["txtDelegado"])){echo "value='".$_POST ["txtDelegado"]."'";}?>><br>
 		</div>
