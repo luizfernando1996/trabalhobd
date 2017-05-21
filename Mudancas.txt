@@ -1,1 +1,2 @@
 3-O campo estado não está sendo carregado no formulario equipe!!!.
+4-Não se armazena idade no banco mas data de nascimento

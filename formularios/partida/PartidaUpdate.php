@@ -53,13 +53,10 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["txtEquipeVencedora"],
 			$_POST ["txtDisputaDePenaltis"],
 			$_POST ["txtGolQualificado"],
-			$_POST ["txtNomeCompeticao"],
+			$_POST ["txtIdCompeticao"],
 			$_POST ["txtNomeEquipeMandante"],
 			$_POST ["txtNomeEstadio"],
-			$_POST ["txtNomeEquipeVisitante"],
-			$_POST ["txtSerieCompeticao"],
-			$_POST ["txtAnoCompeticao"]
-						
+			$_POST ["txtNomeEquipeVisitante"]						
 	);
 	
 	$objAux->alterarDadosPartida ( $primaryKey, $campos );
@@ -91,9 +88,9 @@ else {
 		<div class="retiraQuebraDeLinha">
 			<label>ID Equipe de Arbitragem:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="txtIDEquipeArbitragem"
+			<input type="text" required="required" name="txtIDEquipeDeArbitragem"
 				placeholder="Digite o id da equipe de arbitragem..."
-				<?php if(isset($_POST ["txtIDEquipeArbitragem"])){echo "value='".$_POST ["txtIDEquipeArbitragem"]."'";}?>><br>
+				<?php if(isset($_POST ["txtIDEquipeDeArbitragem"])){echo "value='".$_POST ["txtIDEquipeDeArbitragem"]."'";}?>><br>
 		</div>
 
 
@@ -202,7 +199,7 @@ $(function() {
 			<!-- Opção 2: -->
 			<option
 				<?php
-				if (isset ( $_POST ["txtDisputaDePenaltis"] ) && $_POST ["txtDisputaDePenaltis"] == utf8_encode("Não") ){
+				if (isset ( $_POST ["txtDisputaDePenaltis"] ) && $_POST ["txtDisputaDePenaltis"] == "Não" ){
 					echo "selected";
 				}
 				?>><?php echo utf8_encode("Não")?></option>		
@@ -228,7 +225,7 @@ $(function() {
 			<!-- Opção 2: -->
 			<option
 				<?php
-				if (isset ( $_POST ["txtGolQualificado"] ) && $_POST ["txtGolQualificado"] == utf8_encode("Não") ){
+				if (isset ( $_POST ["txtGolQualificado"] ) && $_POST ["txtGolQualificado"] == "Não" ){
 					echo "selected";
 				}
 				?>><?php echo utf8_encode("Não")?></option>			
@@ -242,39 +239,11 @@ $(function() {
 			<div class="retiraQuebraDeLinha">
 			<label><?php echo utf8_encode("Competição:")?>:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtNomeCompeticao"
+			<input id="inputs" type="text" required="required" name="txtIdCompeticao"
 				placeholder="Digite o nome da competicao.."
-				<?php if(isset($_POST ["txtNomeCompeticao"])){echo "value='".$_POST ["txtNomeCompeticao"]."'";}?>><br>
+				<?php if(isset($_POST ["txtIdCompeticao"])){echo "value='".$_POST ["txtIdCompeticao"]."'";}?>><br>
 				<br>
 		</div>
-		
-		<!-- Campo Ano da Competição -->
-		<br>
-			<div class="retiraQuebraDeLinha">
-			<label><?php echo utf8_encode("Ano:")?>:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtAnoCompeticao"
-				placeholder="Digite o ano da competicao.."
-				<?php if(isset($_POST ["txtAnoCompeticao"])){echo "value='".$_POST ["txtAnoCompeticao"]."'";}?>><br>
-				<br>
-		</div>
-		
-		
-		<!-- Campo Ano da Competição -->
-		<br>
-			<div class="retiraQuebraDeLinha">
-			<label><?php echo utf8_encode("Serie:")?>:</label>
-			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtSerieCompeticao"
-				placeholder="Digite a serie da competicao.."
-				<?php if(isset($_POST ["txtSerieCompeticao"])){echo "value='".$_POST ["txtSerieCompeticao"]."'";}?>><br>
-				<br>
-		</div>
-		
-		
-		
-		
-		
 		
 		
 		<!-- Campo Equipe Mandante -->
@@ -311,18 +280,6 @@ $(function() {
 				<br>
 		</div>
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
 		<!--BOTOES PARA ENVIAR-->
 		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input  id="botaoEnviar" type="submit"
 			value="Alterar os dados"> 

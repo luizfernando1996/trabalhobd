@@ -30,18 +30,25 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$hora= $_POST ["txtHora"];
 	$resultadoFinal= $_POST ["txtResultadoFinal"];
 	$equipeVencedora= $_POST ["txtEquipeVencedora"];
+	if($_POST ["txtDisputaDePenaltis"]=="Sim")
+		$_POST ["txtDisputaDePenaltis"]=1;
+	else 
+		$_POST ["txtDisputaDePenaltis"]=0;
 	$disputaDePenaltis= $_POST ["txtDisputaDePenaltis"];
+	if($_POST ["txtGolQualificado"]=="Sim")
+		$_POST ["txtGolQualificado"]=1;
+	else 
+		$_POST ["txtGolQualificado"]=0;
+	
 	$golQualificado= $_POST ["txtGolQualificado"];
-	$nomeCompeticao= $_POST ["txtNomeCompeticao"];
+	$idCompeticao= $_POST ["txtIdCompeticao"];
 	$nomeEquipeMandante= $_POST ["txtNomeEquipeMandante"];
 	$nomeEstadio= $_POST ["txtNomeEstadio"];
 	$nomeEquipeVisitante = $_POST ["txtNomeEquipeVisitante"];
-	$serieCompeticao = $_POST ["txtSerieCompeticao"];
-	$anoCompeticao = $_POST ["txtAnoCompeticao"];
 	
-	$objAux->inserirBanco ( $idEquipeArbitragem, $nomeEntidade, $data, $hora, $resultadoFinal,	$equipeVencedora, $disputaDePenaltis, $golQualificado,$nomeCompeticao,$nomeEquipeMandante, $nomeEstadio, $nomeEquipeVisitante, $serieCompeticao, $anoCompeticao);
+	$objAux->inserirBanco ( $idEquipeArbitragem, $nomeEntidade, $data, $hora, $resultadoFinal,	$equipeVencedora, $disputaDePenaltis, $golQualificado,$idCompeticao,$nomeEquipeMandante, $nomeEstadio, $nomeEquipeVisitante);
 } else {
-	if (isset ( $erro )) {
+ 			if (isset ( $erro )) {
 	}
 }
 ?>
@@ -54,7 +61,7 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 			<nav>
   <ul class="menu">
   				<!-- ../ retorna uma pasta anterior-->
-
+	
 		<li><a href="#">Partida</a></li>
 		<li><a href="./PartidaConsulta.php">Consultar a Partida</a></li>
 	  		<li><a href="./PartidaUpdate.php">Editar dados da Partida</a>

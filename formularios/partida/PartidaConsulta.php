@@ -46,12 +46,10 @@
 			<th>Equipe Vendcedora</th>
 			<th>Disputa De Penaltis</th>
 			<th>Gol Qualificado</th>
-			<th>Nome Competicao</th>
+			<th>ID Competicao</th>
 			<th>Equipe Mandante</th>
 			<th>Estadio</th>
 			<th>Equipe Visitante</th>
-			<th>Serie Competicao</th>
-			<th>Ano Competicao</th>
 			<th>Deletar</th>			
 			<th>Editar</th>		
 		</tr>
