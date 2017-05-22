@@ -150,11 +150,10 @@ class PartidaCRUDClasse extends ConectaAoMySql {
 		DisputaDePenaltis = ?,
 		GolQualificado = ?,
 		IdCompeticao = ?,
-		NomeEquipeMandante = ?,
+		EquipeMandante = ?,
 		NomeEstadio = ?,
 		EquipeVisitante = ?
 		WHERE IDPartida = ?";
-		
 		$stmt = $this->PDO->prepare ( $sql );
 		
 		$stmt->bindParam ( 1, $campos [0] );
@@ -172,7 +171,6 @@ class PartidaCRUDClasse extends ConectaAoMySql {
 		$stmt->bindParam ( 13, $primaryKey );
 		$stmt->execute ();
 		
-		echo $primaryKey . " " . $campos [0] . " " . $campos [1] . " " . $campos [2] . " " . $campos [3] . " " . $campos [4] . " " . $campos [5] . " " . $campos [6] . " " . $campos [7] . " " . $campos [8] . " " . $campos [9] . " " . $campos [10] . " " . $campos [11];
 		
 		if ($stmt->errorCode () != "00000") {
 			$valido = false;

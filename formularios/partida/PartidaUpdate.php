@@ -20,32 +20,33 @@
 <body class="wraper">
 	<header>
 		<!-- cabeçalho -->
-			<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
-			<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
-			
-			<nav>
-  <ul class="menu">
-  				<!-- ../ retorna uma pasta anterior-->
+		<!-- O primeiro ponto é a pasta onde vc esta e o segundo é o numero maximo de pontos que é uma pasta acima -->
+		<img src="../utilitarios/figuras/Topo.png" alt="topoHome">
 
-		<li><a href="./Partida.php">Partida</a></li>
-		<li><a href="./PartidaConsulta.php">Consultar a partida</a></li>
-	  		<li><a href="#">Editar dados da partida</a>
-			</li>
-		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>             
-</ul>
-</nav>
+		<nav>
+			<ul class="menu">
+				<!-- ../ retorna uma pasta anterior-->
+
+				<li><a href="./Partida.php">Partida</a></li>
+				<li><a href="./PartidaConsulta.php">Consultar a partida</a></li>
+				<li><a href="#">Editar dados da partida</a></li>
+				<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>
+			</ul>
+		</nav>
 	</header>
 <?php
 $erro = null;
 $valido = false;
 include ('./PartidaCRUD.php');
-$objAux = new PartidaCRUDClasse();
+$objAux = new PartidaCRUDClasse ();
 
 // resposável por editar os dados carregados do else
-if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null ou se a variavel não existir
+if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for null ou se a variavel não existir
 	$primaryKey = $_POST ["primaryKey"];
+	$_POST ["txtDisputaDePenaltis"] == "Sim" ? $_POST ["txtDisputaDePenaltis"] = 1 : $_POST ["txtDisputaDePenaltis"] = 0;
+	$_POST ["txtGolQualificado"] == "Sim" ? $_POST ["txtGolQualificado"] = 1 : $_POST ["txtGolQualificado"] = 0;
 	$campos = array (
-			$_POST ["txtIDEquipeArbitragem"],
+			$_POST ["txtIDEquipeDeArbitragem"],
 			$_POST ["txtNomeEntidade"],
 			$_POST ["txtData"],
 			$_POST ["txtHora"],
@@ -56,34 +57,42 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["txtIdCompeticao"],
 			$_POST ["txtNomeEquipeMandante"],
 			$_POST ["txtNomeEstadio"],
-			$_POST ["txtNomeEquipeVisitante"]						
+			$_POST ["txtNomeEquipeVisitante"] 
 	);
-	
 	$objAux->alterarDadosPartida ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
 			
-			$_REQUEST ["idPartida"]
-			
+			$_REQUEST ["idPartida"] 
+	
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
 	$objAux->consultarPartida ( $primaryKey );
 }
 ?>
+
+
+
+
+
+
+
+
+
+
 <body>
 
 	<!-- estrutura fundamental por passar a primary key para o if-->
 
 
-	<h1 id="tituloDoForm">
-		Editar dados de Partidas
-	</h1>
-	
-	
-	<form id="formularioInter" name="tabelaAuxiliares" method="post" action="?validar=true">
-	
+	<h1 id="tituloDoForm">Editar dados de Partidas</h1>
+
+
+	<form id="formularioInter" name="tabelaAuxiliares" method="post"
+		action="?validar=true">
+
 		<!-- Campo ID Equipe De Arbitragem -->
 		<div class="retiraQuebraDeLinha">
 			<label>ID Equipe de Arbitragem:</label>
@@ -95,7 +104,7 @@ else {
 
 
 
-		
+
 		<!-- Campo Nome da Entidade -->
 		<div id="retiraQuebraDeLinha">
 			<label>Nome Entidade:</label>
@@ -105,15 +114,15 @@ else {
 				<?php if(isset($_POST ["txtNomeEntidade"])){echo "value='".$_POST ["txtNomeEntidade"]."'";}?>><br>
 		</div>
 		<br>
-		
-		
-		
-		
+
+
+
+
 		<!-- Campo Data-->
 		<label>Digite a data da partida:</label> <input type="text"
-			id="calendario" placeholder="Selecione a data ao lado"
-			name="txtData" <?php if(isset($_POST ["txtData"])){echo "value='".$_POST ["txtData"]."'";}?>><br>
-			
+			id="calendario" placeholder="Selecione a data ao lado" name="txtData"
+			<?php if(isset($_POST ["txtData"])){echo "value='".$_POST ["txtData"]."'";}?>><br>
+
 		<!-- Script do calendario abaixo -->
 		<script>
 $(function() {
@@ -147,47 +156,50 @@ $(function() {
     });    
 });
 </script>
-<br>
-		
-	<!-- Campo Hora -->
-			<div class="retiraQuebraDeLinha">
+		<br>
+
+		<!-- Campo Hora -->
+		<div class="retiraQuebraDeLinha">
 			<label>Hora:</label>
 			<!-- required="required"->exige o preenchimento -->
 			<input id="inputs" type="time" required="required" name="txtHora"
-				placeholder="Digite a hora da partida.."<?php if(isset($_POST ["txtHora"])){echo "value='".$_POST ["txtHora"]."'";}?>>
-				
-				<br>
+				placeholder="Digite a hora da partida.."
+				<?php if(isset($_POST ["txtHora"])){echo "value='".$_POST ["txtHora"]."'";}?>>
+
+			<br>
 		</div>
 		<br>
-		
+
 		<!-- Campo Resultado Final -->
-			<div class="retiraQuebraDeLinha">
+		<div class="retiraQuebraDeLinha">
 			<label>Resultado Final:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtResultadoFinal"
-				placeholder="Mandante x Visitante.."<?php if(isset($_POST ["txtResultadoFinal"])){echo "value='".$_POST ["txtResultadoFinal"]."'";}?>>
-				
-				<br>
+			<input id="inputs" type="text" required="required"
+				name="txtResultadoFinal" placeholder="Mandante x Visitante.."
+				<?php if(isset($_POST ["txtResultadoFinal"])){echo "value='".$_POST ["txtResultadoFinal"]."'";}?>>
+
+			<br>
 		</div>
-		
+
 		<!-- Campo Equipe Vencedora -->
-			<div class="retiraQuebraDeLinha">
+		<div class="retiraQuebraDeLinha">
 			<label>Equipe Vencedora:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtEquipeVencedora"
+			<input id="inputs" type="text" required="required"
+				name="txtEquipeVencedora"
 				placeholder="Digite o nome da equipe vencedora.."
-				 <?php if(isset($_POST ["txtEquipeVencedora"])){echo "value='".$_POST ["txtEquipeVencedora"]."'";}?>><br>
-				<br>
+				<?php if(isset($_POST ["txtEquipeVencedora"])){echo "value='".$_POST ["txtEquipeVencedora"]."'";}?>><br>
+			<br>
 		</div>
-		
-		
-		
+
+
+
 		<!-- Campo Dispulta de Penaltis: -->
 		<label><?php echo(utf8_encode('Disputa de Penaltis:'))?></label>
 		<!--  -->
 		<select id="inputs" name="txtDisputaDePenaltis">
-		
-		
+
+
 			<!-- Opção 1: -->
 			<option
 				<?php
@@ -199,17 +211,15 @@ $(function() {
 			<!-- Opção 2: -->
 			<option
 				<?php
-				if (isset ( $_POST ["txtDisputaDePenaltis"] ) && $_POST ["txtDisputaDePenaltis"] == "Não" ){
+				if (isset ( $_POST ["txtDisputaDePenaltis"] ) && $_POST ["txtDisputaDePenaltis"] == "Não") {
 					echo "selected";
 				}
-				?>><?php echo utf8_encode("Não")?></option>		
-				
-		</select> 
-		<br>
-		<br>
-		
+				?>><?php echo utf8_encode("Não")?></option>
+
+		</select> <br> <br>
+
 		<!-- Campo Gol Qualificado: -->
-		
+
 		<label><?php echo(utf8_encode('Gol Qualificado:'))?></label>
 		<!-- Opção 1 -->
 		<select id="inputs" name="txtGolQualificado">
@@ -225,82 +235,88 @@ $(function() {
 			<!-- Opção 2: -->
 			<option
 				<?php
-				if (isset ( $_POST ["txtGolQualificado"] ) && $_POST ["txtGolQualificado"] == "Não" ){
+				if (isset ( $_POST ["txtGolQualificado"] ) && $_POST ["txtGolQualificado"] == "Não") {
 					echo "selected";
 				}
-				?>><?php echo utf8_encode("Não")?></option>			
-				
-		</select> 
-		<br>
-		<br>
-		
+				?>><?php echo utf8_encode("Não")?></option>
+
+		</select> <br> <br>
+
 		<!-- Campo Nome da Competição -->
 		<br>
-			<div class="retiraQuebraDeLinha">
+		<div class="retiraQuebraDeLinha">
 			<label><?php echo utf8_encode("Competição:")?>:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtIdCompeticao"
-				placeholder="Digite o nome da competicao.."
+			<input id="inputs" type="text" required="required"
+				name="txtIdCompeticao" placeholder="Digite o nome da competicao.."
 				<?php if(isset($_POST ["txtIdCompeticao"])){echo "value='".$_POST ["txtIdCompeticao"]."'";}?>><br>
-				<br>
+			<br>
 		</div>
-		
-		
+
+
 		<!-- Campo Equipe Mandante -->
-			<div class="retiraQuebraDeLinha">
+		<div class="retiraQuebraDeLinha">
 			<label>Equipe Mandante:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtNomeEquipeMandante"
+			<input id="inputs" type="text" required="required"
+				name="txtNomeEquipeMandante"
 				placeholder="Digite o nome da equipe mandante.."
 				<?php if(isset($_POST ["txtNomeEquipeMandante"])){echo "value='".$_POST ["txtNomeEquipeMandante"]."'";}?>><br>
-				<br>
+			<br>
 		</div>
-		
-		
-		
+
+
+
 		<!-- Campo Equipe Visitante -->
-			<div class="retiraQuebraDeLinha">
+		<div class="retiraQuebraDeLinha">
 			<label>Equipe Visitante:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtNomeEquipeVisitante"
+			<input id="inputs" type="text" required="required"
+				name="txtNomeEquipeVisitante"
 				placeholder="Digite o nome da equipe visitante.."
 				<?php if(isset($_POST ["txtNomeEquipeVisitante"])){echo "value='".$_POST ["txtNomeEquipeVisitante"]."'";}?>><br>
-				<br>
-		</div>		
-		
-		
-		
+			<br>
+		</div>
+
+
+
 		<!-- Campo Estadio -->
-			<div class="retiraQuebraDeLinha">
+		<div class="retiraQuebraDeLinha">
 			<label>Estadio:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input id="inputs" type="text" required="required" name="txtNomeEstadio"
-				placeholder="Digite o nome do estadio.."
+			<input id="inputs" type="text" required="required"
+				name="txtNomeEstadio" placeholder="Digite o nome do estadio.."
 				<?php if(isset($_POST ["txtNomeEstadio"])){echo "value='".$_POST ["txtNomeEstadio"]."'";}?>><br>
-				<br>
+			<br>
 		</div>
-		
+
 		<!--BOTOES PARA ENVIAR-->
-		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input  id="botaoEnviar" type="submit"
-			value="Alterar os dados"> 
-			
-			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
-			<input type="hidden" name=primaryKey
+		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input
+			id="botaoEnviar" type="submit" value="Alterar os dados">
+
+		<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
+		<input type="hidden" name=primaryKey
 			value="<?php
 			if (isset ( $_REQUEST ["idPartida"] ))
-				//nome dos campos do método ler jogadores no crude	
+				// nome dos campos do método ler jogadores no crude
 				echo $_REQUEST ["idPartida"];
-			else 
-				//nomes dos campos desta tabela
+			else
+				// nomes dos campos desta tabela
 				echo $_POST ["idPartida"];
 			?>">
 	</form>
 
 
 	<a id="botao" href="./PartidaConsulta.php">Consultar Partidas</a>
-	
+
 	<footer class="footer">
-			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
-	</footer><!-- em estilo. é class e # é id -->
+		<img class="footer" src="../utilitarios/figuras/rodape.png"
+			alt="rodape">
+	</footer>
+	<!-- em estilo. é class e # é id -->
 </body>
+
+
+
+
 </html>
