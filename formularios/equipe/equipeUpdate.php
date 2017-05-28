@@ -28,7 +28,7 @@
   				<!-- ../ retorna uma pasta anterior-->
 
 		<li><a href="./Equipe.php">Equipe</a></li>
-		<li><a href="./equipeConsultar.php">Consultar Equipes</a></li>
+		<li><a href="./equipeConsulta.php">Consultar Equipes</a></li>
 	  		<li><a href="#">Alterar dados das Equipes</a>
 			</li>
 		<li><a href="../homeFormularios.php">Olhar outra tabela</a></li>

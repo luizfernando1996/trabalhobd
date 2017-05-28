@@ -34,7 +34,10 @@
 </ul>
 </nav>
 	</header>
-	<table id="formularioInteiro3" border=1>
+<br>
+<br>
+<br>
+	<table id="formCompeticao" border=1>
 		<!-- Tr é a tag para linha no html -->
 		<tr>		
 			<th>Nome</th>

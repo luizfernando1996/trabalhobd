@@ -71,7 +71,7 @@ else {
 	<!-- estrutura fundamental por passar a primary key para o if-->
 
 
-	<h1 id="tituloDoForm">
+	<h1 id="tiloDoForm">
 		<?php echo utf8_encode("<br>Editar dados de Competições")?>
 	</h1>
 	<form id="formularioInter" name="tabelaCompeticao" method="post" action="?validar=true">

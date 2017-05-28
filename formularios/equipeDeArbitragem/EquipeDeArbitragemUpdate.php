@@ -68,10 +68,8 @@ else {
 
 	<!-- estrutura fundamental por passar a primary key para o if-->
 
-
-	<h1 id="tituloDoForm">
-		Editar dados de Equipes de Arbitragem
-	</h1>
+<br><br>
+	<h1 id="tiloDoForm">Editar dados de Equipes de Arbitragem	</h1>
 	<form id="formularioInter" name="tabelaEquipesDeArbitragem" method="post" action="?validar=true">
 	
 		<!-- Campo Bandeirinha1 -->
@@ -93,11 +91,9 @@ else {
 			<input type="text" required="required" name="txtNomeBandeirinha2"
 				placeholder="Digite o nome do bandeirinha 2..."
 				<?php if(isset($_POST ["txtNomeBandeirinha2"])){echo "value='".$_POST ["txtNomeBandeirinha2"]."'";}?>><br>
-		</div>
-		<br>]
+		</div>		
 		
-		
-		
+		<br>
 		<!-- Campo Arbitro -->
 		<div id="retiraQuebraDeLinha">
 			<label>Arbitro:</label>

@@ -106,8 +106,8 @@ else {
 				echo $_POST ["txtNome"] . "*" . $_POST["txtEquipe"];
 			?>">
 	</form>
-
-
+<br>
+<br>
 	<a id="botao" href="./TecnicoConsulta.php">Consultar Tecnicos</a>
 	<footer class="footer">
 			<img class="footer" src="../utilitarios/figuras/rodape.png" alt="rodape">
