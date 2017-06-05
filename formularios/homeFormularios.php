@@ -98,8 +98,6 @@ body {
 			<ul class="menu">
 				<!-- ../ retorna uma pasta anterior-->
 				<li><a href="../default.php">Home</a></li>
-				<li><a href="./auxiliar/Auxiliar.php">Auxiliar</a></li>
-				<li><a href="./comissaoTecnica/ComissaoTecnica.php">ComissaoTecnica</a></li>
 				<li><a href="./competicao/Competicao.php">Competicao</a></li>
 				<li><a href="./competicaoEquipe/CompeticaoEquipeCadastrar.php">CompeticaoEquipe</a></li>
 				<li><a href="./equipe/Equipe.php">Equipe</a></li>
