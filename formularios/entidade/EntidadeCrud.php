@@ -1,16 +1,16 @@
 <?php
 include ("../FileMySQL.php"); // <--Segue control e clique no caminho para ter certeza qe o caminho está correto
 class EntidadeClasseCrude extends ConectaAoMySql {
-	public function inserirBanco($nome, $TerritorioDeAbrangencia, $Tipo) {
+	public function inserirBanco($nome, $TerritorioDeAbrangencia, $Presidente) {
 		$sql = "INSERT INTO entidade
-                (Nome, TerritorioDeAbrangencia, Tipo)
+                (Nome, TerritorioDeAbrangencia, Presidente)
                 VALUES (?, ?, ?)";
 		
 		$stmt = $this->PDO->prepare ( $sql );
 		
 		$stmt->bindParam ( 1, $nome );
 		$stmt->bindParam ( 2, $TerritorioDeAbrangencia );
-		$stmt->bindParam ( 3, $Tipo );
+		$stmt->bindParam ( 3, $Presidente );
 		
 		$stmt->execute ();
 		
@@ -40,7 +40,7 @@ class EntidadeClasseCrude extends ConectaAoMySql {
 				
 				echo "<td>" . $registro->Nome . "</td>";
 				echo "<td>" . $registro->TerritorioDeAbrangencia . "</td>";
-				echo "<td>" . $registro->Tipo . "</td>";
+				echo "<td>" . $registro->Presidente . "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				
 				$primaryKey = array (
@@ -86,7 +86,7 @@ class EntidadeClasseCrude extends ConectaAoMySql {
 				// enquanto $registro->Nome é o nome da coluna no banco
 				$_POST ["txtNomeEntidade"] = $registro->Nome;
 				$_POST ["territorio"] = $registro->TerritorioDeAbrangencia;
-				$_POST ["tipoEntidade"] = $registro->Tipo;
+				$_POST ["presidente"] = $registro->Presidente;
 			} else
 				$erro = "Registro não encontrado";
 		} else
@@ -96,7 +96,7 @@ class EntidadeClasseCrude extends ConectaAoMySql {
 		$sql = "UPDATE entidade SET
 		Nome = ?,
 		TerritorioDeAbrangencia = ?,
-		Tipo = ?
+		Presidente = ?
 		WHERE Nome = ?";
 		
 		$stmt = $this->PDO->prepare ( $sql );

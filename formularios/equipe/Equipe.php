@@ -26,8 +26,8 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$nomeEquipe= $_POST ["nomeEquipe"];
 	$estado= $_POST ["estado"];
 	$nomeEstadio= $_POST ["nomeEstadio"];
-	$nomeTecnico= $_POST ["nomeTecnico"];
-$Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
+	$cidade= $_POST ["cidade"];
+$Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $cidade);
 } else {
 	if (isset ( $erro )) {
 	}
@@ -101,10 +101,10 @@ $Robinho->inserirBanco($nomeEquipe, $estado, $nomeEstadio, $nomeTecnico);
 			<input type="text" required="required" name="nomeEstadio"
 				placeholder="Digite o nome do estadio.."><br>
 			
-			<label>Nome do Tecnico:</label>
+			<label>Cidade:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="nomeTecnico"
-				placeholder="Digite o nome do estadio.."><br>
+			<input type="text" required="required" name="cidade"
+				placeholder="Digite o nome da cidade.."><br>
 		<br>
 
 	

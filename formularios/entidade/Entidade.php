@@ -25,8 +25,8 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$CBF = new EntidadeClasseCrude();
 	$nomeEntidade= $_POST ["nomeEntidade"];
 	$territorio= $_POST ["territorio"];
-	$tipoEntidade= $_POST ["tipoEntidade"];
-	$CBF->inserirBanco($nomeEntidade, $territorio, $tipoEntidade);
+	$presidente= $_POST ["presidente"];
+	$CBF->inserirBanco($nomeEntidade, $territorio, $presidente);
 } else {
 	if (isset ( $erro )) {
 	}
@@ -94,11 +94,11 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 
 		</select> <br> <!-- br quebra linha -->
 
-		<!-- Tipo -->
-			<label>Tipo:</label>
+		<!-- Presidente -->
+			<label>Presidente:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="tipoEntidade"
-				placeholder="Digite o tipo da entidade.."><br>
+			<input type="text" required="required" name="presidente"
+				placeholder="Digite o presidente da entidade.."><br>
 			
 		<!--BOTOES PARA ENVIAR-->
 		<input id="botaoEnviar" type="reset" value="Limpar os dados"> <input id="botaoEnviar" type="submit"

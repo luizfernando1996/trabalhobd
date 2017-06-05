@@ -49,7 +49,7 @@ if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for nul
 			$_POST ["txtNomeEquipe"],
 			$_POST ["campoEstado"],
 			$_POST ["nomeEstadio"],
-			$_POST ["nomeTecnico"] 
+			$_POST ["cidade"] 
 	);
 	$Cruzeiro->alterarDadosEquipes($primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
@@ -121,13 +121,13 @@ else {
 				<?php if(isset($_POST ["nomeEstadio"])){echo "value='".$_POST ["nomeEstadio"]."'";}?>><br>
 		</div>
 
-		<!-- Campo Nome do Tecnico-->
+		<!-- Campo Nome da Cidade-->
 		<div id="retiraQuebraDeLinha">
-			<label>Nome do Tecnico:</label>
+			<label>Cidade:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="nomeTecnico"
+			<input type="text" required="required" name="cidade"
 				placeholder="Digite o nome da equipe..."
-				<?php if(isset($_POST ["nomeTecnico"])){echo "value='".$_POST ["nomeTecnico"]."'";}?>><br>
+				<?php if(isset($_POST ["cidade"])){echo "value='".$_POST ["cidade"]."'";}?>><br>
 		</div>
 
 		<!--BOTOES PARA ENVIAR-->

@@ -50,13 +50,16 @@ if (isset ( $_POST ["primaryKey"] )) {// isset retorna false se o valor for null
 			$_POST ["txtNomeArbitro"],
 			$_POST ["txtNomeQuartoArbitro"],
 			$_POST ["txtNomeEntidade"],
-			$_POST ["txtDelegado"]
+			$_POST ["txtDelegado"],
+			$_POST ["txtNomeCompeticao"],
+			$_POST ["txtAnoCompeticao"],
+			$_POST ["txtNumeroJogo"]
 	);	
 	$objAux->alterarDadosEquipeDeArbitragem ( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
 else {
 	$primaryKey = array (
-			$_REQUEST ["id"]			
+			$_REQUEST ["nomeCompeticao"], $_REQUEST ["anoCompeticao"], $_REQUEST ["numeroJogo"]
 	);
 	// Os campos do formulario ficam preenchidos com o valor
 	// após o método consultar jogador ser executado através do metodo post do php
@@ -137,6 +140,36 @@ else {
 		</div>
 		<br>
 		
+		<!-- Campo Nome Competicao-->
+		<div id="retiraQuebraDeLinha">
+			<label>Competicao:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text"  name="txtNomeCompeticao"
+				placeholder="Digite o nome da competicao..."
+				<?php if(isset($_POST ["txtNomeCompeticao"])){echo "value='".$_POST ["txtNomeCompeticao"]."'";}?>><br>
+		</div>
+		<br>
+		
+		<!-- Campo Nome Competicao-->
+		<div id="retiraQuebraDeLinha">
+			<label>Ano:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="number"  name="txtAnoCompeticao"
+				placeholder="Digite o ano da competicao..."
+				<?php if(isset($_POST ["txtAnoCompeticao"])){echo "value='".$_POST ["txtAnoCompeticao"]."'";}?>><br>
+		</div>
+		<br>
+		
+		<!-- Campo Numero do Jogo-->
+		<div id="retiraQuebraDeLinha">
+			<label>Numero do Jogo:</label>
+			<!-- required="required"->exige o preenchimento -->
+			<input type="text"  name="txtNumeroJogo"
+				placeholder="Digite o numero do jogo..."
+				<?php if(isset($_POST ["txtNumeroJogo"])){echo "value='".$_POST ["txtNumeroJogo"]."'";}?>><br>
+		</div>
+		<br>
+		
 		
 		
 
@@ -147,12 +180,12 @@ else {
 			<!-- Botão invisivel responsavél por capturar as primaryKey e assim promover a edição dos dados -->
 			<input type="hidden" name=primaryKey
 			value="<?php
-			if (isset ( $_REQUEST ["id"] ))
+			if (isset ( $_REQUEST ["nomeCompeticao"],$_REQUEST ["anoCompeticao"],$_REQUEST ["numeroJogo"]))
 				//nome dos campos do método ler jogadores no crude	
-				echo $_REQUEST ["id"];
+				echo $_REQUEST ["nomeCompeticao"],$_REQUEST ["anoCompeticao"],$_REQUEST ["numeroJogo"];
 			else 
 				//nomes dos campos desta tabela
-				echo $_POST ["id"];
+				echo $_POST ["nomeCompeticao"],$_POST ["anoCompeticao"],$_POST ["numeroJogo"];
 			?>">
 	</form>
 

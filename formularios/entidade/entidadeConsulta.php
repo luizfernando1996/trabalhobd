@@ -40,7 +40,7 @@
 			<th>Nome da Entidade</th>
 			<!-- Th define o titulo da coluna -->
 			<th>Territorio de Abragencia</th>
-			<th>Tipo</th>
+			<th>Presidente</th>
 			<th>Deletar</th>			
 			<th>Editar</th>
 		

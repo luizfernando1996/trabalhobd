@@ -29,7 +29,10 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 	$nomeQuartoArbitro = $_POST ["txtNomeQuartoArbitro"];
 	$nomeEntidade = $_POST["txtNomeEntidade"];
 	$delegado = $_POST["txtDelegado"];
-	$objArbitragem->inserirBanco ( $nomeBandeirinha1, $nomeBandeirinha2, $nomeArbitro, $nomeQuartoArbitro, $nomeEntidade, $delegado );
+	$nomeCompeticao = $_POST["txtNomeCompeticao"];
+	$anoCompeticao = $_POST["txtAnoCompeticao"];
+	$numeroJogo = $_POST["txtNumeroJogo"];
+	$objArbitragem->inserirBanco ( $nomeBandeirinha1, $nomeBandeirinha2, $nomeArbitro, $nomeQuartoArbitro, $nomeEntidade, $delegado, $nomeCompeticao, $anoCompeticao, $numeroJogo );
 } else {
 	if (isset ( $erro )) {
 	}
@@ -108,6 +111,30 @@ if (isset ( $_REQUEST ["validar"] ) && $_REQUEST ["validar"] == true) {
 			<label>Delegado:</label>			
 			<input id="inputs" type="text"  name="txtDelegado"
 				placeholder="Digite o nome do delegado.."><br>
+				<br>
+		</div>
+		
+		<!-- Campo Nome Competicao-->
+			<div class="retiraQuebraDeLinha">
+			<label>Competicao:</label>			
+			<input id="inputs" type="text"  name="txtNomeCompeticao"
+				placeholder="Digite o nome da competicao.."><br>
+				<br>
+		</div>
+		
+		<!-- Campo Ano Competicao-->
+			<div class="retiraQuebraDeLinha">
+			<label>Ano da Competicao:</label>			
+			<input id="inputs" type="number"  name="txtAnoCompeticao"
+				placeholder="Digite o ano da competicao.."><br>
+				<br>
+		</div>
+		
+		<!-- Campo Numero do Jogo-->
+			<div class="retiraQuebraDeLinha">
+			<label>Numero do jogo:</label>			
+			<input id="inputs" type="text"  name="txtNumeroJogo"
+				placeholder="Digite o numero do jogo.."><br>
 				<br>
 		</div>
 

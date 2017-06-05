@@ -37,13 +37,16 @@
 	<table id="formularioInteiro3" border=1>
 		<!-- Tr é a tag para linha no html -->
 		<tr>		
-			<th>ID</th>
+			
 			<th>Bandeirinha 1</th>
 			<th>Bandeirinha 2</th>
 			<th>Arbitro</th>
 			<th>Quarto Arbitro</th>
 			<th>Entidade</th>
-			<th>Delegado</th>			
+			<th>Delegado</th>
+			<th>Competicao</th>
+			<th>Ano</th>
+			<th>Numero do Jogo</th>			
 			<th>Deletar</th>			
 			<th>Editar</th>		
 		</tr>
@@ -52,7 +55,7 @@ include ('./EquipeDeArbitragemCRUD.php');
 $ler = new EquipeDeArbitragemCRUDClasse ();
 
 if (isset ( $_REQUEST ["excluir"] ) && $_REQUEST ["excluir"] == true){
-	$primaryKey=array($_REQUEST["id"]);
+	$primaryKey=array($_REQUEST["nomeCompeticao"], $_REQUEST["anoCompeticao"], $_REQUEST["numeroJogo"]);
 	$ler->deletarEquipeDeArbitragem($primaryKey);
 }
 $ler->lerEquipeDeArbitragem();

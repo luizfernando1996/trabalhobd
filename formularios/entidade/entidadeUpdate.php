@@ -48,7 +48,7 @@ if (isset ( $_POST ["primaryKey"] )) { // isset retorna false se o valor for nul
 	$campos = array (
 			$_POST ["txtNomeEntidade"],
 			$_POST ["territorio"],
-			$_POST ["tipoEntidade"]
+			$_POST ["presidente"]
 	);
 	$CBF->alterarDadosEntidades( $primaryKey, $campos );
 } // responsavel por receber todos os dados quando a pagina é carregada e apresentar ao usuario
@@ -118,12 +118,12 @@ else {
 				?>>Municipal</option>
 		</select><br>
 		
-			<!-- Tipo -->
-			<label>Tipo:</label>
+			<!-- Presidente-->
+			<label>Presidente:</label>
 			<!-- required="required"->exige o preenchimento -->
-			<input type="text" required="required" name="tipoEntidade"
-				placeholder="Digite o tipo da entidade.."
-				<?php if(isset($_POST ["tipoEntidade"])){echo "value='".$_POST ["tipoEntidade"]."'";}?>
+			<input type="text" required="required" name="presidente"
+				placeholder="Digite o presidente  da entidade.."
+				<?php if(isset($_POST ["presidente"])){echo "value='".$_POST ["presidente"]."'";}?>
 				><br>
 				<br>
 

@@ -4,9 +4,9 @@
 include("../FileMySQL.php");//<--Segue control e clique no caminho para ter certeza qe o caminho está correto
 class ClasseEquipeCrude extends ConectaAoMySql{
 	
-	public function inserirBanco($nome,$estado, $nomeEstadio,$nomeTecnico) {
+	public function inserirBanco($nome,$estado, $nomeEstadio,$cidade) {
 		$sql = "INSERT INTO equipe
-                (Nome, Estado, NomeEstadio, NomeTecnico)
+                (Nome, Estado, NomeEstadio, Cidade)
                 VALUES (?, ?, ?, ?)";
 		
 		$stmt = $this->PDO->prepare ( $sql );
@@ -14,7 +14,7 @@ class ClasseEquipeCrude extends ConectaAoMySql{
 		$stmt->bindParam ( 1, $nome);
 		$stmt->bindParam ( 2, $estado);
 		$stmt->bindParam ( 3, $nomeEstadio);
-		$stmt->bindParam ( 4, $nomeTecnico);
+		$stmt->bindParam ( 4, $cidade);
 		
 		$stmt->execute ();
 		
@@ -47,7 +47,7 @@ class ClasseEquipeCrude extends ConectaAoMySql{
 				echo "<td>" . $registro->Nome . "</td>";
 				echo "<td>" . $registro->Estado . "</td>";
 				echo "<td>" . $registro->NomeEstadio . "</td>";
-				echo "<td>" . $registro->NomeTecnico . "</td>";
+				echo "<td>" . $registro->Cidade . "</td>";
 				// será utilizada no método abaixo o de deletar e alterar
 				
 				$primaryKey = array (
@@ -94,7 +94,7 @@ class ClasseEquipeCrude extends ConectaAoMySql{
 				$_POST ["txtNomeEquipe"] = $registro->Nome;
 				$_POST["campoEstado"] = $registro->Estado;
 				$_POST ["nomeEstadio"] = $registro->NomeEstadio;
-				$_POST ["nomeTecnico"] = $registro->NomeTecnico;
+				$_POST ["cidade"] = $registro->Cidade;
 			} else
 				$erro = "Registro não encontrado";
 		} else
@@ -105,7 +105,7 @@ class ClasseEquipeCrude extends ConectaAoMySql{
 		Nome = ?,
 		Estado = ?,
 		NomeEstadio = ?,
-		NomeTecnico = ?
+		Cidade = ?
 		WHERE Nome= ?";
 		
 		$stmt = $this->PDO->prepare ( $sql );

@@ -41,7 +41,7 @@
 			<!-- Th define o titulo da coluna -->
 			<th>Estado</th>
 			<th>Nome Estadio</th>
-			<th>Nome Tecnico</th>
+			<th>Cidade</th>
 			<th>Deletar</th>			
 			<th>Editar</th>
 		
